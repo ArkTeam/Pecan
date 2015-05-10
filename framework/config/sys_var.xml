@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+	<sys_tag>
+		<name>SYS_NAME</name>
+		<value>ArkPHP</value>
+	</sys_tag>
+
+	<sys_tag>
+		<name>pagesize</name>
+		<value>15</value>
+	</sys_tag>
+	
+
+</root>

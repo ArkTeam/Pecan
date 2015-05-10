@@ -1,0 +1,44 @@
+目录组织结构~
+类加载 ~
+MVC~
+URL处理~
+模板引擎SMARTY接入~
+
+基础类库 0.5
+
+输入处理
+错误异常处理
+扩展类
+极速开发
+调试功能
+
+引用管理
+
+1数据库配置
+2表的格式为   x_y_z_..  ？    model格式为 XYZ...
+3.id 为 id_x_y_z...
+4
+嵌套循环
+
+{foreach $articles(key,value)} 
+	{foreach #value(v_key,v_value)} 
+		{@v_value}
+	{/foreach}
+{/foreach}
+
+
+{foreach $articles(key,value)} 
+	{foreach #value(v_key,v_value)} 
+		{@v_value['title']}
+	{/foreach}
+{/foreach}
+
+{foreach $articles(key,value)} 
+ 
+		{@value['title']}
+
+{/foreach}
+
+对象
+{#value['title']}
+
