@@ -5,7 +5,7 @@ define ( 'DS', '/' );
 
 define ( 'DBNAME', 'arkblog' );
 
-define ( 'SITE_NAME', 'ArkBlog' );
+define ( 'SITE_NAME', 'Pecan' );
 
 define('SITE_URL', 'http://'.$_SERVER['SERVER_NAME'].($_SERVER["SERVER_PORT"]!=80?':'.$_SERVER["SERVER_PORT"]:"").DS.SITE_NAME);
 
