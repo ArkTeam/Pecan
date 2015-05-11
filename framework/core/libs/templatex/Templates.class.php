@@ -9,11 +9,13 @@ class Templatex {
 
 
 	public function __construct() {
-	echo TPL_DIR;
-		if (! is_dir ( TPL_DIR ) || ! is_dir ( TPL_C_DIR )  ) {
-			exit ( 'ERROR：Template is Not Exist .' );
+		if(! is_dir ( TPL_C_DIR )){
+			mkdir(TPL_C_DIR);
 		}
- 		
+		if (! is_dir ( TPL_DIR )  ) {
+			exit ( 'ERROR：Template Dir is Not Exist .' );
+		}
+	
 		$this->loadSysVar();
 	}
 	
