@@ -8,6 +8,6 @@
 5.全局变量
 
 
-
+teamwork
 SITE_NAME
 DB_NAME
