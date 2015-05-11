@@ -5,9 +5,6 @@ class ArkCategory extends Model {
 		$arr=array();
 		$categories = $this->findMany ();
 
-// 		foreach ($categories as $category ){
-// 			echo '</br>category:'.$category->category_name;
-// 		}
 		foreach( $categories as $category ){
 			
 			array_push($arr , $category->category_name);
