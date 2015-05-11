@@ -40,6 +40,7 @@ class ArkArticle extends Model {
 		$this->limit($start,$offset);
 		//$this->where("d_tag", '=', '0');
 		$articles = $this->findMany ();
+// 		print_r($articles);
 		if(!$articles){
 			//echo 'Error: Find Many Error';
 		}
