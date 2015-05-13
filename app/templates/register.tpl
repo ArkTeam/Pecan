@@ -75,16 +75,17 @@ window.onload=function(){
         <input type="password" class="input-block-level" placeholder="Password" name='password'>
         <input type="password" class="input-block-level" placeholder="RePassword" name='repassword'>
         
-       <!-- <input name="portrait" type="file" ></br>  -->
+      
        
     <center>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <table width="100%" border="0" cellspacing="20" cellpadding="0">
   <tr>
-    <td width="50%" align="right"><iframe src="<!--{PUBLIC_PATH}-->/start.html" width="322" height="277" frameborder="0" scrolling="no"></iframe></td>
-    <td width="50%" align="left"><div id="screenshotsShow"></div>
-  
+  	<form action="<!--{ACTION_URL}-->/userAction/start" method="post">
+	    <td width="50%" align="right"><iframe src="<!--{ACTION_URL}-->/userAction/start" width="322" height="277" frameborder="0" scrolling="no"></iframe></td>
+	    <td width="50%" align="left"><div id=""></div>
+  	</form >
   </tr>
 </table>
 </center>

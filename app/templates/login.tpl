@@ -49,7 +49,7 @@
         </label>
  
         <button class="btn  btn-primary" type="submit">登录</button>
-        <a href='index.php/Index/register'><button class="btn  btn-primary" type="button">注册</button></A>
+        <a href='<!--{ACTION_URL}-->/index.php/Index/register'><button class="btn  btn-primary" type="button">注册</button></A>
       </form>
 
 

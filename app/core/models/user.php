@@ -14,12 +14,17 @@ class ArkUser extends Model {
 		return $this->getId();
 
 	}
-	function createArtkUser($username ,$password) {
+	function createArtkUser($username ,$password ,$portraitpath) {
 		$artk_user = $this->create ( array ('username' => $username,
 		 'password' => $password,
+		 'portraitpath' =>$portraitpath,
 		 'regtime' => strval(time())));
 		
 		return $this->save ();
 
+	}	
+	function getPortraitPath($username){
+		$this->where( 'username', '=' , $username)->findOne();
+		return $this->portraitpath;
 	}
 }
