@@ -56,14 +56,20 @@ class UserAction extends Controller {
 	function start(){
 		$this->display('start.tpl');
 	}
+	function main(){
+		$this->display('main.tpl');
+	}
 	// 记忆文件名
 	function fsetcookie($img) {
+		
+		$img = str_replace('\\', '\\\\', $img);
+		//echo $img;
 		echo '<script>document.cookie="162100screenshotsImg="+encodeURIComponent(\'' . $img . '\')+"; path=/;";</script>';
 	}
 
 	function portrait() {
 		// 拟用户名
-		$username = NULL;
+		$username = md5('hello');
 		
 		// 站点网址
 		$web ['sitehttp'] = 'http://' . (! empty ( $_SERVER ['HTTP_X_FORWARDED_HOST'] ) ? $_SERVER ['HTTP_X_FORWARDED_HOST'] : $_SERVER ['HTTP_HOST']) . '/';
@@ -72,8 +78,8 @@ class UserAction extends Controller {
 		$web ['time_pos'] = 8;
 		
 		// 图片路径
-		$web ['img_up_dir'] = 'C:\wamp\www\Pecan\app\public\i_upload';
-		echo $web;
+		$web ['img_up_dir'] = APP_PATH.'/public/i_upload';
+		
 		// 截图类型（限jpg、gif、png）
 		$web ['img_up_format'] = 'jpg';
 		
@@ -89,7 +95,7 @@ class UserAction extends Controller {
 		$web ['img_name_s'] = '' . $web ['img_name_b'] . '_small';
 		
 		// 上传最大尺寸（KB）
-		$web ['max_file_size'] [15] = 2000;
+		$web ['max_file_size'] [15] = 5000;
 		
 		if (strpos ( $_SERVER ['HTTP_REFERER'], $web ['sitehttp'] ) !== 0) {
 			$this->err ( '禁止本站外提交！' );
@@ -103,7 +109,6 @@ class UserAction extends Controller {
 					@chmod ( $web ['img_up_dir'], 0777 );
 					$inis = ini_get_all ();
 					$uploadmax = $inis ['upload_max_filesize'];
-// 					$this->alert('xxxxx');
 					if ($_FILES ['purl1'] ['size'] > $web ['max_file_size'] [15] * 1024) {
 						$this->err ( '图片上传不成功！上传的文件请小于' . $web ['max_file_size'] [15] . 'KB！' );
 					} else {
@@ -113,9 +118,10 @@ class UserAction extends Controller {
 							$t = strtolower ( $matches [1] );
 							
 							if (@move_uploaded_file ( $_FILES ['purl1'] ['tmp_name'], $web ['img_up_dir'] . '/' . $web ['img_name_b'] . '.' . $t )) {
-								$this->fsetcookie( $web ['img_up_dir'] . '/' . $web ['img_name_b'] . '.' . $t );
-								
-								$this->alert ( '图片上传成功！' , ACTION_URL.'/userAction/start' );
+								$this->fsetcookie(PUBLIC_PATH. DS .'i_upload'.DS. $web ['img_name_b'] . '.' . $t );
+							
+								//echo $web ['img_up_dir'] . '/' . $web ['img_name_b'] . '.' . $t;
+								$this->alert ( '图片上传成功！' , ACTION_URL.'/userAction/main' );
 							} else {
 								$this->err ( '图片上传不成功！' );
 							}
@@ -140,7 +146,7 @@ class UserAction extends Controller {
 			}
 			$t = strtolower ( $matches [1] );
 			$this->write_file ( $web ['img_up_dir'] . '/' . $web ['img_name_b'] . '.' . $t, $im );
-			fsetcookie ( $web ['img_up_dir'] . '/' . $web ['img_name_b'] . '.' . $t );
+			$this->fsetcookie(PUBLIC_PATH. DS .'i_upload'.DS. $web ['img_name_b'] . '.' . $t );
 			$this->alert ( '头像上传成功！', ACTION_URL.'/userAction/start'  );
 			
 			// 截图
@@ -176,6 +182,7 @@ class UserAction extends Controller {
 						$ow = ceil ( 180 * $_POST ['pw'] / $_POST ['ph'] );
 					}
 				}
+				$cimg_s=PUBLIC_PATH. DS .'i_upload'.DS . $web ['img_name_s'] . '.' . $web ['img_up_format'];
 				echo '<script>if(top!=self && top.document.getElementById(\'screenshotsShow\')!=null){top.document.getElementById(\'screenshotsShow\').innerHTML=\'<img src="' . $cimg_s . '" width="' . $ow . '" height="' . $oh . '" />\';}</script>';
 				echo '<script>var expiration=new Date((new Date()).getTime()+1209600*1000); document.cookie="162100screenshotsImgSmall="+encodeURIComponent(\'' . $cimg_s . '\')+"; expires="+expiration.toGMTString()+"; path=/;";</script>';
 				$this->err ( '截图成功！<div class="sword">（可点右键另存为）</div><center><a href="' . $cimg_s . '" target="_blank"><img src="' . $cimg_s . '" width="' . $ow . '" height="' . $oh . '" /></a></center>', 'alert' );

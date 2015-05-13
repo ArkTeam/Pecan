@@ -40,7 +40,8 @@ class ArticleAction extends Controller {
 	function delArticle($article_id){
 		$this->article = new ArkArticle();
 		$this->article->getArticle($article_id);
-		$this->article->delete();
+		$this->article->d_tag=1;
+		$this->article->save();
 
 	}
 	function showAnArticle($article_id){
