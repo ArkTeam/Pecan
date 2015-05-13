@@ -1,24 +1,24 @@
-Ä¿Â¼×éÖ¯½á¹¹~
-Àà¼ÓÔØ ~
+ç›®å½•ç»„ç»‡ç»“æž„~
+ç±»åŠ è½½ ~
 MVC~
-URL´¦Àí~
-Ä£°åÒýÇæSMARTY½ÓÈë~
+URLå¤„ç†~
+æ¨¡æ¿å¼•æ“ŽSMARTYæŽ¥å…¥~
 
-»ù´¡Àà¿â 0.5
+åŸºç¡€ç±»åº“ 0.5
 
-ÊäÈë´¦Àí
-´íÎóÒì³£´¦Àí
-À©Õ¹Àà
-¼«ËÙ¿ª·¢
-µ÷ÊÔ¹¦ÄÜ
+è¾“å…¥å¤„ç†
+é”™è¯¯å¼‚å¸¸å¤„ç†
+æ‰©å±•ç±»
+æžé€Ÿå¼€å‘
+è°ƒè¯•åŠŸèƒ½
 
-ÒýÓÃ¹ÜÀí
+å¼•ç”¨ç®¡ç†
 
-1Êý¾Ý¿âÅäÖÃ
-2±íµÄ¸ñÊ½Îª   x_y_z_..  £¿    model¸ñÊ½Îª XYZ...
-3.id Îª id_x_y_z...
+1æ•°æ®åº“é…ç½®
+2è¡¨çš„æ ¼å¼ä¸º   x_y_z_..  ï¼Ÿ    modelæ ¼å¼ä¸º XYZ...
+3.id ä¸º id_x_y_z...
 4
-Ç¶Ì×Ñ­»·
+åµŒå¥—å¾ªçŽ¯
 
 {foreach $articles(key,value)} 
 	{foreach #value(v_key,v_value)} 
@@ -39,6 +39,6 @@ URL´¦Àí~
 
 {/foreach}
 
-¶ÔÏó
+å¯¹è±¡
 {#value['title']}
 
