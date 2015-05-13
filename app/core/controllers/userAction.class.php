@@ -4,6 +4,7 @@
 require_once ('articleAction.class.php');
 class UserAction extends Controller {
 	protected $user;
+
 	function Login($username, $password) {
 		$this->user = new ArkUser ();
 		$_name = 'Ark';
@@ -30,7 +31,7 @@ class UserAction extends Controller {
 		
 		$this->tpl_x->assign ( 'username', $_SESSION ['username'] );
 	}
-	function Register($username, $password, $repassword, $portraitpath) {
+	public function Register($username, $password, $repassword ) {
 		$this->user = new ArkUser ();
 		if ($password != $repassword) {
 			return false;
@@ -38,7 +39,10 @@ class UserAction extends Controller {
 		// if($portraitpath == null){
 		// return false;
 		// }
-		$portraitpath = $_SESSION ['path'];
+// 		$_SESSION['porpath'];
+// 		print_r ( $_SESSION['porpath']);
+ 		$portraitpath = $_SESSION['porpath'];
+// 		$portraitpath = ':http://localhost/Pec';
 		print_r ( '$portraitpath:' . $portraitpath );
 		if ($this->user->createArtkUser ( $username, $password, $portraitpath )) {
 			$tips = "Register Successfullly";
@@ -67,7 +71,7 @@ class UserAction extends Controller {
 		echo '<script>document.cookie="162100screenshotsImg="+encodeURIComponent(\'' . $img . '\')+"; path=/;";</script>';
 	}
 
-	function portrait() {
+	public function portrait() {
 		// 拟用户名
 		$username = md5('hello');
 		
@@ -183,13 +187,18 @@ class UserAction extends Controller {
 					}
 				}
 				$cimg_s=PUBLIC_PATH. DS .'i_upload'.DS . $web ['img_name_s'] . '.' . $web ['img_up_format'];
+				
+				$_SESSION['porpath']=$cimg_s;
 				echo '<script>if(top!=self && top.document.getElementById(\'screenshotsShow\')!=null){top.document.getElementById(\'screenshotsShow\').innerHTML=\'<img src="' . $cimg_s . '" width="' . $ow . '" height="' . $oh . '" />\';}</script>';
 				echo '<script>var expiration=new Date((new Date()).getTime()+1209600*1000); document.cookie="162100screenshotsImgSmall="+encodeURIComponent(\'' . $cimg_s . '\')+"; expires="+expiration.toGMTString()+"; path=/;";</script>';
 				$this->err ( '截图成功！<div class="sword">（可点右键另存为）</div><center><a href="' . $cimg_s . '" target="_blank"><img src="' . $cimg_s . '" width="' . $ow . '" height="' . $oh . '" /></a></center>', 'alert' );
+				
 			} else {
 				$this->err ( '截图失败！' );
 			}
 		}
+		
+		
 	}
 	function err($text, $bj = 'err') {
 		die ( '<div class="' . $bj . '"></div>' . $text . '点此<a href="javascript:history.back()">返回</a></div></div></div></body></html>' );
