@@ -9,9 +9,9 @@ class CategoryAction extends Controller {
 // 		$category;// - - 逗我？
 		
 		$categories=$this->category->getCategory();
-		print_r($categories);
+// 		print_r($categories);
 		$this->tpl_x->assign( 'categories' , $categories );
-		
+		$this->tpl_x->assign( 'porpath', $_SESSION['porpath']);
 		$this->display("listCategory.tpl");
 	}
 

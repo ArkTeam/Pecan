@@ -34,6 +34,9 @@
                                     <a href="profile.htm">{$username}</a>
                                 </li>
                                 <li>
+									<img src="{$porpath}"  height="38px" width="38px" align="middle"/>
+								</li>
+                                <li>
                                     <a href="login.htm">退出后台</a>
                                 </li>
                             </ul>

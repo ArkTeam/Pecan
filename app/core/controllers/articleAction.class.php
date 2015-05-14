@@ -103,6 +103,7 @@ class ArticleAction extends Controller {
 		$articles =$this->article->getArticles($s, $o);
 		$this->tpl_x->assign ( 'articles', $articles );
 		$this->tpl_x->assign ( 'username', $_SESSION['username'] );
+		$this->tpl_x->assign( 'porpath', $_SESSION['porpath']);
 		//print_r($articles);
 		$this->display("listarticle.tpl");
 	}

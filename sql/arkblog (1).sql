@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2015 年 05 月 13 日 05:45
+-- 生成日期: 2015 年 05 月 14 日 06:17
 -- 服务器版本: 5.6.17
 -- PHP 版本: 5.3.10
 
@@ -116,11 +116,11 @@ CREATE TABLE IF NOT EXISTS `ark_user` (
   `id_ark_user` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(20) DEFAULT NULL,
-  `portraitpath` varchar(30) NOT NULL,
+  `portraitpath` varchar(100) NOT NULL,
   `regtime` int(11) DEFAULT NULL,
   `d_tag` int(1) DEFAULT '0',
   UNIQUE KEY `id_ark_user` (`id_ark_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
 
 --
 -- 转存表中的数据 `ark_user`
@@ -128,8 +128,11 @@ CREATE TABLE IF NOT EXISTS `ark_user` (
 
 INSERT INTO `ark_user` (`id_ark_user`, `username`, `password`, `portraitpath`, `regtime`, `d_tag`) VALUES
 (1, 'sven', '123', '', NULL, NULL),
-(28, NULL, NULL, '/.', 1431411611, 0),
-(29, '', '', '/.', 1431411625, 0);
+(28, '11', '11', '7788', 1431411611, 0),
+(29, '', '', '/.', 1431411625, 0),
+(31, 'qwe', '123', 'http://localhost/Pecan/app/public/i_upload/screenshots_5d41402abc4b2a76b9719d911017c592_small.jpg', 1431523807, 0),
+(32, 'qqq', '11', 'http://localhost/Pecan/app/public/i_upload/screenshots_qwe_small.jpg', 1431581781, 0),
+(33, 'ww', '12', 'http://localhost/Pecan/app/public/i_upload/screenshots_qwe_small.jpg', 1431581943, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

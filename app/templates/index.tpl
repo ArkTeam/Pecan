@@ -36,11 +36,11 @@
 								<li>
 									<a href="profile.htm">{$username}</a>
 								</li>
-								<li>
 								
-									<img src="<!--{PUBLIC_PATH}-->/i_upload/default.gif"  height="40px" width="40px"/>
-									
+								<li>
+									<img src="{$porpath}"  height="38px" width="38px" align="middle"/>
 								</li>
+								
 								<li>
 									<a href="login.htm">退出后台</a>
 								</li>
