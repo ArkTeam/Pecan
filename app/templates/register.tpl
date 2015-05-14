@@ -70,10 +70,10 @@ window.onload=function(){
     <div class="container">
    
       <form name="register-form" enctype="multipart/form-data" class="form-signin" action="<!--{ACTION_URL}-->/userAction/register" method="post" >
-        <h3 class="form-signin-heading" align="center">ArtkPHP Framework Register</h3>
-        <input type="text" class="input-block-level" placeholder="username" name='username'>
-        <input type="password" class="input-block-level" placeholder="Password" name='password'>
-        <input type="password" class="input-block-level" placeholder="RePassword" name='repassword'>
+        <h3 class="form-signin-heading" align="center">用户注册</h3>
+        <input type="text" class="input-block-level" placeholder="用户名" name='username'>
+        <input type="password" class="input-block-level" placeholder="密码" name='password'>
+        <input type="password" class="input-block-level" placeholder="重复密码" name='repassword'>
         
       
        
@@ -91,8 +91,8 @@ window.onload=function(){
 </center>
         
         
-        <button class="btn  btn-primary" type="submit">Register</button>
-        <button class="btn  btn-primary" type="button">Return</button></br>
+        <button class="btn  btn-primary" type="submit">注册</button>
+        <button class="btn  btn-primary" type="button">返回</button></br>
         
 
         

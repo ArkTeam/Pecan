@@ -41,11 +41,11 @@
     <body>
     <div class="container">
       <form class="form-signin" action="<!--{ACTION_URL}-->/userAction/login" method="post" >
-        <h3 class="form-signin-heading" align="center">Ark Blog</h3>
-        <input type="text" class="input-block-level" placeholder="username" name='username'>
-        <input type="password" class="input-block-level" placeholder="password" name='password'>
+        <h3 class="form-signin-heading" align="center">Pecan</h3>
+        <input type="text" class="input-block-level" placeholder="用户名" name='username'>
+        <input type="password" class="input-block-level" placeholder="密码" name='password'>
         <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" value="remember-me"> 记住我
         </label>
  
         <button class="btn  btn-primary" type="submit">登录</button>
