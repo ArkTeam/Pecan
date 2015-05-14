@@ -32,24 +32,29 @@ class UserAction extends Controller {
 		$this->tpl_x->assign ( 'username', $_SESSION ['username'] );
 	}
 	public function Register($username, $password, $repassword ) {
-		$this->user = new ArkUser ();
-		if ($password != $repassword) {
+		if (!$username || !$password || $password != $repassword) {
 			return false;
 		}
-		// if($portraitpath == null){
-		// return false;
-		// }
-// 		$_SESSION['porpath'];
-// 		print_r ( $_SESSION['porpath']);
- 		$portraitpath = $_SESSION['porpath'];
-// 		$portraitpath = ':http://localhost/Pec';
-		print_r ( '$portraitpath:' . $portraitpath );
-		if ($this->user->createArtkUser ( $username, $password, $portraitpath )) {
-			$tips = "Register Successfullly";
-		} else {
-			$tips = "Register Fail";
+		$this->user = new ArkUser ();
+		$userID = $this->user->getArtkUserId($username);
+		if ($userID){
+			$tips = 'User '.$username.' has already exist!';
+		}else {
+			// if($portraitpath == null){
+			// return false;
+			// }
+	// 		$_SESSION['porpath'];
+	// 		print_r ( $_SESSION['porpath']);
+	 		$portraitpath = $_SESSION['porpath'];
+	// 		$portraitpath = ':http://localhost/Pec';
+			print_r ( '$portraitpath:' . $portraitpath );
+			if ($this->user->createArtkUser ( $username, $password, $portraitpath )) {
+				$tips = "Register Successfullly";
+			} else {
+				$tips = "Register Fail";
+			}
 		}
-		
+			
 		$this->tpl_x->assign ( 'tips', $tips );
 		$this->display ( 'Info.tpl' );
 	}
