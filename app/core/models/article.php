@@ -40,31 +40,36 @@ class ArkArticle extends Model {
 		$this->limit($start,$offset);
 		//$this->where("d_tag", '=', '0');
 		$articles = $this->findMany ();
-// 		print_r($articles);
+ 		//print_r($articles);
 		if(!$articles){
 			//echo 'Error: Find Many Error';
 		}
 		if($this->rowCount()==0){
 			return null;
 		}
- 
+ 		$d_tag = 'd_tag';
 		foreach ( $articles as $article ) {
-			$var = array ();
-			foreach ( $this->getRows() as $row ) {
-				//array_push ( $var, $row=>($article->$row));
-				 $var[$row]=$article->$row;
+			if ($article->$d_tag == 0){
+				
+				$var = array ();
+				foreach ( $this->getRows() as $row ) {
+					//array_push ( $var, $row=>($article->$row));
+					 
+					 	$var[$row]=$article->$row;
+					 
+				}
+				
+				$var['blog_content']=substr(trim($var['blog_content']),0,200);
+				$var['posttime']=date('Y-m-d H:i:s', $article->posttime); 
+				array_push ( $vars, $var);
 			}
-			$var['blog_content']=substr(trim($var['blog_content']),0,200);
-			$var['posttime']=date('Y-m-d H:i:s', $article->posttime); 
-			array_push ( $vars, $var);
 		}
-
 		return $vars;
 	}
 
 	function modifyArticle($id,$user_id,$title ,$tags,$source,$category_id,$blog_content) {
 			
-		//if ID存在  && USER_ID有权限曹错
+		//if ID存在  && USER_ID有权限操作
 		//修改
 		
 		
