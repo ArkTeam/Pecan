@@ -17,7 +17,7 @@ global $application_name;
 $framework_path = 'framework';  //写框架目录
 
 if(!isset($application_name)){
-$application_name = 'app';  //这里设置应用目录
+	$application_name = 'app';  //这里设置应用目录
 }
 
 
@@ -81,7 +81,7 @@ require_once (FRAMEWORK_PATH . '/core/libs/SimpleLogger.php');
 //echo "http://".$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"].'app/public';
 
 define("ACTION_PATH","http://".$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"]);
-//echo ACTION_PATH;
+//echo 'ACTION_PATH:'.ACTION_PATH.'<br/>';
 //echo "http".(0?"s":"")."://".$_SERVER['HTTP_HOST'];
 
 define ( 'MODULE_DIR', APP_PATH . 'core/controllers/' );
