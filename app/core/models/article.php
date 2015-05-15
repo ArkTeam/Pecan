@@ -35,7 +35,7 @@ class ArkArticle extends Model {
 
 	}
 
-	function getArticles($start,$offset){
+	function getArticles($start,$offset,$d_type=0){
 		$vars = array ();
 		$this->limit($start,$offset);
 		//$this->where("d_tag", '=', '0');
@@ -49,7 +49,7 @@ class ArkArticle extends Model {
 		}
  		$d_tag = 'd_tag';
 		foreach ( $articles as $article ) {
-			if ($article->$d_tag == 0){
+			//if ($article->$d_tag == 0){
 				
 				$var = array ();
 				foreach ( $this->getRows() as $row ) {
@@ -62,7 +62,7 @@ class ArkArticle extends Model {
 				$var['blog_content']=substr(trim($var['blog_content']),0,200);
 				$var['posttime']=date('Y-m-d H:i:s', $article->posttime); 
 				array_push ( $vars, $var);
-			}
+			//}
 		}
 		return $vars;
 	}

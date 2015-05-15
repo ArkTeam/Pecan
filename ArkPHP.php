@@ -62,7 +62,6 @@ define ( 'PUBLIC_PATH', SITE_URL. DS .$application_name . DS . 'public' );
 define ( 'ACTION_URL', SITE_URL. DS . INDEX_PAGE );
 
 define ( 'SELF', pathinfo ( __FILE__, PATHINFO_BASENAME ) );
-
 //////////////////////
 //define ( 'BASEPATH', str_replace ( "\\", "/", $framework_path ) );
 //////////////////
@@ -79,7 +78,7 @@ require_once (FRAMEWORK_PATH . '/core/libs/SimpleLogger.php');
 
 //echo $_SERVER["REQUEST_METHOD"];
 //echo "http://".$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"].'app/public';
-
+//echo 'REQUEST_URI:'.$_SERVER["REQUEST_URI"].'<br/>';
 define("ACTION_PATH","http://".$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"]);
 //echo 'ACTION_PATH:'.ACTION_PATH.'<br/>';
 //echo "http".(0?"s":"")."://".$_SERVER['HTTP_HOST'];

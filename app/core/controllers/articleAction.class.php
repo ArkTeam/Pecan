@@ -37,13 +37,25 @@ class ArticleAction extends Controller {
 	}
 
 
-	function delArticle($article_id){
+	function hideArticle($article_id){
 		$this->article = new ArkArticle();
 		$this->article->getArticle($article_id);
 		$this->article->d_tag=1;
 		$this->article->save();
 
 	}
+	/**
+	 * Add the hidden article
+	 * @param: article_id
+	 */
+	function addHiddenArticle($article_id){
+		$this->article = new ArkArticle();
+		$this->article->getArticle($article_id);
+		$this->article->d_tag=0;
+		$this->article->save();
+	
+	}
+	
 	function showAnArticle($article_id){
 		
 		$this->article = new ArkArticle();
