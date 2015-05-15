@@ -44,7 +44,7 @@ class Parser {
 	//解析if语句
 	private function parIf() {
 		$_pattenIf = '/\{if\s+\$([\w]+)\}/';
-		$_pattenIfMemberVar = '/\{if\s+@([\w]+\[\'[\w]+\'])\s+}/';
+		$_pattenIfMemberVar = '/\{if\s+@([\w]+\[\'[\w]+\'])(\s?)\}/';
 		$_pattenEndIf = '/\{\/if\}/';
 		$_pattenElse = '/\{else\}/';
 		if (preg_match ( $_pattenIf, $this->_tpl )||preg_match ( $_pattenIfMemberVar, $this->_tpl )) {
