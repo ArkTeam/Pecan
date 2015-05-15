@@ -7,9 +7,6 @@
 		<script src="<!--{PUBLIC_PATH}-->/plugin/ckeditor/ckeditor.js"></script>
 		<script src="<!--{PUBLIC_PATH}-->/plugin/ckeditor/adapters/jquery.js"></script>
 
-		
-		
-
 		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	</head>
 	<body>
@@ -36,11 +33,9 @@
 								<li>
 									<a href="profile.htm">{$username}</a>
 								</li>
-								
 								<li>
-									<img height="30"  src="{$porpath}"  width="30" />
+									<img src="{$porpath}"  height="38px" width="38px" align="middle"/>
 								</li>
-								
 								<li>
 									<a href="login.htm">退出后台</a>
 								</li>
@@ -60,7 +55,7 @@
 								<a href="index.htm"><i class="icon-white icon-home"></i> 统计</a>
 							</li>
 							<li>
-								<a href="<!--{ACTION_URL}-->/userAction/login"><i class="icon-folder-open"></i>撰写文章</a>
+								<a href="projects.htm"><i class="icon-folder-open"></i>撰写文章</a>
 							</li>
 							<li>
 								<a href="<!--{ACTION_URL}-->/articleAction/listarticles"><i class="icon-check"></i> 我的文章</a>
@@ -81,7 +76,7 @@
 								我的账号
 							</li>
 							<li>
-								<a href="<!--{ACTION_URL}-->/userAction/profile"><i class="icon-user"></i> 个人资料</a>
+								<a href="profile.htm"><i class="icon-user"></i> 个人资料</a>
 							</li>
 							<li>
 								<a href="settings.htm"><i class="icon-cog"></i> 系统设置</a>
@@ -95,40 +90,10 @@
 						</ul>
 					</div>
 				</div>
-				<div class="span9">
-	
-
-					<h2>
-						发表文章
-					</h2>
-						
-				    <form class="form-signin" action="<!--{ACTION_URL}-->/articleAction/postarticle" method="post" >
-				    	 <input type="text" class="input-block-level" placeholder="标题" name='title'>
-				    	  <input type="text" class="input-block-level" placeholder="标签" name='tags'>
-				    	  <input type="text" class="input-block-level" placeholder="来源" name='source'>
-				    	  <div class="controls">
-				    	 	 <select id="category_id" name='category_id'> 
-									<option value='0'>文章分类</option> 
-				    	  			{foreach $categories(key,value)}
-
-										<option>{@value}</option> 
-
-									{/foreach}
-								
-							</select>
-						  </div>
-					<textarea rows="50" cols="30" name="blog_content" id='blog_content' ></textarea>
-					</br>
-	 				<button class="btn  btn-primary" type="submit">发布</button>
-					</form>
-					<ul class="pager">
-						<li class="next">
-							<a href="activity.htm">了解更多 &rarr;</a>
-						</li>
-					</ul>
-                    <ul class="pager">
-						 
-					</ul>
+					<div class="span9">
+					
+							
+				
 				</div>
 			</div>
 		</div>

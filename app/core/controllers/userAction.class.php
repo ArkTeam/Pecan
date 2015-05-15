@@ -339,6 +339,10 @@ class UserAction extends Controller {
             }
         }
     }
+    
+    function profile(){
+    	$this->display ( 'profile.tpl' );
+    }
 }
 
 ?>
