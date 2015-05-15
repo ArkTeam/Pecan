@@ -24,12 +24,7 @@ class UserAction extends Controller {
             $_SESSION['porpath']=$porpath;
             $this->tpl_x->assign( 'porpath', $porpath);
             
-            //存入文章分类信息 ，待修改
-            $this->category = new CategoryAction();
-            $categories=$this->category->showCategoryArticle();
-//             print_r ($categories);
-            $this->tpl_x->assign( 'categories' , $categories );
-            
+          
             $this->display ( 'index.tpl' );
                 
         } else {
