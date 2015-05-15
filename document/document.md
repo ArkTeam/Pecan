@@ -8,6 +8,7 @@
 * 对象
 * 循环
 * 嵌套循环
+* 循环嵌套 if-else
 
 ```PHP
 对象
@@ -47,6 +48,14 @@
 {/foreach}
 
 
+
+嵌套循环if-else
+---------------
+{foreach $articles(key,value)} 
+		{if @value['title'] }
+		{else}
+		{/if}
+{/foreach}
 
 
 ```
