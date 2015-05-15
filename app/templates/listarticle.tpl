@@ -118,7 +118,7 @@
 						     {foreach $articles(key,value)} 
 							<tr>
 								<td>
-									{@value['title']}
+									<a href="<!--{ACTION_URL}-->/articleAction/showAnArticle?article_id={@value['id_ark_article']}" class="view-link">{@value['title']}</a>
 								</td>
 								<td>
 									{@value['category_id']}
@@ -127,17 +127,24 @@
 									{@value['posttime']}
 								</td>
 								<td>
-									{if $(f)}
+									{if @value['is_private'] }
 									Yes
 									{else}
-									No
+										No
 									{/if}
 								</td>
 								<td>
 									<a href="#" class="view-link">修改</a>
 								</td>
 								<td>
+								{if {@value['d_tag']}} 
+									<a href="<!--{ACTION_URL}-->/articleAction/addHiddenArticle?article_id={@value['id_ark_article']}" class="view-link">显示</a>
+								{else}
 									<a href="<!--{ACTION_URL}-->/articleAction/hideArticle?article_id={@value['id_ark_article']}" class="view-link">隐藏</a>
+								{/if}
+								</td>
+								<td>
+									<a href="<!--{ACTION_URL}-->/articleAction/delArticle?article_id={@value['id_ark_article']}" class="view-link">删除</a>
 								</td>
 							</tr>
 							{/foreach}
