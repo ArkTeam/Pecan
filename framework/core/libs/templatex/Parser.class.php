@@ -43,12 +43,16 @@ class Parser {
 	
 	//解析if语句
 	private function parIf() {
+		
 		$_pattenIf = '/\{if\s+\$([\w]+)\}/';
-		$_pattenIfMemberVar = '/\{if\s+@([\w]+\[\'[\w]+\'])(\s?)\}/';
+		$_pattenIfMemberVar = '/\{if\s+@([\w]+\[\'[\w]+\'])\s?\}/';
+		$_pattenIfCondition = '/\{if\s+@([\w]+\[\'[\w]+\'])\s+(\==|!=|>|<|<=|>=)\s+([\w]+)\}/';
 		$_pattenEndIf = '/\{\/if\}/';
 		$_pattenElse = '/\{else\}/';
-		if (preg_match ( $_pattenIf, $this->_tpl )||preg_match ( $_pattenIfMemberVar, $this->_tpl )) {
+	 
+		if (preg_match ( $_pattenIfCondition, $this->_tpl )||preg_match ( $_pattenIf, $this->_tpl )||preg_match ( $_pattenIfMemberVar, $this->_tpl )) {
 			if (preg_match ( $_pattenEndIf, $this->_tpl )) {
+				$this->_tpl = preg_replace ( $_pattenIfCondition, "<?php if ($$1 $2 $3) {?>", $this->_tpl );
 				$this->_tpl = preg_replace ( $_pattenIf, "<?php if (\$this->_vars['$1']) {?>", $this->_tpl );
 				$this->_tpl = preg_replace ( $_pattenIfMemberVar, "<?php if ($$1) {?>", $this->_tpl );
 				$this->_tpl = preg_replace ( $_pattenEndIf, "<?php } ?>", $this->_tpl );

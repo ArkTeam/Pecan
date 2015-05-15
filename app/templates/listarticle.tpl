@@ -115,6 +115,7 @@
 							</tr>
 						</thead>
 						<tbody>
+						
 						     {foreach $articles(key,value)} 
 							<tr>
 								<td>
@@ -127,7 +128,7 @@
 									{@value['posttime']}
 								</td>
 								<td>
-									{if @value['d_tag']}
+									{if @value['is_private'] == 1}
 									Yes
 									{else}
 										No
