@@ -36,15 +36,43 @@ class ArticleAction extends Controller {
 
 
 	}
-
-
-	function hideArticle($article_id){
+	
+	/**
+	 * Delete one article
+	 * @param: article_id
+	 */
+	function delArticle($article_id){
 		$this->article = new ArkArticle();
 		$this->article->getArticle($article_id);
 		$this->article->d_tag=1;
 		$this->article->save();
 		$this->listArticles();
 	}
+	
+	/**
+	 * Delete one article
+	 * @param: article_id
+	 */
+	function restoreDelArticle($article_id){
+		$this->article = new ArkArticle();
+		$this->article->getArticle($article_id);
+		$this->article->d_tag=0;
+		$this->article->save();
+		$this->listArticles();
+	}
+	
+	/**
+	 * Hidden one article
+	 * @param: article_id
+	 */
+	function hideArticle($article_id){
+		$this->article = new ArkArticle();
+		$this->article->getArticle($article_id);
+		$this->article->is_private=1;
+		$this->article->save();
+		$this->listArticles();
+	}
+	
 	/**
 	 * Add the hidden article
 	 * @param: article_id
@@ -52,10 +80,9 @@ class ArticleAction extends Controller {
 	function addHiddenArticle($article_id){
 		$this->article = new ArkArticle();
 		$this->article->getArticle($article_id);
-		$this->article->d_tag=0;
+		$this->article->is_private=0;
 		$this->article->save();
 		$this->listArticles();
-	
 	}
 	
 	function showAnArticle($article_id){
@@ -101,7 +128,7 @@ class ArticleAction extends Controller {
 		}
 	
 		$this->article = ArkArticle::getInstance();
-		$articles =$this->article->getArticles($s, $o);
+		$articles = $this->article->where('is_private','=','0')->getArticles($s, $o);
 		$this->tpl_x->assign ( 'articles', $articles );
 		//print_r($articles);
 		$this->display("blog.html");
@@ -114,7 +141,7 @@ class ArticleAction extends Controller {
 		}
 		
 		$this->article = new ArkArticle();
-		$articles =$this->article->getArticles($s, $o);
+		$articles = $this->article->where('is_private', '=', '0')->getArticles($s, $o);
 		$this->tpl_x->assign ( 'articles', $articles );
 		$this->tpl_x->assign ( 'username', $_SESSION['username'] );
 		$this->tpl_x->assign( 'porpath', $_SESSION['porpath']);

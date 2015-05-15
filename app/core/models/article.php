@@ -35,33 +35,33 @@ class ArkArticle extends Model {
 
 	}
 
-	function getArticles($start,$offset,$d_type=0){
+	function getArticles($start,$offset){
 		$vars = array ();
 		$this->limit($start,$offset);
-		//$this->where("d_tag", '=', '0');
+		
+		if($this->getQueryRowCount()==0){
+			return null;
+		}
+		
 		$articles = $this->findMany ();
- 		//print_r($articles);
+		print_r($articles);
 		if(!$articles){
 			//echo 'Error: Find Many Error';
 		}
-		if($this->rowCount()==0){
-			return null;
-		}
- 		$d_tag = 'd_tag';
 		foreach ( $articles as $article ) {
-			//if ($article->$d_tag == 0){
-				
-				$var = array ();
-				foreach ( $this->getRows() as $row ) {
-					//array_push ( $var, $row=>($article->$row));
-					 
-					 	$var[$row]=$article->$row;
-					 
-				}
-				
+			$var = array ();
+			//print_r ( $article );
+			foreach ( $this->getRows() as $row ) {
+				//array_push ( $var, $row=>($article->$row));
+				 	//print_r ( $row );
+				 	$var[$row]=$article->$row;
+				 
+			}
+			//if ($var['d_tag'] == $d_type){
 				$var['blog_content']=substr(trim($var['blog_content']),0,200);
-				$var['posttime']=date('Y-m-d H:i:s', $article->posttime); 
+				$var['posttime']=date('Y-m-d H:i:s', $article->posttime);
 				array_push ( $vars, $var);
+				//print_r ( $var );
 			//}
 		}
 		return $vars;
