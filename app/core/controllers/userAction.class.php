@@ -22,6 +22,7 @@ class UserAction extends Controller {
             $porpath = $this->user->getPortraitPath($_SESSION ['username']);
             //      print_r($_path);
             $_SESSION['porpath']=$porpath;
+            //echo '<b>ACTION_URL:'.ACTION_URL.'</b><br/>';
             $this->tpl_x->assign( 'porpath', $porpath);
             
           
@@ -36,7 +37,7 @@ class UserAction extends Controller {
         $this->tpl_x->assign ( 'tips', $tips );
         $this->tpl_x->assign ( 'username', $_SESSION ['username'] );
         $this->tpl_x->assign ( 'user_id', $this->user->getArtkUserId ( $username ) );
-        $this->tpl_x->assign ( 'username', "Ark" );
+        //$this->tpl_x->assign ( 'username', "Ark" );
         
         
     }

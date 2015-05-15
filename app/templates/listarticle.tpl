@@ -127,13 +127,17 @@
 									{@value['posttime']}
 								</td>
 								<td>
+									{if $(f)}
 									Yes
+									{else}
+									No
+									{/if}
 								</td>
 								<td>
 									<a href="#" class="view-link">修改</a>
 								</td>
 								<td>
-									<a href="<!--{ACTION_URL}-->/articleAction/delArticle?article_id={@value['id_ark_article']}" class="view-link">删除</a>
+									<a href="<!--{ACTION_URL}-->/articleAction/hideArticle?article_id={@value['id_ark_article']}" class="view-link">隐藏</a>
 								</td>
 							</tr>
 							{/foreach}
