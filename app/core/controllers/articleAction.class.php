@@ -1,10 +1,10 @@
 <?php
 
-
+require_once ('categoryAction.class.php');
 class ArticleAction extends Controller {
 
 	protected $article;
-
+	protected $Artcategory;
 	function test(){
 		$this->article = new ArkArticle();
 		//$this->article->view_name();
@@ -18,10 +18,11 @@ class ArticleAction extends Controller {
 //		echo $tags;
 //		echo $blog_content;
 
-
-		$this->article = new ArkArticle();
-		$result = $this->article->createArticle($title ,$tags,$source,$category_id,$blog_content);
 		
+		$this->article = new ArkArticle();
+
+		$result = $this->article->createArticle($title ,$tags,$source,$category_id,$blog_content);
+// 		print_r($result);
 		if($result){
 			$this->tpl_x->assign ( 'tips', "发表文章成功" );
 		}
@@ -107,6 +108,7 @@ class ArticleAction extends Controller {
 		//print_r($articles);
 		$this->display("listarticle.tpl");
 	}
+	
 	
 
 }

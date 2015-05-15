@@ -38,7 +38,7 @@
 								</li>
 								
 								<li>
-									<img src="{$porpath}"  height="38px" width="38px" align="middle"/>
+									<img height="30"  src="{$porpath}"  width="30" />
 								</li>
 								
 								<li>
@@ -101,13 +101,22 @@
 					<h2>
 						发表文章
 					</h2>
+						
 				    <form class="form-signin" action="<!--{ACTION_URL}-->/articleAction/postarticle" method="post" >
 				    	 <input type="text" class="input-block-level" placeholder="标题" name='title'>
 				    	  <input type="text" class="input-block-level" placeholder="标签" name='tags'>
 				    	  <input type="text" class="input-block-level" placeholder="来源" name='source'>
 				    	  <div class="controls">
-									<select id="category_id" name='category_id'> <option value='0'>默认分类</option> <option>Bad Robot</option> <option>Evil Genius</option> <option>Monsters Inc</option> </select>
-								</div>
+				    	 	 <select id="category_id" name='category_id'> 
+									<option value='0'>文章分类</option> 
+				    	  			{foreach $categories(key,value)}
+
+										<option>{@value}</option> 
+
+									{/foreach}
+								
+							</select>
+						  </div>
 					<textarea rows="50" cols="30" name="blog_content" id='blog_content' ></textarea>
 					</br>
 	 				<button class="btn  btn-primary" type="submit">发布</button>

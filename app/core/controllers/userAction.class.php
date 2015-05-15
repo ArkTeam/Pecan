@@ -5,7 +5,7 @@ require_once ('articleAction.class.php');
 require_once ('categoryAction.class.php');
 class UserAction extends Controller {
     protected $user;
-
+	protected $category;
     function Login($username, $password) {
         $this->user = new ArkUser ();
         $_name = 'Ark';
@@ -23,6 +23,12 @@ class UserAction extends Controller {
             //      print_r($_path);
             $_SESSION['porpath']=$porpath;
             $this->tpl_x->assign( 'porpath', $porpath);
+            
+            //存入文章分类信息 ，待修改
+            $this->category = new CategoryAction();
+            $categories=$this->category->showCategoryArticle();
+//             print_r ($categories);
+            $this->tpl_x->assign( 'categories' , $categories );
             
             $this->display ( 'index.tpl' );
                 
