@@ -15,6 +15,14 @@ class ArkCategory extends Model {
 		return $arr;
 	}
 	
+	function createCategory($category_name){
+		
+		$newCategory=$this->create(array(
+				'parent_id'=>0,
+				'category_name'=>$category_name
+		));
+		return $newCategory->save();
+	}
 	function getCategoryName() {
 		$var = array ();
 		$name = $this->getRows ();

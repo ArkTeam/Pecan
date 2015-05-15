@@ -21,7 +21,22 @@ class CategoryAction extends Controller {
 // 		print_r($categories);
 		return 	$this->category->getCategory();
 	}
-
+	
+	function addCategory($category_name){
+		$this->category=new ArkCategory();
+		
+		if($category_name == null){
+			echo '必须输入分类名称！';
+			$this->display('listCategory.tpl');
+		}
+		$this->category->createCategory($category_name);
+		
+		$this->showCategory();
+	}
+	
+	function add(){
+		$this->display('addcategory.tpl');
+	}
 }
 
 ?>

@@ -92,45 +92,15 @@
                 </div>
                     <div class="span9">
                     <h1>
-                         文章分类
+                  	       添加分类
                     </h1>
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>
-                                    类别
-                                </th>
-                                <th>
-                                    仅自己可见
-                                </th>
-                                <th>
-                                    操作
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                          
-                             {foreach $categories(key,value)} 
-                         	 <tr>
-                                <td>
-                                    {@value}
-                                </td>
-                                <td>
-                                    Yes
-                                </td>
-                                <td>
-                                    <a href="#" class="view-link">修改</a>
-                                </td>
-                                <td>
-                                    <a href="" class="view-link">删除</a>
-                                </td>
-                            </tr>
-                            {/foreach}
-                            <tr>
-                            	<td><a href="<!--{ACTION_URL}-->/categoryAction/add">添加新分类</a></td>
-                            </tr>
-                        </tbody>
-                    </table>                
+              	
+              		<form action="<!--{ACTION_URL}-->/categoryAction/addCategory">
+	              		 
+	       				 <input type="text"  placeholder="类名" name='categoryname'>
+	              		<input type="submit" value="添加">
+              		</form>
+                                  
                     <div class="pagination">
                         <ul>
                             <li class="disabled">

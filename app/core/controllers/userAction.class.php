@@ -19,10 +19,11 @@ class UserAction extends Controller {
             $_SESSION {'online_id'} = md5 ( $username . $_password );
             
             $tips = 'successfully to login!';
+            //username 找到头像
             $porpath = $this->user->getPortraitPath($_SESSION ['username']);
-            //      print_r($_path);
+            
             $_SESSION['porpath']=$porpath;
-            //echo '<b>ACTION_URL:'.ACTION_URL.'</b><br/>';
+            
             $this->tpl_x->assign( 'porpath', $porpath);
             
             //存入文章分类信息 ，待修改
@@ -46,7 +47,7 @@ class UserAction extends Controller {
         
         
     }
-    public function Register($username, $password, $repassword ) {
+     function Register($username, $password, $repassword ) {
         if ($password != $repassword) {
             return false;
         }
@@ -89,7 +90,7 @@ class UserAction extends Controller {
         echo '<script>document.cookie="162100screenshotsImg="+encodeURIComponent(\'' . $img . '\')+"; path=/;";</script>';
     }
 
-    public function portrait() {
+     function portrait() {
         // 拟用户名
         $username = $_SESSION['username'];
         
