@@ -134,14 +134,30 @@ class ArticleAction extends Controller {
 		$this->display("blog.html");
 	}
 	
-	function listArticles($s,$o){
+	function listArticles($s_type=0,$s=0,$o=10){
 		if(!isset($s)||!isset($o)){
 			$s=0;
 			$o=10;
 		}
-		
 		$this->article = new ArkArticle();
-		$articles = $this->article->where('is_private', '=', '0')->getArticles($s, $o);
+		if ($s_type >= 4 || $s_type < 0){
+			$s_type = 0;
+		}
+		//echo 'S_TYPE:'.$s_type.'<br/>';
+		if ($s_type != 3){
+			$this->article->where('d_tag', '=', '0');
+		}
+		if($s_type == 1){
+			$this->article->where('is_private', '=', '0');
+			
+		}
+		else if ($s_type == 2){
+			$this->article->where('is_private', '=', '1');
+		}
+		else if ($s_type == 3){
+			$this->article->where('d_tag', '=', '1');
+		}
+		$articles = $this->article->getArticles($s, $o);
 		$this->tpl_x->assign ( 'articles', $articles );
 		$this->tpl_x->assign ( 'username', $_SESSION['username'] );
 		$this->tpl_x->assign( 'porpath', $_SESSION['porpath']);

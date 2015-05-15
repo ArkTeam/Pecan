@@ -38,7 +38,7 @@ class ArkArticle extends Model {
 	function getArticles($start,$offset){
 		$vars = array ();
 		$this->limit($start,$offset);
-		//echo 'ROW:'.$this->getQueryRowCount().'<br/>';
+		
 		if($this->rowCount()==0){
 			return null;
 		}
@@ -50,11 +50,11 @@ class ArkArticle extends Model {
 			//echo 'Error: Find Many Error';
 		}
 		$rowNames = $this->getRows();
-		
+	 
 		foreach ( $articles as $article ) {
 			$var = array ();
 			//print_r ( $article );
-			foreach ( $this->getRows() as $row ) {
+			foreach (   $rowNames as $row ) {
 				//array_push ( $var, $row=>($article->$row));
 				 	//print_r ( $row );
 				 	$var[$row]=$article->$row;
