@@ -20,7 +20,7 @@ class OrmWrapper {
 	 * @var string
 	 */
 	public $tableName = "";
-	private $_now_query_sql = "", $_idSelector = "id", $_isNew = false, $_rawQuery = null, $_distinct = false, $_resultSelector = array (
+	private $_now_query_sql = null, $_idSelector = "id", $_isNew = false, $_rawQuery = null, $_distinct = false, $_resultSelector = array (
 			"*" 
 	), $_data = array (), $_dirty = array (), $_values = array (), $_join = array (), $_joinTables = array (), $_where = array (), $_limit = null, $_limitOffset = false, $_offset = null, $_order = null, $_orderBy = array (), $_groupBy = array ();
 	public static $log = array ();
@@ -75,18 +75,16 @@ class OrmWrapper {
 			return false;
 		}
 		
-		if (is_null ( $this->_rawQuery )) {
-			// if($query==""){
-			$query = $this->buildSelect ();
-			// $this->_now_query_sql = $query;
-			// }else{
-			// $query = $this->_now_query_sql;
-			// }
-		} else {
+		if (! is_null ( $this->_now_query_sql )) {
+			$query = $this->_now_query_sql;
+		} else if (is_null ( $this->_rawQuery ) || is_null ( $this->_now_query_sql )) {
 			
+			$query = $this->buildSelect ();
+			$this->_now_query_sql = $query;
+		} else {
 			$query = $this->_rawQuery;
 		}
-		
+	
 		self::$log [] = $query;
 		// echo $query;
 		try {
@@ -174,7 +172,6 @@ class OrmWrapper {
 		if (! count ( $this->_where )) {
 			return '';
 		}
-		
 		$return = array ();
 		
 		foreach ( $this->_where as $where ) {
@@ -705,6 +702,7 @@ class OrmWrapper {
 		if (! is_null ( $id )) {
 			$this->where ( $this->_idSelector, "=", $id );
 		}
+
 		$this->limit ( 1 );
 		$row = $this->run ();
 		
@@ -713,6 +711,8 @@ class OrmWrapper {
 		}
 		
 		return $this->hydrate ( $row [0] );
+	}
+	private function getRawQuery() {
 	}
 	/**
 	 * find the next elem of query
@@ -777,16 +777,18 @@ class OrmWrapper {
 	 * @return Int|Boolean
 	 */
 	public function rowCount() {
-		
 		if (! $this->connector) {
 			echo "fail";
 			return false;
 		}
-		if (is_null ( $this->_rawQuery )) {
+		
+		if (! is_null ( $this->_now_query_sql )) {
+			$query = $this->_now_query_sql;
+		} else if (is_null ( $this->_rawQuery ) || is_null ( $this->_now_query_sql )) {
 			
 			$query = $this->buildSelect ();
+			$this->_now_query_sql = $query;
 		} else {
-			
 			$query = $this->_rawQuery;
 		}
 		
