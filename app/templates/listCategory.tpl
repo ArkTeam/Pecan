@@ -127,7 +127,7 @@
                             </tr>
                             {/foreach}
                             <tr>
-                            	<td><a href="<!--{ACTION_URL}-->/categoryAction/add">添加新分类</a></td>
+                            	<td colspan=4><a href="<!--{ACTION_URL}-->/categoryAction/add">添加新分类</a></td>
                             </tr>
                         </tbody>
                     </table>                

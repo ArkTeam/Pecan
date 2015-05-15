@@ -27,7 +27,9 @@ class CategoryAction extends Controller {
 		
 		if($category_name == null){
 			echo '必须输入分类名称！';
-			$this->display('listCategory.tpl');
+			//$this->display('listCategory.tpl');
+			$this->showCategory();
+			return ;
 		}
 		$this->category->createCategory($category_name);
 		

@@ -8,6 +8,29 @@
         <script src="<!--{PUBLIC_PATH}-->/plugin/ckeditor/adapters/jquery.js"></script>
 
         <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        
+        <style type="text/css">
+
+      .form-add {
+        max-width: 67.5%;
+        padding: 19px 29px 29px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-add input[type="text"]{
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+
+    </style>
     </head>
     <body>
         <div class="container">
@@ -94,34 +117,11 @@
                     <h1>
                   	       添加分类
                     </h1>
-              	
-              		<form action="<!--{ACTION_URL}-->/categoryAction/addCategory">
-	              		 
-	       				 <input type="text"  placeholder="类名" name='categoryname'>
-	              		<input type="submit" value="添加">
+              		<div class="container">
+              		<form class="form-add" action="<!--{ACTION_URL}-->/categoryAction/addCategory">
+	       				<input class="input-block-level" type="text"  placeholder="类名" name='categoryname'>
+	              		<input class="btn  btn-primary" type="submit" value="添加">
               		</form>
-                                  
-                    <div class="pagination">
-                        <ul>
-                            <li class="disabled">
-                                <a href="#">&laquo;</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">&raquo;</a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
