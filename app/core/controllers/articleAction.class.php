@@ -128,7 +128,9 @@ class ArticleAction extends Controller {
 		}
 	
 		$this->article = ArkArticle::getInstance();
-		$articles = $this->article->where('is_private','=','0')->getArticles($s, $o);
+		$this->article->where('is_private','=','0');
+		$this->article->andWhere('d_tag', '=', '0');
+		$articles = $this->article->getArticles($s, $o);
 		$this->tpl_x->assign ( 'articles', $articles );
 		//print_r($articles);
 		$this->display("blog.html");
@@ -139,6 +141,7 @@ class ArticleAction extends Controller {
 			$s=0;
 			$o=10;
 		}
+		$delMode = false;
 		$this->article = new ArkArticle();
 		if ($s_type >= 4 || $s_type < 0){
 			$s_type = 0;
@@ -155,10 +158,12 @@ class ArticleAction extends Controller {
 			$this->article->where('is_private', '=', '1');
 		}
 		else if ($s_type == 3){
+			$delMode = true;
 			$this->article->where('d_tag', '=', '1');
 		}
 		$articles = $this->article->getArticles($s, $o);
 		$this->tpl_x->assign ( 'articles', $articles );
+		$this->tpl_x->assign ( 'delmode', $delMode );
 		$this->tpl_x->assign ( 'username', $_SESSION['username'] );
 		$this->tpl_x->assign( 'porpath', $_SESSION['porpath']);
 		//print_r($articles);
