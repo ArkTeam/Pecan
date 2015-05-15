@@ -5,7 +5,6 @@
 		<title>ArkBlog</title>
 		{include file="header.tpl"}
 		<script src="<!--{PUBLIC_PATH}-->/plugin/ckeditor/ckeditor.js"></script>
-		<script src="<!--{PUBLIC_PATH}-->/plugin/ckeditor/adapters/jquery.js"></script>
 
 		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	</head>
@@ -90,10 +89,17 @@
 						</ul>
 					</div>
 				</div>
-					<div class="span9">
+				
+				<div class="span9">
 					<h1>
 						我的文章
 					</h1>
+					<div class="span8" style="padding:0 8px 8px 0" align=right>
+						<a href="<!--{ACTION_URL}-->/articleAction/addHiddenArticle?article_id={@value['id_ark_article']}" class="view-link" style="padding:0 0 0 4px">全部</a>
+						<a href="<!--{ACTION_URL}-->/articleAction/addHiddenArticle?article_id={@value['id_ark_article']}" class="view-link" style="padding:0 0 0 4px">可见</a>
+						<a href="<!--{ACTION_URL}-->/articleAction/addHiddenArticle?article_id={@value['id_ark_article']}" class="view-link" style="padding:0 0 0 4px">不可见</a>
+						<a href="<!--{ACTION_URL}-->/articleAction/addHiddenArticle?article_id={@value['id_ark_article']}" class="view-link" style="padding:0 0 0 4px">已删除</a>
+					</div>
 					<table class="table table-bordered table-striped">
 						<thead>
 							<tr>
@@ -138,7 +144,7 @@
 									<a href="#" class="view-link">修改</a>
 								</td>
 								<td>
-								{if @value['d_tag']}
+								{if @value['is_private']}
 									<a href="<!--{ACTION_URL}-->/articleAction/addHiddenArticle?article_id={@value['id_ark_article']}" class="view-link">显示</a>
 								{else}
 									<a href="<!--{ACTION_URL}-->/articleAction/hideArticle?article_id={@value['id_ark_article']}" class="view-link">隐藏</a>
@@ -177,14 +183,5 @@
 				</div>
 			</div>
 		</div>
-
-<script type="text/javascript">
-CKEDITOR.replace( 'blog_content', {
-//uiColor: '#14B8C4',
-width:700, 
-height:200 
-
-});
-</script>
 	</body>
 </html>
