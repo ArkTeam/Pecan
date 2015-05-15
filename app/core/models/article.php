@@ -38,16 +38,19 @@ class ArkArticle extends Model {
 	function getArticles($start,$offset){
 		$vars = array ();
 		$this->limit($start,$offset);
-		
-		if($this->getQueryRowCount()==0){
+		//echo 'ROW:'.$this->getQueryRowCount().'<br/>';
+		if($this->rowCount()==0){
 			return null;
 		}
 		
 		$articles = $this->findMany ();
-		print_r($articles);
+		
+		//print_r($articles);
 		if(!$articles){
 			//echo 'Error: Find Many Error';
 		}
+		$rowNames = $this->getRows();
+		
 		foreach ( $articles as $article ) {
 			$var = array ();
 			//print_r ( $article );

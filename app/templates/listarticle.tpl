@@ -95,15 +95,15 @@
 						我的文章
 					</h1>
 					<div class="span8" style="padding:0 8px 8px 0" align=right>
-						<a href="<!--{ACTION_URL}-->/articleAction/addHiddenArticle?article_id={@value['id_ark_article']}" class="view-link" style="padding:0 0 0 4px">全部</a>
-						<a href="<!--{ACTION_URL}-->/articleAction/addHiddenArticle?article_id={@value['id_ark_article']}" class="view-link" style="padding:0 0 0 4px">可见</a>
-						<a href="<!--{ACTION_URL}-->/articleAction/addHiddenArticle?article_id={@value['id_ark_article']}" class="view-link" style="padding:0 0 0 4px">不可见</a>
-						<a href="<!--{ACTION_URL}-->/articleAction/addHiddenArticle?article_id={@value['id_ark_article']}" class="view-link" style="padding:0 0 0 4px">已删除</a>
+						<a href="<!--{ACTION_URL}-->/articleAction/listarticles?s_type=0" class="view-link" style="padding:0 0 0 4px">全部</a>
+						<a href="<!--{ACTION_URL}-->/articleAction/listarticles?s_type=1" class="view-link" style="padding:0 0 0 4px">可见</a>
+						<a href="<!--{ACTION_URL}-->/articleAction/listarticles?s_type=2" class="view-link" style="padding:0 0 0 4px">不可见</a>
+						<a href="<!--{ACTION_URL}-->/articleAction/listarticles?s_type=3" class="view-link" style="padding:0 0 0 4px">已删除</a>
 					</div>
 					<table class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th width="39.0%">
+								<th>
 									标题
 								</th>
 								<th>
