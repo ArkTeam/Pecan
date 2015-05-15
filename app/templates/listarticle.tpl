@@ -127,7 +127,7 @@
 									{@value['posttime']}
 								</td>
 								<td>
-									{if $(f)}
+									{if @value['is_private'] }
 									Yes
 									{else}
 									No
