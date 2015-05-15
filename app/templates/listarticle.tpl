@@ -97,7 +97,7 @@
 					<table class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>
+								<th width="39.0%">
 									标题
 								</th>
 								<th>
@@ -109,7 +109,7 @@
 								<th>
 									仅自己可见
 								</th>
-								<th>
+								<th colspan="3">
 									操作
 								</th>
 							</tr>
@@ -127,7 +127,7 @@
 									{@value['posttime']}
 								</td>
 								<td>
-									{if @value['is_private'] }
+									{if @value['d_tag']}
 									Yes
 									{else}
 										No
@@ -137,7 +137,7 @@
 									<a href="#" class="view-link">修改</a>
 								</td>
 								<td>
-								{if {@value['d_tag']}} 
+								{if @value['d_tag']}
 									<a href="<!--{ACTION_URL}-->/articleAction/addHiddenArticle?article_id={@value['id_ark_article']}" class="view-link">显示</a>
 								{else}
 									<a href="<!--{ACTION_URL}-->/articleAction/hideArticle?article_id={@value['id_ark_article']}" class="view-link">隐藏</a>

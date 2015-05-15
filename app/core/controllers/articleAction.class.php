@@ -43,7 +43,7 @@ class ArticleAction extends Controller {
 		$this->article->getArticle($article_id);
 		$this->article->d_tag=1;
 		$this->article->save();
-
+		$this->listArticles();
 	}
 	/**
 	 * Add the hidden article
@@ -54,6 +54,7 @@ class ArticleAction extends Controller {
 		$this->article->getArticle($article_id);
 		$this->article->d_tag=0;
 		$this->article->save();
+		$this->listArticles();
 	
 	}
 	
@@ -63,7 +64,7 @@ class ArticleAction extends Controller {
 		$article = $this->article->getArticle($article_id);
 		$article->posttime= date('Y-m-d H:i:s', $article->posttime); 
 		
-		$this->tpl_x->assign('article',$article);
+		$this->tpl_x->assign('article', $article);
 		
 		$this->article = new ArkArticle();
 		
