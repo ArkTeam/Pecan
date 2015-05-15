@@ -74,7 +74,7 @@ window.onload=function(){
         <input type="text" class="input-block-level" placeholder="用户名" name='username'>
         <input type="password" class="input-block-level" placeholder="密码" name='password'>
         <input type="password" class="input-block-level" placeholder="重复密码" name='repassword'>
-        
+        <img src='<!--{ACTION_URL}-->/utilAction/getcaptcha'>
       
        
     <center>
