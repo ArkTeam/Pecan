@@ -108,10 +108,9 @@ class Parser {
 
 	private function parInclude() {
 		$_patten = '/\{include\s+file=\"([\w\.\-]+)\"\}/';
-		while ( preg_match ( $_patten, $this->_tpl, $_file ) ) {
+		while ( preg_match ( $_patten, $this->_tpl, $_file) ) {
 			//echo TPL_DIR.DS.$_file[1];
-				
-
+		
 			if (! file_exists ( TPL_DIR . DS . $_file [1] ) || empty ( $_file )) {
 				exit ( 'ERROR：Include Tag Parse Wrong！' );
 			}
@@ -119,8 +118,7 @@ class Parser {
 			/*
 			 "<?php include '$1';?>"
 			 */
-				
-			$this->_tpl = preg_replace ( $_patten, file_get_contents ( TPL_DIR . DS . $_file [1] ), $this->_tpl );
+			$this->_tpl = preg_replace ( $_patten, file_get_contents ( TPL_DIR . DS . $_file [1] ), $this->_tpl ,$limit=1);
 		}
 
 	}

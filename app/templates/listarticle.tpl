@@ -46,47 +46,7 @@
 			<div class="row">
 				<div class="span3">
 					<div class="well" style="padding: 8px 0;">
-						<ul class="nav nav-list">
-							<li class="nav-header">
-								Ark Blog
-							</li>
-							<li class="active">
-								<a href="index.htm"><i class="icon-white icon-home"></i> 统计</a>
-							</li>
-							<li>
-								<a href="projects.htm"><i class="icon-folder-open"></i>撰写文章</a>
-							</li>
-							<li>
-								<a href="<!--{ACTION_URL}-->/articleAction/listarticles"><i class="icon-check"></i> 我的文章</a>
-							</li>
-							<li>
-								<a href="messages.htm"><i class="icon-envelope"></i> Ideas</a>
-							</li>
-							<li>
-								<a href="<!--{ACTION_URL}-->/categoryAction/showCategory"><i class="icon-envelope"></i> 分类管理</a>
-							</li>
-							<li>
-								<a href="files.htm"><i class="icon-file"></i> 文件管理</a>
-							</li>
-							<li>
-								<a href="activity.htm"><i class="icon-list-alt"></i> 其他</a>
-							</li>
-							<li class="nav-header">
-								我的账号
-							</li>
-							<li>
-								<a href="profile.htm"><i class="icon-user"></i> 个人资料</a>
-							</li>
-							<li>
-								<a href="settings.htm"><i class="icon-cog"></i> 系统设置</a>
-							</li>
-							<li class="divider">
-							</li>
-							<li>
-								<a href="help.htm"><i class="icon-info-sign"></i> 帮助</a>
-							</li>
-						
-						</ul>
+						{include file="slidebar.tpl"}
 					</div>
 				</div>
 				
