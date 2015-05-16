@@ -2,7 +2,7 @@
 <!--[if lt IE 7 ]><html lang="en" class="ie6 ielt7 ielt8 ielt9"><![endif]--><!--[if IE 7 ]><html lang="en" class="ie7 ielt8 ielt9"><![endif]--><!--[if IE 8 ]><html lang="en" class="ie8 ielt9"><![endif]--><!--[if IE 9 ]><html lang="en" class="ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--> 
 <html lang="en"><!--<![endif]--> 
 	<head>
-		<title>ArkBlog</title>
+		<title>Pecan</title>
 		{include file="header.tpl"}
 		<script src="<!--{PUBLIC_PATH}-->/plugin/ckeditor/ckeditor.js"></script>
 		<script src="<!--{PUBLIC_PATH}-->/plugin/ckeditor/adapters/jquery.js"></script>
@@ -17,7 +17,7 @@
 			<div class="navbar">
 				<div class="navbar-inner">
 					<div class="container">
-						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#">ArkBlog</a>
+						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#">Pecan</a>
 						<div class="nav-collapse">
 							<ul class="nav">
 								<li class="active">
@@ -38,7 +38,7 @@
 								</li>
 								
 								<li>
-									<img height="30"  src="{$porpath}"  width="30" />
+									<img height="30"  src="{$porpath}"  style="border-radius: 50px;margin-top:5px" width="30" />
 								</li>
 								
 								<li>
