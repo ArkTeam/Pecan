@@ -18,7 +18,7 @@ class Index extends Controller {
 		$this->article = new ArkArticle();
 		$this->article->where('is_private', '=', '0');
 		$this->article->andWhere('d_tag', '=', '0');
-		$articles =$this->article->getArticles($s, $o, $s_type);
+		$articles =$this->article->getArticles($s, $o);
 		$this->tpl_x->assign ( 'articles', $articles );
 		$this->display("blog.html");
 		

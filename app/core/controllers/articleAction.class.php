@@ -121,14 +121,20 @@ class ArticleAction extends Controller {
 		
 	}
 	
+	/**
+	 * Show to public
+	 * @param: integer $s
+	 * @param: integer $o
+	 */
 	function showArticles($s,$o){
 		if(!isset($s)||!isset($o)){
 			$s=0;
 			$o=10;
 		}
-	
 		$this->article = ArkArticle::getInstance();
+		//Public articles
 		$this->article->where('is_private','=','0');
+		//Not deleted
 		$this->article->andWhere('d_tag', '=', '0');
 		$articles = $this->article->getArticles($s, $o);
 		$this->tpl_x->assign ( 'articles', $articles );
@@ -136,10 +142,23 @@ class ArticleAction extends Controller {
 		$this->display("blog.html");
 	}
 	
+	/**
+	 * s_type:
+	 * 0 for not deleted
+	 * 1 for not deleted and public
+	 * 2 for not deleted and private
+	 * 3 for deleted
+	 * @param: integer $s_type
+	 * @param: integer $s
+	 * @param: integer $o
+	 */
 	function listArticles($s_type=0,$s=0,$o=10){
 		if(!isset($s)||!isset($o)){
 			$s=0;
 			$o=10;
+		}
+		if (!isset($s_type)){
+			$s_type = 0;
 		}
 		$delMode = false;
 		$this->article = new ArkArticle();
@@ -149,13 +168,13 @@ class ArticleAction extends Controller {
 		//echo 'S_TYPE:'.$s_type.'<br/>';
 		if ($s_type != 3){
 			$this->article->where('d_tag', '=', '0');
-		}
-		if($s_type == 1){
-			$this->article->where('is_private', '=', '0');
-			
-		}
-		else if ($s_type == 2){
-			$this->article->where('is_private', '=', '1');
+			if($s_type == 1){
+				$this->article->where('is_private', '=', '0');
+				
+			}
+			else if ($s_type == 2){
+				$this->article->where('is_private', '=', '1');
+			}
 		}
 		else if ($s_type == 3){
 			$delMode = true;
