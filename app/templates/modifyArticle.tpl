@@ -25,7 +25,8 @@
 					修改文章
 				</h2>
 					
-			    <form class="form-signin" action="<!--{ACTION_URL}-->/articleAction/postarticle" method="post" >
+			    <form class="form-signin" action="<!--{ACTION_URL}-->/articleAction/modifyArticle" method="post" >
+			    	 <input type="hidden" name='article_id', value={#article['id_ark_article']} />
 			    	 <p>标题：</p><input type="text" class="input-block-level" placeholder="标题" name='title' value={#article['title']}>
 			    	 <p>标签：</p><input type="text" class="input-block-level" placeholder="标签" name='tags' value={#article['tags']}>
 			    	 <p>来源：</p><input type="text" class="input-block-level" placeholder="来源" name='source' value={#article['source']}>
@@ -37,7 +38,7 @@
 								{/foreach}
 						</select>
 					  </div>
-				<textarea rows="50" cols="30" name="blog_content" id='blog_content' value={#article['blog_content']}></textarea>
+				<textarea rows="50" cols="30" name="blog_content" id='blog_content'>{#article['blog_content']}</textarea>
 				</br>
 				<button class="btn  btn-primary" type="submit">更改</button>
 				<button class="btn" type="button">取消</button>

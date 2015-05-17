@@ -34,6 +34,11 @@ class ArkArticle extends Model {
 		return $this->save ();
 
 	}
+	
+	function delArticle ($article_id){
+		$this->setID ($article_id);
+		return $this->delete();
+	}
 
 	function getArticles($start,$offset){
 		$vars = array ();
@@ -54,7 +59,7 @@ class ArkArticle extends Model {
 		foreach ( $articles as $article ) {
 			$var = array ();
 			//print_r ( $article );
-			foreach (   $rowNames as $row ) {
+			foreach ( $rowNames as $row ) {
 				//array_push ( $var, $row=>($article->$row));
 				 	//print_r ( $row );
 				 	$var[$row]=$article->$row;

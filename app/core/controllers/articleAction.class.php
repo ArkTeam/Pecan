@@ -4,6 +4,7 @@ require_once ('categoryAction.class.php');
 class ArticleAction extends Controller {
 
 	protected $article;
+	protected $category;
 	
 	function test(){
 		$this->article = new ArkArticle();
@@ -31,8 +32,21 @@ class ArticleAction extends Controller {
 		}
 		$this->display ( 'Info.tpl' );
 	}
+	
+	function modifyArticle ( $article_id, $title, $tags, $source, $category_id, $blog_content ){
+		$this->article = new ArkArticle();
+		$this->article->getArticle ( $article_id );
+		echo 'ARTICLE_ID:'.$article_id.'<br/>';
+		$this->article->title = $title;
+		$this->article->tags = $tags;
+		$this->article->source = $source;
+		$this->article->category_id = $category_id;
+		$this->article->blog_content = $blog_content;
+		$this->article->save();
+		$this->listArticles(0, 0, 10);
+	}
 
-	function modifyArticle($article_id){
+	function showModifyArticle($article_id){
 			$this->article = new ArkArticle();
 			$article = $this->article->getArticle($article_id);
 			if (!$article){
@@ -47,6 +61,9 @@ class ArticleAction extends Controller {
 				$this->display ( 'Info.tpl' );
 				return ;
 			}
+			$this->category = new CategoryAction();
+			$categories=$this->category->showCategoryArticle();
+			$this->tpl_x->assign( 'categories' , $categories );
 			$this->tpl_x->assign ( 'article', $article);
 			$this->display ( 'modifyArticle.tpl');
 	}
@@ -65,6 +82,21 @@ class ArticleAction extends Controller {
 		$this->article->d_tag=1;
 		$this->article->save();
 		$this->listArticles();
+	}
+	
+	/**
+	 * Delete an article completely
+	 * @param: article_id
+	 */
+	function delArticleCompletely($article_id){
+		$this->article = new ArkArticle();
+		$status = $this->article->delArticle( $article_id );
+		if (!$status){
+			$this->tpl_x->assign ( 'tips', "删除失败！");
+			$this->display ('Info.tpl');
+			return ;
+		}
+		$this->listArticles(3, 0, 10);
 	}
 	
 	/**

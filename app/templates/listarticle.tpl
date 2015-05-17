@@ -72,17 +72,17 @@
 								</td>
 								{if $delmode}
 								<td>
-								<a href="<!--{ACTION_URL}-->/articleAction/modifyArticle?article_id={@value['id_ark_article']}" class="view-link">修改</a>
+								<a href="<!--{ACTION_URL}-->/articleAction/showModifyArticle?article_id={@value['id_ark_article']}" class="view-link">修改</a>
 								</td>
 								<td>
 									<a href="<!--{ACTION_URL}-->/articleAction/restoreDelArticle?article_id={@value['id_ark_article']}" class="view-link">恢复</a>
 								</td>
 								<td>
-									<a href="<!--{ACTION_URL}-->/articleAction/delArticle?article_id={@value['id_ark_article']}" class="view-link">彻底删除</a>
+									<a href="<!--{ACTION_URL}-->/articleAction/delArticleCompletely?article_id={@value['id_ark_article']}" class="view-link">彻底删除</a>
 								</td>
 								{else}
 								<td>
-									<a href="<!--{ACTION_URL}-->/articleAction/modifyArticle?article_id={@value['id_ark_article']}" class="view-link">修改</a>
+									<a href="<!--{ACTION_URL}-->/articleAction/showModifyArticle?article_id={@value['id_ark_article']}" class="view-link">修改</a>
 								</td>
 								<td>
 								{if @value['is_private']}
