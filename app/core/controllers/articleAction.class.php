@@ -33,8 +33,26 @@ class ArticleAction extends Controller {
 	}
 
 	function modifyArticle($article_id){
-
-
+			$this->article = new ArkArticle();
+			$article = $this->article->getArticle($article_id);
+			if (!$article){
+				$this->tpl_x->assign ( 'tips', "No such article!" );
+				$this->display ( 'Info.tpl' );
+				return ;
+			}
+			//print_r ($article);
+			
+			if ( $article->author != $_SESSION['username'] ){
+				$this->tpl_x->assign ( 'tips', "您没有权限修改该文章！" );
+				$this->display ( 'Info.tpl' );
+				return ;
+			}
+			$this->tpl_x->assign ( 'article', $article);
+			$this->display ( 'modifyArticle.tpl');
+	}
+	
+	function addAnArticle(){
+		$this->display ( 'addAnArticle.tpl' );
 	}
 	
 	/**

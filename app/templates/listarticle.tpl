@@ -26,9 +26,9 @@
 					</h1>
 					<div class="span8" style="padding:0 8px 8px 0" align=right>
 						<a href="<!--{ACTION_URL}-->/articleAction/listarticles?s_type=0" class="view-link" style="padding:0 0 0 4px">全部</a>
-						<a href="<!--{ACTION_URL}-->/articleAction/listarticles?s_type=1" class="view-link" style="padding:0 0 0 4px">可见</a>
-						<a href="<!--{ACTION_URL}-->/articleAction/listarticles?s_type=2" class="view-link" style="padding:0 0 0 4px">不可见</a>
-						<a href="<!--{ACTION_URL}-->/articleAction/listarticles?s_type=3" class="view-link" style="padding:0 0 0 4px">已删除</a>
+						<a href="<!--{ACTION_URL}-->/articleAction/listarticles?s_type=1" class="view-link" style="padding:0 0 0 4px">已公开</a>
+						<a href="<!--{ACTION_URL}-->/articleAction/listarticles?s_type=2" class="view-link" style="padding:0 0 0 4px">已隐藏</a>
+						<a href="<!--{ACTION_URL}-->/articleAction/listarticles?s_type=3" class="view-link" style="padding:0 0 0 4px">回收站</a>
 					</div>
 					<table class="table table-bordered table-striped">
 						<thead>
@@ -72,7 +72,7 @@
 								</td>
 								{if $delmode}
 								<td>
-								<a href="#" class="view-link">修改</a>
+								<a href="<!--{ACTION_URL}-->/articleAction/modifyArticle?article_id={@value['id_ark_article']}" class="view-link">修改</a>
 								</td>
 								<td>
 									<a href="<!--{ACTION_URL}-->/articleAction/restoreDelArticle?article_id={@value['id_ark_article']}" class="view-link">恢复</a>
@@ -82,17 +82,17 @@
 								</td>
 								{else}
 								<td>
-									<a href="#" class="view-link">修改</a>
+									<a href="<!--{ACTION_URL}-->/articleAction/modifyArticle?article_id={@value['id_ark_article']}" class="view-link">修改</a>
 								</td>
 								<td>
 								{if @value['is_private']}
-									<a href="<!--{ACTION_URL}-->/articleAction/addHiddenArticle?article_id={@value['id_ark_article']}" class="view-link">显示</a>
+									<a href="<!--{ACTION_URL}-->/articleAction/addHiddenArticle?article_id={@value['id_ark_article']}" class="view-link">公开</a>
 								{else}
 									<a href="<!--{ACTION_URL}-->/articleAction/hideArticle?article_id={@value['id_ark_article']}" class="view-link">隐藏</a>
 								{/if}
 								</td>
 								<td>
-									<a href="<!--{ACTION_URL}-->/articleAction/delArticle?article_id={@value['id_ark_article']}" class="view-link">删除</a>
+									<a href="<!--{ACTION_URL}-->/articleAction/delArticle?article_id={@value['id_ark_article']}" class="view-link">放入回收站</a>
 								</td>
 								{/if}
 							</tr>
