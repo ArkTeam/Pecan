@@ -6,7 +6,7 @@
 								<a href="<!--{ACTION_URL}-->/userAction/login"><i class="icon-white icon-home"></i> 统计</a>
 							</li>
 							<li>
-								<a href="<!--{ACTION_URL}-->/userAction/login"><i class="icon-folder-open"></i>撰写文章</a>
+								<a href="<!--{ACTION_URL}-->/articleAction/addAnArticle"><i class="icon-folder-open"></i>撰写文章</a>
 							</li>
 							<li>
 								<a href="<!--{ACTION_URL}-->/articleAction/listarticles"><i class="icon-check"></i> 我的文章</a>

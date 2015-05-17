@@ -17,7 +17,7 @@
 									<a href="<!--{ACTION_URL}-->/articleAction/showarticles?s=0&o=<!--{pagesize}-->">博客主页</a>
 								</li>
 								<li>
-									<a href="profile.htm">{$username}</a>
+									<a href="<!--{ACTION_URL}-->/userAction/profile">{$username}</a>
 								</li>
 								
 								<li>
