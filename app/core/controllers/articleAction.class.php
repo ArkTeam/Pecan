@@ -250,7 +250,7 @@ class ArticleAction extends Controller {
 		$this->article=new ArkArticle();
 		$start=6*$pages-5;
 		$_SESSION['s']=$start;
-		$end=6*$pages;
+		$end=6;
 		$_SESSION['o']=$end;
 		$this->tpl_x->assign('pages', $pages);
 		$arr=$this->article->getCounts();
