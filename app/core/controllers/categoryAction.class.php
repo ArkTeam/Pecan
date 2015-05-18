@@ -12,13 +12,14 @@ class CategoryAction extends Controller {
 // 		print_r($categories);
 		$this->tpl_x->assign( 'categories' , $categories );
 		$this->tpl_x->assign( 'porpath', $_SESSION['porpath']);
-		
+		$this->tpl_x->assign ( 'username', $_SESSION ['username'] );
 		$this->display("listCategory.tpl");
 	}
 	
 	function showCategoryArticle(){
 		$this->category=new ArkCategory();
 // 		print_r($categories);
+		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
 		return 	$this->category->getCategory();
 	}
 	

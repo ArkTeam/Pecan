@@ -59,12 +59,17 @@ class ArticleAction extends Controller {
 		$this->display ( 'modifyArticle.tpl' );
 	}
 	function addAnArticle() {
+		
 		$this->category = new CategoryAction ();
 		$categories = $this->category->showCategoryArticle ();
 		$this->tpl_x->assign ( 'categories', $categories );
+		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
+		$this->tpl_x->assign ( 'username', $_SESSION ['username'] );
 		$this->display ( 'addAnArticle.tpl' );
 	}
 	function summary() {
+		$this->tpl_x->assign ( 'username', $_SESSION ['username'] );
+		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
 		$this->display ( 'blank.tpl' );
 	}
 	
@@ -272,6 +277,7 @@ class ArticleAction extends Controller {
 		for($i = 1; $i < ($arr) / 6 + 1; $i ++) {
 			array_push ( $counts, $i );
 		}
+		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
 		$this->tpl_x->assign ( 'counts', $counts );
 		$this->listArticles ( $s_type = 0 );
 	}

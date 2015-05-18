@@ -24,7 +24,7 @@ class UserAction extends Controller {
             
             $_SESSION['porpath']=$porpath;
             
-            $this->tpl_x->assign( 'porpath', $porpath);
+            $this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
             
             //存入文章分类信息 ，待修改
             $this->category = new CategoryAction();
@@ -341,6 +341,8 @@ class UserAction extends Controller {
     }
     
     function profile(){
+    	$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
+    	$this->tpl_x->assign ( 'username', $_SESSION ['username'] );
     	$this->display ( 'profile.tpl' );
     }
 }

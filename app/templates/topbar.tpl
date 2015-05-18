@@ -25,7 +25,7 @@
 								</li>
 								
 								<li>
-									<a href="login.htm">退出后台</a>
+									<a href="<!--{ACTION_URL}-->/utilAction/logout">退出后台</a>
 								</li>
 							</ul>
 						</div>
