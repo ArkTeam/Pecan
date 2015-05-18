@@ -207,7 +207,7 @@ class ArticleAction extends Controller {
 		if(!isset($s)||!isset($o)){
 			$s=$_SESSION['s'];
 			$o=$_SESSION['o'];
-//			echo $s.' '.$o;
+//  		echo $s.' '.$o;
 		}
 		if (!isset($s_type)){
 			$s_type = 0;
