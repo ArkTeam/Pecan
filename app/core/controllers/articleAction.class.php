@@ -288,7 +288,14 @@ class ArticleAction extends Controller {
 	 *        	$pages
 	 */
 	function nextPage($pages) {
-		$this->page ( $pages + 1 );
+		$this->article = new ArkArticle ();
+		$arr = $this->article->getCounts ();
+		if($pages > $arr/6){
+			$this->page ( $pages);
+		}else{
+			$this->page ( $pages + 1 );
+		}
+		
 	}
 	/**
 	 * the next page
@@ -299,8 +306,10 @@ class ArticleAction extends Controller {
 	function prePage($pages) {
 		if ($pages - 1 == 0) {
 			$this->page ( 1 );
+		}else{
+			$this->page ( $pages - 1 );
 		}
-		$this->page ( $pages - 1 );
+		
 	}
 }
 
