@@ -25,10 +25,10 @@ class ArticleAction extends Controller {
 		$result = $this->article->createArticle($title ,$tags,$source,$category_id,$blog_content);
 // 		print_r($result);
 		if($result){
-			$this->tpl_x->assign ( 'tips', "·¢±íÎÄÕÂ³É¹¦" );
+			$this->tpl_x->assign ( 'tips', "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â³É¹ï¿½" );
 		}
 		else{
-			$this->tpl_x->assign ( 'tips', "·¢±íÎÄÕÂÊ§°Ü" );
+			$this->tpl_x->assign ( 'tips', "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½" );
 		}
 		$this->display ( 'Info.tpl' );
 	}
@@ -58,7 +58,7 @@ class ArticleAction extends Controller {
 			//print_r ($article);
 			
 			if ( $article->author != $_SESSION['username'] ){
-				$this->tpl_x->assign ( 'tips', "ÄúÃ»ÓÐÈ¨ÏÞÐÞ¸Ä¸ÃÎÄÕÂ£¡" );
+				$this->tpl_x->assign ( 'tips', "ï¿½ï¿½Ã»ï¿½ï¿½È¨ï¿½ï¿½ï¿½Þ¸Ä¸ï¿½ï¿½ï¿½ï¿½Â£ï¿½" );
 				$this->display ( 'Info.tpl' );
 				return ;
 			}
@@ -93,7 +93,7 @@ class ArticleAction extends Controller {
 		$this->article = new ArkArticle();
 		$status = $this->article->delArticle( $article_id );
 		if (!$status){
-			$this->tpl_x->assign ( 'tips', "É¾³ýÊ§°Ü£¡");
+			$this->tpl_x->assign ( 'tips', "É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½");
 			$this->display ('Info.tpl');
 			return ;
 		}
@@ -207,7 +207,9 @@ class ArticleAction extends Controller {
 		if(!isset($s)||!isset($o)){
 			$s=$_SESSION['s'];
 			$o=$_SESSION['o'];
-// 			echo $s.' '.$o;
+			if (!$s){$s = 0;$_SESSION['s'] = $s;}
+			if (!$o){$o = 10;$_SESSION['o'] = $o;}
+ 			//echo 'S:'.$s.'<br/>O:'.$o.'<br/>';
 		}
 		if (!isset($s_type)){
 			$s_type = 0;
