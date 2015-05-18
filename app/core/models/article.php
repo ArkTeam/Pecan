@@ -7,6 +7,10 @@ class ArkArticle extends Model {
 
 	}
 
+	function getCounts(){
+		return $this->rowCount();
+	}
+	
 	public static function getInstance(){
 	
 		if (self::$_instance===null) {
@@ -88,5 +92,6 @@ class ArkArticle extends Model {
 		return $this->findOne($article_id);
 		
 	}
+	
 
 }

@@ -103,22 +103,21 @@
 					<div class="pagination">
 						<ul>
 							<li class="disabled">
-								<a href="#">&laquo;</a>
+								<a href="<!--{ACTION_URL}-->/articleAction/prePage?pages={$pages}">&laquo;</a>
 							</li>
 							<li class="active">
-								<a href="#">1</a>
+								<a href="<!--{ACTION_URL}-->/articleAction/page?pages=1">1</a>
+							</li>
+							
+							<li>
+								<a href="<!--{ACTION_URL}-->/articleAction/page?pages=2">2</a>
 							</li>
 							<li>
-								<a href="#">2</a>
+								<a href="<!--{ACTION_URL}-->/articleAction/page?pages=3">3</a>
 							</li>
+							
 							<li>
-								<a href="#">3</a>
-							</li>
-							<li>
-								<a href="#">4</a>
-							</li>
-							<li>
-								<a href="#">&raquo;</a>
+								<a href="<!--{ACTION_URL}-->/articleAction/nextPage?pages={$pages}">&raquo;</a>
 							</li>
 						</ul>
 					</div>

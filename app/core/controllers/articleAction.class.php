@@ -4,7 +4,6 @@ require_once ('categoryAction.class.php');
 class ArticleAction extends Controller {
 
 	protected $article;
-	protected $category;
 	
 	function test(){
 		$this->article = new ArkArticle();
@@ -32,44 +31,10 @@ class ArticleAction extends Controller {
 		}
 		$this->display ( 'Info.tpl' );
 	}
-	
-	function modifyArticle ( $article_id, $title, $tags, $source, $category_id, $blog_content ){
-		$this->article = new ArkArticle();
-		$this->article->getArticle ( $article_id );
-		echo 'ARTICLE_ID:'.$article_id.'<br/>';
-		$this->article->title = $title;
-		$this->article->tags = $tags;
-		$this->article->source = $source;
-		$this->article->category_id = $category_id;
-		$this->article->blog_content = $blog_content;
-		$this->article->save();
-		$this->listArticles(0, 0, 10);
-	}
 
-	function showModifyArticle($article_id){
-			$this->article = new ArkArticle();
-			$article = $this->article->getArticle($article_id);
-			if (!$article){
-				$this->tpl_x->assign ( 'tips', "No such article!" );
-				$this->display ( 'Info.tpl' );
-				return ;
-			}
-			//print_r ($article);
-			
-			if ( $article->author != $_SESSION['username'] ){
-				$this->tpl_x->assign ( 'tips', "您没有权限修改该文章！" );
-				$this->display ( 'Info.tpl' );
-				return ;
-			}
-			$this->category = new CategoryAction();
-			$categories=$this->category->showCategoryArticle();
-			$this->tpl_x->assign( 'categories' , $categories );
-			$this->tpl_x->assign ( 'article', $article);
-			$this->display ( 'modifyArticle.tpl');
-	}
-	
-	function addAnArticle(){
-		$this->display ( 'addAnArticle.tpl' );
+	function modifyArticle($article_id){
+
+
 	}
 	
 	/**
@@ -82,21 +47,6 @@ class ArticleAction extends Controller {
 		$this->article->d_tag=1;
 		$this->article->save();
 		$this->listArticles();
-	}
-	
-	/**
-	 * Delete an article completely
-	 * @param: article_id
-	 */
-	function delArticleCompletely($article_id){
-		$this->article = new ArkArticle();
-		$status = $this->article->delArticle( $article_id );
-		if (!$status){
-			$this->tpl_x->assign ( 'tips', "删除失败！");
-			$this->display ('Info.tpl');
-			return ;
-		}
-		$this->listArticles(3, 0, 10);
 	}
 	
 	/**
@@ -202,10 +152,11 @@ class ArticleAction extends Controller {
 	 * @param: integer $s
 	 * @param: integer $o
 	 */
-	function listArticles($s_type=0,$s=0,$o=10){
+	function listArticles($s_type=0){
 		if(!isset($s)||!isset($o)){
-			$s=0;
-			$o=10;
+			$s=$_SESSION['s'];
+			$o=$_SESSION['o'];
+// 			echo $s.' '.$o;
 		}
 		if (!isset($s_type)){
 			$s_type = 0;
@@ -238,8 +189,45 @@ class ArticleAction extends Controller {
 		//print_r($articles);
 		$this->display("listarticle.tpl");
 	}
-	
-	
+	/**
+	 *page for article 
+	 * @param  $pages
+	 */
+	function page($pages=1){
+		$this->article=new ArkArticle();
+		$start=6*($pages-1);
+		$_SESSION['s']=$start;
+		$end=6*$pages;
+		$_SESSION['o']=$end;
+		$this->tpl_x->assign('pages', $pages);
+		$arr=$this->article->getCounts();
+// 		print_r($arr);
+		$counts=array();
+		for($i=1;$i<($arr)/6+2;$i++){
+			array_push ( $i, $counts);
+		}
+// 		print_r($counts);
+		$this->tpl_x->assign ( 'counts', $counts );
+		$this->listArticles($s_type=0);
+
+	}
+	/**
+	 *	before current page
+	 * @param  $pages
+	 */
+	function nextPage($pages){
+		$this->page($pages+1);
+	}
+	/**
+	 *	the next page
+	 * @param  $pages
+	 */
+	function prePage($pages){
+		if($pages-1==0){
+			$this->page(1);
+		}
+		$this->page($pages-1);
+	}
 
 }
 
