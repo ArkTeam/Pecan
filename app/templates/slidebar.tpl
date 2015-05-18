@@ -3,7 +3,7 @@
 								Pecan
 							</li>
 							<li class="active">
-								<a href="<!--{ACTION_URL}-->/userAction/login"><i class="icon-white icon-home"></i> 统计</a>
+								<a href="<!--{ACTION_URL}-->/articleAction/summary"><i class="icon-white icon-home"></i> 统计</a>
 							</li>
 							<li>
 								<a href="<!--{ACTION_URL}-->/articleAction/addAnArticle"><i class="icon-folder-open"></i>撰写文章</a>
