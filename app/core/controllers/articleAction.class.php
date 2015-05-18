@@ -25,10 +25,10 @@ class ArticleAction extends Controller {
 		$result = $this->article->createArticle($title ,$tags,$source,$category_id,$blog_content);
 // 		print_r($result);
 		if($result){
-			$this->tpl_x->assign ( 'tips', "·¢±íÎÄÕÂ³É¹¦" );
+			$this->tpl_x->assign ( 'tips', "å‘è¡¨æ–‡ç« æˆåŠŸ" );
 		}
 		else{
-			$this->tpl_x->assign ( 'tips', "·¢±íÎÄÕÂÊ§°Ü" );
+			$this->tpl_x->assign ( 'tips', "å‘è¡¨æ–‡ç« å¤±è´¥" );
 		}
 		$this->display ( 'Info.tpl' );
 	}
@@ -58,7 +58,7 @@ class ArticleAction extends Controller {
 			//print_r ($article);
 			
 			if ( $article->author != $_SESSION['username'] ){
-				$this->tpl_x->assign ( 'tips', "ÄúÃ»ÓÐÈ¨ÏÞÐÞ¸Ä¸ÃÎÄÕÂ£¡" );
+				$this->tpl_x->assign ( 'tips', "æ‚¨æ²¡æœ‰æƒé™ä¿®æ”¹è¯¥æ–‡ç« ï¼" );
 				$this->display ( 'Info.tpl' );
 				return ;
 			}
@@ -93,7 +93,7 @@ class ArticleAction extends Controller {
 		$this->article = new ArkArticle();
 		$status = $this->article->delArticle( $article_id );
 		if (!$status){
-			$this->tpl_x->assign ( 'tips', "É¾³ýÊ§°Ü£¡");
+			$this->tpl_x->assign ( 'tips', "åˆ é™¤å¤±è´¥ï¼");
 			$this->display ('Info.tpl');
 			return ;
 		}
