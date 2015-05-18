@@ -105,17 +105,11 @@
 							<li class="disabled">
 								<a href="<!--{ACTION_URL}-->/articleAction/prePage?pages={$pages}">&laquo;</a>
 							</li>
+							{foreach $counts(key,value)}
 							<li class="active">
-								<a href="<!--{ACTION_URL}-->/articleAction/page?pages=1">1</a>
+								<a href="<!--{ACTION_URL}-->/articleAction/page?pages={@value}">{@value}</a>
 							</li>
-							
-							<li>
-								<a href="<!--{ACTION_URL}-->/articleAction/page?pages=2">2</a>
-							</li>
-							<li>
-								<a href="<!--{ACTION_URL}-->/articleAction/page?pages=3">3</a>
-							</li>
-							
+							{/foreach}
 							<li>
 								<a href="<!--{ACTION_URL}-->/articleAction/nextPage?pages={$pages}">&raquo;</a>
 							</li>

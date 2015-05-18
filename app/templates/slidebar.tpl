@@ -9,7 +9,7 @@
 								<a href="<!--{ACTION_URL}-->/articleAction/addAnArticle"><i class="icon-folder-open"></i>撰写文章</a>
 							</li>
 							<li>
-								<a href="<!--{ACTION_URL}-->/articleAction/listarticles"><i class="icon-check"></i> 我的文章</a>
+								<a href="<!--{ACTION_URL}-->/articleAction/page"><i class="icon-check"></i> 我的文章</a>
 							</li>
 							<li>
 								<a href="messages.htm"><i class="icon-envelope"></i> Ideas</a>

@@ -248,18 +248,16 @@ class ArticleAction extends Controller {
 	 */
 	function page($pages=1){
 		$this->article=new ArkArticle();
-		$start=6*($pages-1);
+		$start=6*$pages-5;
 		$_SESSION['s']=$start;
 		$end=6*$pages;
 		$_SESSION['o']=$end;
 		$this->tpl_x->assign('pages', $pages);
 		$arr=$this->article->getCounts();
-		// 		print_r($arr);
 		$counts=array();
-		for($i=1;$i<($arr)/6+2;$i++){
-			array_push ( $i, $counts);
+		for($i=1;$i<($arr)/6+1;$i++){
+			array_push ($counts, $i);
 		}
-		// 		print_r($counts);
 		$this->tpl_x->assign ( 'counts', $counts );
 		$this->listArticles($s_type=0);
 	
