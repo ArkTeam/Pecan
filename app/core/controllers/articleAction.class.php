@@ -58,7 +58,7 @@ class ArticleAction extends Controller {
 			//print_r ($article);
 			
 			if ( $article->author != $_SESSION['username'] ){
-				$this->tpl_x->assign ( 'tips', "��û��Ȩ���޸ĸ����£�" );
+				$this->tpl_x->assign ( 'tips', "您没有权限修改该文章！" );
 				$this->display ( 'Info.tpl' );
 				return ;
 			}
@@ -93,7 +93,7 @@ class ArticleAction extends Controller {
 		$this->article = new ArkArticle();
 		$status = $this->article->delArticle( $article_id );
 		if (!$status){
-			$this->tpl_x->assign ( 'tips', "ɾ��ʧ�ܣ�");
+			$this->tpl_x->assign ( 'tips', "删除失败！");
 			$this->display ('Info.tpl');
 			return ;
 		}
@@ -207,7 +207,7 @@ class ArticleAction extends Controller {
 		if(!isset($s)||!isset($o)){
 			$s=$_SESSION['s'];
 			$o=$_SESSION['o'];
-//  		echo $s.' '.$o;
+// 			echo $s.' '.$o;
 		}
 		if (!isset($s_type)){
 			$s_type = 0;
