@@ -25,10 +25,10 @@ class ArticleAction extends Controller {
 		$result = $this->article->createArticle($title ,$tags,$source,$category_id,$blog_content);
 // 		print_r($result);
 		if($result){
-			$this->tpl_x->assign ( 'tips', "�������³ɹ�" );
+			$this->tpl_x->assign ( 'tips', "发表文章成功" );
 		}
 		else{
-			$this->tpl_x->assign ( 'tips', "��������ʧ��" );
+			$this->tpl_x->assign ( 'tips', "发表文章失败" );
 		}
 		$this->display ( 'Info.tpl' );
 	}
