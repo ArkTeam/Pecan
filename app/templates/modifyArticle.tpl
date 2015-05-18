@@ -26,10 +26,10 @@
 				</h2>
 					
 			    <form class="form-signin" action="<!--{ACTION_URL}-->/articleAction/modifyArticle" method="post" >
-			    	 <input type="hidden" name='article_id', value={#article['id_ark_article']} />
-			    	 <p>标题：</p><input type="text" class="input-block-level" placeholder="标题" name='title' value={#article['title']}>
-			    	 <p>标签：</p><input type="text" class="input-block-level" placeholder="标签" name='tags' value={#article['tags']}>
-			    	 <p>来源：</p><input type="text" class="input-block-level" placeholder="来源" name='source' value={#article['source']}>
+			    	 <input type="hidden" name='article_id', value="{#article['id_ark_article']}" />
+			    	 <p>标题：</p><input type="text" class="input-block-level" placeholder="标题" name='title' value="{#article['title']}">
+			    	 <p>标签：</p><input type="text" class="input-block-level" placeholder="标签" name='tags' value="{#article['tags']}">
+			    	 <p>来源：</p><input type="text" class="input-block-level" placeholder="来源" name='source' value="{#article['source']}">
 			    	 <div class="controls"><p>分类：</p>
 			    	 	 <select id="category_id" name='category_id'> 
 								<option value='0'>文章分类</option> 
