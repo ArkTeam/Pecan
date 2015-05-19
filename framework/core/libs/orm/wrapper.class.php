@@ -781,6 +781,7 @@ class OrmWrapper {
 			echo "fail";
 			return false;
 		}
+		$query=null;
 		
 		if (! is_null ( $this->_now_query_sql )) {
 			$query = $this->_now_query_sql;
