@@ -34,6 +34,7 @@ class ArticleAction extends Controller {
 		$this->article->source = $source;
 		$this->article->category_id = $category_id;
 		$this->article->blog_content = $blog_content;
+		$this->article->updatetime = strval(time());
 		$this->article->save ();
 		$this->listArticles ( 0, 0, 10 );
 	}
@@ -150,7 +151,7 @@ class ArticleAction extends Controller {
 		$this->article = new ArkArticle ();
 		$article = $this->article->getArticle ( $article_id );
 		$article->posttime = date ( 'Y-m-d H:i:s', $article->posttime );
-		
+		$article->updatetime = date ( 'Y-m-d H:i:s', $article->updatetime );
 		$this->tpl_x->assign ( 'article', $article );
 		
 		$this->article = new ArkArticle ();

@@ -67,7 +67,7 @@ class ArkArticle extends Model {
 				//array_push ( $var, $row=>($article->$row));
 				 	//print_r ( $row );
 				 	$var[$row]=$article->$row;
-				 
+
 			}
 			//if ($var['d_tag'] == $d_type){
 				$var['blog_content']=substr(trim($var['blog_content']),0,200);
