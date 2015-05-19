@@ -29,7 +29,7 @@
 			    	 <input type="hidden" name='article_id', value="{#article['id_ark_article']}" />
 			    	 <p>标题：</p><input type="text" class="input-block-level" placeholder="标题" name='title' value="{#article['title']}">
 			    	 <p>标签：</p><input type="text" class="input-block-level" placeholder="标签" name='tags' value="{#article['tags']}">
-			    	 <p>来源：</p><input type="text" class="input-block-level" placeholder="来源" name='source' value="{#article['source']}">
+			    	 <p>来源：</p><input type="text" class="input-block-level" placeholder="来源" length='100' name='source' value="{#article['source']}">
 			    	 <div class="controls"><p>分类：</p>
 			    	 	 <select id="category_id" name='category_id'> 
 								<option value='0'>文章分类</option> 
@@ -57,7 +57,7 @@
 <script type="text/javascript">
 CKEDITOR.replace( 'blog_content', {
 //uiColor: '#14B8C4',
-width:700, 
+width:900, 
 height:200 
 
 });
