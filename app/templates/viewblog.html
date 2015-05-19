@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello World | Simple</title>
+    <title>Pecan | {#article['title']} - {#article['author']}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Ark Lee">
@@ -31,7 +31,7 @@
       <div>
 		
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Simple">Simple</a></h1>
+				<h1 class="site-name"><a href="<!--{ACTION_URL}-->" title="Simple">Simple</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
@@ -115,7 +115,7 @@
 </div>
 	
  {/if}
-
+<div id="SOHUCS"></div>
 </nav>
 
 	
@@ -303,7 +303,20 @@ $(document).ready(function(){
 </script>
 
 
-
+<script>
+  (function(){
+    var appid = 'cyrMv8uwl',
+    conf = 'prod_bd4ef5fb7573b05095cc8efd43ed90d7';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>  
 
 
 
