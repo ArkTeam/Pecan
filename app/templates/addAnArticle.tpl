@@ -22,9 +22,9 @@
 				<div class="span9">
 	
 
-					<h2>
+					<h5>
 						发表文章
-					</h2>
+					</h5>
 						
 				    <form class="form-signin" action="<!--{ACTION_URL}-->/articleAction/postarticle" method="post" >
 				    	 <input type="text" class="input-block-level" placeholder="标题"  name='title'>

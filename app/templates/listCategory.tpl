@@ -21,9 +21,9 @@
                     </div>
                 </div>
                     <div class="span9">
-                    <h1>
+                    <h5>
                          文章分类
-                    </h1>
+                    </h5>
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>

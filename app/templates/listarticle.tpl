@@ -21,9 +21,9 @@
 				</div>
 				
 				<div class="span9">
-					<h1>
+					<h5>
 						我的文章
-					</h1>
+					</h5>
 					<div class="span8" style="padding:0 8px 8px 0" align=right>
 						<a href="<!--{ACTION_URL}-->/articleAction/listarticles?s_type=0" class="view-link" style="padding:0 0 0 4px">全部</a>
 						<a href="<!--{ACTION_URL}-->/articleAction/listarticles?s_type=1" class="view-link" style="padding:0 0 0 4px">已公开</a>
