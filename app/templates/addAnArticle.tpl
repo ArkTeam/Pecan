@@ -5,7 +5,7 @@
 		<title>Pecan</title>
 		{include file="header.tpl"}
 		<script src="<!--{PUBLIC_PATH}-->/plugin/ckeditor/ckeditor.js"></script>
-		<script src="<!--{PUBLIC_PATH}-->/plugin/ckeditor/adapters/jquery.js"></script>
+		
 		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	</head>
 	<body>
@@ -20,9 +20,9 @@
 					</div>
 				</div>
 				<div class="span9">
-					<h2>
+					<h5>
 						发表文章
-					</h2>
+					</h5>
 				    <form class="form-signin" action="<!--{ACTION_URL}-->/articleAction/postarticle" method="post" >
 				    	 <input type="text" class="input-block-level" placeholder="标题" name='title'>
 				    	  <input type="text" class="input-block-level" placeholder="标签" name='tags'>
@@ -39,14 +39,8 @@
 					</br>
 	 				<button class="btn  btn-primary" type="submit">发布</button>
 					</form>
-					<ul class="pager">
-						<li class="next">
-							<a href="activity.htm">了解更多 &rarr;</a>
-						</li>
-					</ul>
-                    <ul class="pager">
-						 
-					</ul>
+					
+                   
 				</div>
 			</div>
 		</div>
@@ -54,8 +48,8 @@
 <script type="text/javascript">
 CKEDITOR.replace( 'blog_content', {
 //uiColor: '#14B8C4',
-width:700, 
-height:200 
+width:900, 
+height:260 
 
 });
 </script>
