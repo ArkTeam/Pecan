@@ -1,7 +1,7 @@
 <?php
 class ArkCategory extends Model {
 	
-	function getCategory() {
+	function getCategoryName() {
 		$arr=array();
 		$categories = $this->findMany ();
 
@@ -15,6 +15,24 @@ class ArkCategory extends Model {
 		return $arr;
 	}
 	
+	function getCategory() {
+		$arr=array();
+		$categories = $this->findMany ();
+		$rows = $this->getRows();
+		foreach( $categories as $category ){
+				$vars=array();
+			foreach( $rows as $row){
+				$vars[$row]=$category->$row;	
+			}
+			array_push($arr , $vars);
+		}
+		if (! $categories) {
+			echo 'category is not exits!';
+		}
+// 		print_r ($arr);
+		return $arr;
+	}
+	
 	function createCategory($category_name){
 		
 		$newCategory=$this->create(array(
@@ -23,21 +41,7 @@ class ArkCategory extends Model {
 		));
 		return $newCategory->save();
 	}
-	function getCategoryName() {
-		$var = array ();
-		$name = $this->getRows ();
-		$categories = $this->getCategory ();
-// 		print_r($categories);
-		foreach ( $categories as $category ) {
-			$vars = array ();
-			foreach ( $name as $row ) {
-				$var [$row] = $category->$row;
-			}
-			array_push ( $vars, $var );
-		}
-		
-		return $vars;
-	}
+
 }
 
 ?>

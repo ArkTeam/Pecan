@@ -14,9 +14,10 @@ class ArticleAction extends Controller {
 		// echo $tags;
 		// echo $blog_content;
 		$this->article = new ArkArticle ();
-		
+		$category_id=$_POST['category_id'];
+// 		echo $category_id;
 		$result = $this->article->createArticle ( $title, $tags, $source, $category_id, $blog_content );
-		// print_r($result);
+		print_r($result);
 		if ($result) {
 			$this->tpl_x->assign ( 'tips', "发表文章成功" );
 		} else {
@@ -311,6 +312,8 @@ class ArticleAction extends Controller {
 		}
 		
 	}
+	
+
 }
 
 ?>

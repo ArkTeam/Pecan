@@ -20,19 +20,26 @@
 					</div>
 				</div>
 				<div class="span9">
+	
+
 					<h2>
 						发表文章
 					</h2>
+						
 				    <form class="form-signin" action="<!--{ACTION_URL}-->/articleAction/postarticle" method="post" >
-				    	 <input type="text" class="input-block-level" placeholder="标题" name='title'>
+				    	 <input type="text" class="input-block-level" placeholder="标题"  name='title'>
 				    	  <input type="text" class="input-block-level" placeholder="标签" name='tags'>
-				    	  <input type="text" class="input-block-level" placeholder="来源" name='source'>
+				    	  <input type="text" class="input-block-level" placeholder="来源" length='100' name='source'>
 				    	  <div class="controls">
 				    	 	 <select id="category_id" name='category_id'> 
-									<option value='0'>文章分类</option> 
+									<option value='0'>默认分类</option> 
 				    	  			{foreach $categories(key,value)}
-										<option>{@value}</option> 
+
+										<option name="{@value['category_name']}" value="{@value['id_ark_category']}">{@value['category_name']}</option> 
+
+
 									{/foreach}
+								
 							</select>
 						  </div>
 					<textarea rows="50" cols="30" name="blog_content" id='blog_content' ></textarea>
@@ -54,7 +61,7 @@
 <script type="text/javascript">
 CKEDITOR.replace( 'blog_content', {
 //uiColor: '#14B8C4',
-width:700, 
+width:900, 
 height:200 
 
 });

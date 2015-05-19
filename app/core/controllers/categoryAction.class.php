@@ -32,6 +32,16 @@ class CategoryAction extends Controller {
 			$this->showCategory();
 			return ;
 		}
+		$nameArray=$this->category->getCategoryName();
+		foreach( $nameArray as $name){
+			if($name == $category_name){
+				echo '此分类已经存在！';
+				$this->display("addcategory.tpl");
+				
+			}
+		}
+
+
 		$this->category->createCategory($category_name);
 		
 		$this->showCategory();
@@ -40,6 +50,8 @@ class CategoryAction extends Controller {
 	function add(){
 		$this->display('addcategory.tpl');
 	}
+	
+
 }
 
 ?>

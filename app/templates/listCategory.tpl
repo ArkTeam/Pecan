@@ -28,6 +28,9 @@
                         <thead>
                             <tr>
                                 <th>
+                                    序号
+                                </th>
+                                <th>
                                     类别
                                 </th>
                                 <th>
@@ -42,8 +45,11 @@
                           
                              {foreach $categories(key,value)} 
                          	 <tr>
+                         	 	<td>
+                         	 		{@key}
+                         	 	</td>
                                 <td>
-                                    {@value}
+                                    {@value['category_name']}
                                 </td>
                                 <td>
                                     Yes
