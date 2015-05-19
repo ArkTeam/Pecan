@@ -26,17 +26,29 @@
 				</h2>
 					
 			    <form class="form-signin" action="<!--{ACTION_URL}-->/articleAction/modifyArticle" method="post" >
-			    	 <input type="hidden" name='article_id', value="{#article['id_ark_article']}" />
-			    	 <p>标题：</p><input type="text" class="input-block-level" placeholder="标题" name='title' value="{#article['title']}">
-			    	 <p>标签：</p><input type="text" class="input-block-level" placeholder="标签" name='tags' value="{#article['tags']}">
-			    	 <p>来源：</p><input type="text" class="input-block-level" placeholder="来源" length='100' name='source' value="{#article['source']}">
-			    	 <div class="controls"><p>分类：</p>
-			    	 	 <select id="category_id" name='category_id'> 
-								<option value='0'>文章分类</option> 
-			    	  			{foreach $categories(key,value)}
-									<option>{@value}</option> 
-								{/foreach}
-						</select>
+			    	  <input type="hidden" name='article_id', value="{#article['id_ark_article']}" />
+			    	  <div class="input-group">
+				         <span class="input-group-addon">标题</span>
+				         <input type="text" class="form-control" placeholder="标题内容" name='title' value="{#article['title']}">
+				      </div>
+				      <div class="input-group">
+				         <span class="input-group-addon">标签</span>
+				         <input type="text" class="form-control" placeholder="标签内容" name='tags' value="{#article['tags']}">
+				      </div>
+				      <div class="input-group">
+				         <span class="input-group-addon">来源</span>
+				         <input type="text" class="form-control" placeholder="来源内容" name='source' value="{#article['source']}">
+				      </div>
+				      <div class="input-group">
+				    	 <div class="controls">
+				    	 <span class="input-group-addon">分类</span>
+				    	 	 <select id="category_id" name='category_id'> 
+									<option value='0'>文章分类</option> 
+				    	  			{foreach $categories(key,value)}
+										<option>{@value}</option> 
+									{/foreach}
+							</select>
+						  </div>
 					  </div>
 				<textarea rows="50" cols="30" name="blog_content" id='blog_content'>{#article['blog_content']}</textarea>
 				</br>
