@@ -34,7 +34,7 @@ class OrmConnector {
             if(isset(self::$config['socket']) && !empty(self::$config['socket'])){
                 $connectionString = self::$config['socket'].";dbname=".self::$config['database'];
             }else{
-                $connectionString = self::$config['type'].":host=".self::$config['host'].";dbname=".self::$config['database'];
+                $connectionString = self::$config['type'].":host=".self::$config['host'].";port=".self::$config['port'].";dbname=".self::$config['database'];
             }
             
             $username = self::$config['username'];

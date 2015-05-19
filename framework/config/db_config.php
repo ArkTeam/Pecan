@@ -9,6 +9,7 @@ define ( 'IS_CACHE', false );
 OrmConnector::$config = array (
 'type' => 'mysql', 
 'host' => 'localhost',
+'port' => '3306',
 'database' => 'arkblog', 
 'username' => 'root', 
 'password' => '' );
