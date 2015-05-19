@@ -72,9 +72,10 @@ window.onload=function(){
       <form name="register-form" enctype="multipart/form-data" class="form-signin" action="<!--{ACTION_URL}-->/userAction/register" method="post" >
         <h3 class="form-signin-heading" align="center">用户注册</h3>
         <input type="text" class="input-block-level" placeholder="用户名" name='username'>
+         <input type="password" class="input-block-level" placeholder="邮箱" name='email'>
         <input type="password" class="input-block-level" placeholder="密码" name='password'>
         <input type="password" class="input-block-level" placeholder="重复密码" name='repassword'>
-        <img src='<!--{ACTION_URL}-->/utilAction/getcaptcha'>
+        <input type="password"  placeholder="验证码" name='captcha'><img style='margin-left:10px;margin-top:-20px' src='<!--{ACTION_URL}-->/utilAction/getcaptcha'>
       
        
     <center>
@@ -94,11 +95,6 @@ window.onload=function(){
         <button class="btn  btn-primary" type="submit">注册</button>
         <button class="btn  btn-primary" type="button">返回</button></br>
         
-
-        
-
-        
-    
                                         
       </form>
     

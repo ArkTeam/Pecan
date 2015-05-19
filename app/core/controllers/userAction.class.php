@@ -36,8 +36,9 @@ class UserAction extends Controller {
                 
         } else {
             
-            $tips = 'fail to login! ';
-            $this->display ( 'login.tpl' );
+            $tips = '用户名或密码错误! ';
+            $this->tpl_x->assign( 'tips' , $tips );
+            $this->display ( 'Info.tpl' );
         }
 
         $this->tpl_x->assign ( 'tips', $tips );
