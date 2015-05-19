@@ -268,7 +268,7 @@ class ArticleAction extends Controller {
 	 */
 	function page($pages = 1) {
 		$this->article = new ArkArticle ();
-		$start = 6 * $pages - 5;
+		$start = 6 * $pages - 6;
 		$_SESSION ['s'] = $start;
 		$end = 6;
 		$_SESSION ['o'] = $end;

@@ -21,9 +21,9 @@
 					</div>
 				</div>
 				<div class="span9">
-				<h2>
+				<h5>
 					修改文章
-				</h2>
+				</h5>
 					
 			    <form class="form-signin" action="<!--{ACTION_URL}-->/articleAction/modifyArticle" method="post" >
 			    	  <input type="hidden" name='article_id', value="{#article['id_ark_article']}" />
@@ -55,14 +55,7 @@
 				<button class="btn  btn-primary" type="submit">更改</button>
 				<button class="btn" type="button">取消</button>
 				</form>
-				<ul class="pager">
-					<li class="next">
-						<a href="activity.htm">了解更多 &rarr;</a>
-					</li>
-				</ul>
-	            <ul class="pager">
-					 
-				</ul>
+			
 			</div>
 		</div>
 	</div>
