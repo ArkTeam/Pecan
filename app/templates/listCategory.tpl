@@ -27,11 +27,14 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>
-                                    序号
+                    			<th>
+                      id
                                 </th>
                                 <th>
                                     类别
+                                </th>
+                                 <th>
+                                    文章数目
                                 </th>
                                 <th>
                                     仅自己可见
@@ -45,12 +48,17 @@
                           
                              {foreach $categories(key,value)} 
                          	 <tr>
-                         	 	<td>
-                         	 		{@key}
-                         	 	</td>
+  								 <td>
+                                    {@value['id_ark_category']}
+                                </td>
                                 <td>
                                     {@value['category_name']}
                                 </td>
+                                <form action="<!--{ACTION_URL}-->/categoryAction/getArticleCountsByCate?id_ark_category={@value['id_ark_category']}" method="post">
+	                                <td>
+	                                    <a href="<!--{ACTION_URL}-->/categoryAction/getArticleCountsByCate?id_ark_category={@value['id_ark_category']}">{@value['artcounts']}</a>
+	                                </td>
+                                <form>
                                 <td>
                                     Yes
                                 </td>
