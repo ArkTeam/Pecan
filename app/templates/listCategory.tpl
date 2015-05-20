@@ -70,22 +70,15 @@
                     <div class="pagination">
                         <ul>
                             <li class="disabled">
-                                <a href="#">&laquo;</a>
+                                <a href="<!--{ACTION_URL}-->/categoryAction/prePage?pages={$pages}">&laquo;</a>
                             </li>
+                            {foreach $counts(key,value)}
                             <li class="active">
-                                <a href="#">1</a>
+                                <a href="<!--{ACTION_URL}-->/categoryAction/page?pages={@value}">{@value}</a>
                             </li>
+                           {/foreach}
                             <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">&raquo;</a>
+                                <a href="<!--{ACTION_URL}-->/categoryAction/nextPage?pages={$pages}">&raquo;</a>
                             </li>
                         </ul>
                     </div>

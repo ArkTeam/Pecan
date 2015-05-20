@@ -15,7 +15,7 @@
 								<a href="messages.htm"><i class="icon-envelope"></i> Ideas</a>
 							</li>
 							<li>
-								<a href="<!--{ACTION_URL}-->/categoryAction/showCategory"><i class="icon-envelope"></i> 分类管理</a>
+								<a href="<!--{ACTION_URL}-->/categoryAction/page"><i class="icon-envelope"></i> 分类管理</a>
 							</li>
 							<li>
 								<a href="files.htm"><i class="icon-file"></i> 文件管理</a>

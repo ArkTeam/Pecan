@@ -5,8 +5,21 @@ class CategoryAction extends Controller {
 	protected $category;
 	
 	function showCategory(){
+		if (! isset ( $s ) || ! isset ( $o )) {
+			$s = $_SESSION ['s'];
+			$o = $_SESSION ['o'];
+			if (! $s) {
+				$s = 0;
+				$_SESSION ['s'] = $s;
+			}
+			if (! $o) {
+				$o = 10;
+				$_SESSION ['o'] = $o;
+			}
+			// echo 'S:'.$s.'<br/>O:'.$o.'<br/>';
+		}
 		$this->category=new ArkCategory();
-		$categories=$this->category->getCategory();
+		$categories=$this->category->getCategory($s, $o);
 // 		print_r($categories);
 		$this->tpl_x->assign( 'categories' , $categories );
 		$this->tpl_x->assign( 'porpath', $_SESSION['porpath']);
@@ -47,6 +60,58 @@ class CategoryAction extends Controller {
 	
 	function add(){
 		$this->display('addcategory.tpl');
+	}
+	
+	function page($pages = 1) {
+		$this->setPage ($pages);
+		$this-> showCategory ( );
+	}
+	
+	function setPage ( $pages = 1 ){
+		if (!$this->category)
+			$this->category = new ArkCategory ();
+		$start = 6 * $pages - 6;
+		$_SESSION ['s'] = $start;
+		$end = 6;
+		$_SESSION ['o'] = $end;
+		$this->tpl_x->assign ( 'pages', $pages );
+		$arr = $this->category->getCounts ();
+		$counts = array ();
+		for($i = 1; $i < ($arr) / 6 + 1; $i ++) {
+			array_push ( $counts, $i );
+		}
+		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
+		$this->tpl_x->assign ( 'counts', $counts );
+	}
+	/**
+	 * before current page
+	 *
+	 * @param
+	 *        	$pages
+	 */
+	function nextPage($pages) {
+		$this->category = new ArkCategory ();
+		$arr = $this->category->getCounts ();
+		if($pages > $arr/6){
+			$this->page ( $pages);
+		}else{
+			$this->page ( $pages + 1 );
+		}
+	
+	}
+	/**
+	 * the next page
+	 *
+	 * @param
+	 *        	$pages
+	 */
+	function prePage($pages) {
+		if ($pages - 1 == 0) {
+			$this->page ( 1 );
+		}else{
+			$this->page ( $pages - 1 );
+		}
+	
 	}
 	
 

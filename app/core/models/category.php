@@ -15,7 +15,8 @@ class ArkCategory extends Model {
 		return $arr;
 	}
 	
-	function getCategory() {
+	function getCategory($start,$offset) {
+		$this->limit($start,$offset);
 		$arr=array();
 		$categories = $this->findMany ();
 		$rows = $this->getRows();
@@ -26,9 +27,9 @@ class ArkCategory extends Model {
 			}
 			array_push($arr , $vars);
 		}
-		if (! $categories) {
-			echo 'category is not exits!';
-		}
+// 		if (! $categories) {
+// 			echo 'category is not exits!';
+// 		}
 // 		print_r ($arr);
 		return $arr;
 	}
@@ -40,6 +41,10 @@ class ArkCategory extends Model {
 				'category_name'=>$category_name
 		));
 		return $newCategory->save();
+	}
+	
+	function getCounts(){
+		return $this->rowCount();
 	}
 
 }
