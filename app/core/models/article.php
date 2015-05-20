@@ -24,7 +24,8 @@ class ArkArticle extends Model {
 		//		echo $_SESSION['username'];
 		//		echo $author;
 		//if($author!=$_SESSION['username'])return ;
-
+		
+		$posttime = strval(time());
 		$artk_article = $this->create (
 		array ('title' => $title,
  		'author'=> $_SESSION['username'],
@@ -32,7 +33,8 @@ class ArkArticle extends Model {
 	 	'tags'=> $tags,
 	 	'source'=>$source,
 	 	'category_id'=>$category_id,
-	 	'posttime' => strval(time())
+	 	'posttime' => $posttime,
+		'updatetime' => $posttime
 		) );
 		
 		return $this->save ();
@@ -69,12 +71,10 @@ class ArkArticle extends Model {
 				 	$var[$row]=$article->$row;
 
 			}
-			//if ($var['d_tag'] == $d_type){
-				$var['blog_content']=substr(trim($var['blog_content']),0,200);
-				$var['posttime']=date('Y-m-d H:i:s', $article->posttime);
-				array_push ( $vars, $var);
-				//print_r ( $var );
-			//}
+			$var['blog_content']=substr(trim($var['blog_content']),0,200);
+			$var['posttime']=date('Y-m-d H:i:s', $article->posttime);
+			$var['updatetime']=date('Y-m-d H:i:s', $article->updatetime);
+			array_push ( $vars, $var);
 		}
 		return $vars;
 	}

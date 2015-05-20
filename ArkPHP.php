@@ -7,7 +7,12 @@ define ( 'DBNAME', 'arkblog' );
 
 define ( 'SITE_NAME', 'Pecan' );
 
-define('SITE_URL', 'http://'.$_SERVER['SERVER_NAME'].($_SERVER["SERVER_PORT"]!=80?':'.$_SERVER["SERVER_PORT"]:"").DS.SITE_NAME);
+if ( SITE_NAME != ''){
+	define('SITE_URL', 'http://'.$_SERVER['SERVER_NAME'].($_SERVER["SERVER_PORT"]!=80?':'.$_SERVER["SERVER_PORT"]:"").DS.SITE_NAME);
+}
+else {
+	define('SITE_URL', 'http://'.$_SERVER['SERVER_NAME'].($_SERVER["SERVER_PORT"]!=80?':'.$_SERVER["SERVER_PORT"]:""));
+}
 
 
 define ( 'IS_WIN', strstr ( PHP_OS, 'WIN' ) ? 1 : 0 );
@@ -89,4 +94,3 @@ define ( 'MODULE_DIR', APP_PATH . 'core/controllers/' );
 
 require_once FRAMEWORK_PATH . 'core/ArkCore.php';
 ?>
-

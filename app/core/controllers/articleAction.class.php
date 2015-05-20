@@ -28,7 +28,7 @@ class ArticleAction extends Controller {
 	function modifyArticle($article_id, $title, $tags, $source, $category_id, $blog_content) {
 		$this->article = new ArkArticle ();
 		$this->article->getArticle ( $article_id );
-		echo 'ARTICLE_ID:' . $article_id . '<br/>';
+		//echo 'ARTICLE_ID:' . $article_id . '<br/>';
 		$this->article->title = $title;
 		$this->article->tags = $tags;
 		$this->article->source = $source;
@@ -253,12 +253,16 @@ class ArticleAction extends Controller {
 			$delMode = true;
 			$this->article->where ( 'd_tag', '=', '1' );
 		}
+		
+		$this->setPage (1);
+		
 		$articles = $this->article->getArticles ( $s, $o );
 		$this->tpl_x->assign ( 'articles', $articles );
+		//print_r ($articles);
 		$this->tpl_x->assign ( 'delmode', $delMode );
 		$this->tpl_x->assign ( 'username', $_SESSION ['username'] );
 		$this->tpl_x->assign ( 'porpath', $_SESSION ['porpath'] );
-		// print_r($articles);
+		
 		$this->display ( "listarticle.tpl" );
 	}
 	/**
@@ -268,7 +272,13 @@ class ArticleAction extends Controller {
 	 *        	$pages
 	 */
 	function page($pages = 1) {
-		$this->article = new ArkArticle ();
+		$this->setPage ($pages);
+		$this->listArticles ( $s_type = 0 );
+	}
+	
+	function setPage ( $pages = 1 ){
+		if (!$this->article)
+			$this->article = new ArkArticle ();
 		$start = 6 * $pages - 6;
 		$_SESSION ['s'] = $start;
 		$end = 6;
@@ -281,7 +291,6 @@ class ArticleAction extends Controller {
 		}
 		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
 		$this->tpl_x->assign ( 'counts', $counts );
-		$this->listArticles ( $s_type = 0 );
 	}
 	/**
 	 * before current page

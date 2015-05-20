@@ -20,7 +20,7 @@
 					</div>
 				</div>
 				
-				<div class="span9">
+				<div class="span11">
 					<h5>
 						我的文章
 					</h5>
@@ -33,14 +33,14 @@
 					<table class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>
+								<th width="35%">
 									标题
 								</th>
 								<th>
 									分类
 								</th>
 								<th>
-									时间
+									更新时间
 								</th>
 								<th>
 									仅自己可见
@@ -61,7 +61,7 @@
 									{@value['category_id']}
 								</td>
 								<td>
-									{@value['posttime']}
+									{@value['updatetime']}
 								</td>
 								<td>
 									{if @value['is_private'] == 1}
