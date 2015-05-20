@@ -22,7 +22,17 @@ class CategoryAction extends Controller {
 		$this->getArticleCountsByCate($id_ark_category);
 // 		echo '   $id_ark_category:'.$id_ark_category;
 		$categories=$this->category->getCategory($s, $o);
-// 		print_r($categories);
+
+		foreach ( $categories as $category ){
+			$this->article = new ArkArticle();
+			$this->article->where('category_id', '=', $category['id_ark_category']);
+			echo 'CATEGORY_ARTICLE_NO:' . $this->article->getCounts() . '<br/>';
+			$articlenumber = $this->article-getCounts();
+			$arr = array("articlenumber" => $articlenumber);
+			print_r ($arr);
+			array_merge ( $category, array('articlenumber' => $articlenumber) );
+		}
+		print_r($categories);
 		$this->tpl_x->assign( 'categories' , $categories );
 		$this->tpl_x->assign( 'porpath', $_SESSION['porpath']);
 		$this->tpl_x->assign ( 'username', $_SESSION ['username'] );
