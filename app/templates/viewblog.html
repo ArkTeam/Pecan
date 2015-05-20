@@ -72,7 +72,7 @@
     
       <a href="#" title="Ark Lee">{#article['author']}</a>
     </p>
-  <p class="article-time">
+  <p class="article-time"> 
     <time datetime="2014-08-27T08:22:01.000Z" itemprop="datePublished">{#article['posttime']}</time>
     Updated:<time datetime="2014-08-27T08:22:01.000Z" itemprop="dateModified">{#article['updatetime']}</time>
     
@@ -83,10 +83,11 @@
 
 
 
+ <div style='margin-left:10px;'>Tags: {#article['tags']}</div>
+ 
+ <div class="article-share" id="share">
 
-<div class="article-share" id="share">
-
-  <div data-url="http://yoursite.com/2014/08/27/hello-world/" data-title="Hello World | Simple" data-tsina="null" class="share clearfix">
+  <div data-url="<!--{ACTION_URL}-->/articleAction/showanarticle?article_id={#article['id_ark_article']}" data-title="{#article['title']}" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
