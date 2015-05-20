@@ -1,5 +1,6 @@
 <?php
 require_once ('categoryAction.class.php');
+require_once ('utilAction.class.php');
 class ArticleAction extends Controller {
 	protected $article;
 	protected $category;
@@ -9,10 +10,8 @@ class ArticleAction extends Controller {
 		$this->article->findNext ();
 	}
 	function postArticle($title, $tags, $source, $category_id, $blog_content) {
-		
-		// echo $title;
-		// echo $tags;
-		// echo $blog_content;
+		$util = new UtilAction();
+		$tags = $util->wordsplit($blog_content,3);
 		$this->article = new ArkArticle ();
 		$category_id=$_POST['category_id'];
 // 		echo $category_id;
@@ -323,7 +322,12 @@ class ArticleAction extends Controller {
 		
 	}
 	
-
+	function getArticleCountBycate($id_ark_category){
+		$this->article=new ArkArticle();
+		$artcounts=$this->article->getCountByCategory($id_ark_category);
+ 		echo '$artcounts:'.$artcounts;
+		return $artcounts;
+	}
 }
 
 ?>
