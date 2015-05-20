@@ -86,11 +86,20 @@ class ArkArticle extends Model {
 		
 		
 	}
-
+	
 	function getArticle($article_id){
 		
 		return $this->findOne($article_id);
 		
+	}
+	/**
+	 * 
+	 */
+	function getCountByCategory($id_ark_category){
+		echo $id_ark_category;
+		$this->where('category_id','=',$id_ark_category);
+		return $this->rowCount();
+// 		where('category_id','=',$id_ark_category)
 	}
 	
 

@@ -323,7 +323,12 @@ class ArticleAction extends Controller {
 		
 	}
 	
-
+	function getArticleCountBycate($id_ark_category){
+		$this->article=new ArkArticle();
+		$artcounts=$this->article->getCountByCategory($id_ark_category);
+ 		echo '$artcounts:'.$artcounts;
+		return $artcounts;
+	}
 }
 
 ?>
