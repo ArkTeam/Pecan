@@ -19,20 +19,18 @@ class CategoryAction extends Controller {
 			// echo 'S:'.$s.'<br/>O:'.$o.'<br/>';
 		}
 		$this->category=new ArkCategory();
-		$this->getArticleCountsByCate($id_ark_category);
+		//$this->getArticleCountsByCate($id_ark_category);
 // 		echo '   $id_ark_category:'.$id_ark_category;
 		$categories=$this->category->getCategory($s, $o);
-
-		foreach ( $categories as $category ){
+		//先放这儿，之后改成函数！
+		foreach ( $categories as $key => $category ){
 			$this->article = new ArkArticle();
 			$this->article->where('category_id', '=', $category['id_ark_category']);
-			echo 'CATEGORY_ARTICLE_NO:' . $this->article->getCounts() . '<br/>';
-			$articlenumber = $this->article-getCounts();
-			$arr = array("articlenumber" => $articlenumber);
-			print_r ($arr);
-			array_merge ( $category, array('articlenumber' => $articlenumber) );
+			//echo 'CATEGORY_ARTICLE_NO:' . $this->article->getCounts() . '<br/>';
+			$artcounts =  $this->article->getCounts();
+			$categories[$key] = array_merge ( $category, array("artcounts" => $artcounts) );
 		}
-		print_r($categories);
+		//print_r($categories);
 		$this->tpl_x->assign( 'categories' , $categories );
 		$this->tpl_x->assign( 'porpath', $_SESSION['porpath']);
 		$this->tpl_x->assign ( 'username', $_SESSION ['username'] );
@@ -40,7 +38,7 @@ class CategoryAction extends Controller {
 	}
 	function getArticleCountsByCate($id_ark_category){
 		$this->artilce=new ArticleAction();
-		echo '   $id_ark_category:'.$id_ark_category;
+		//echo '   $id_ark_category:'.$id_ark_category;
 		$artcounts=$this->artilce->getArticleCountBycate($id_ark_category);
 		$this->tpl_x->assign( 'artcounts',  $artcounts);
 		

@@ -56,8 +56,7 @@
                                 </td>
                                 <form action="<!--{ACTION_URL}-->/categoryAction/getArticleCountsByCate?id_ark_category={@value['id_ark_category']}" method="post">
 	                                <td>
-	                                	{$artcounts}
-	                                    <a href="<!--{ACTION_URL}-->/categoryAction/getArticleCountsByCate?id_ark_category={@value['id_ark_category']}">{$artcounts}</a>
+	                                    <a href="<!--{ACTION_URL}-->/categoryAction/getArticleCountsByCate?id_ark_category={@value['id_ark_category']}">{@value['artcounts']}</a>
 	                                </td>
                                 <form>
                                 <td>
