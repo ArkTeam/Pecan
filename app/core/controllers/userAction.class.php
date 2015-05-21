@@ -40,7 +40,7 @@ class UserAction extends Controller {
             $this->tpl_x->assign( 'tips' , $tips );
             $this->display ( 'Info.tpl' );
         }
-
+		$this->refresh ();
         $this->tpl_x->assign ( 'tips', $tips );
         $this->tpl_x->assign ( 'username', $_SESSION ['username'] );
         $this->tpl_x->assign ( 'user_id', $this->user->getArtkUserId ( $username ) );
@@ -74,7 +74,17 @@ class UserAction extends Controller {
         $this->display ( 'Info.tpl' );
     }
     function Admin() {
+    	if ( isset($_SESSION['last_access']) && time()-$_SESSION['last_access'] <= 1800){
+    		
+    		$_SESSION['last_access'] = time();
+    		$this->display ( 'index.tpl' );
+    		return;
+    	}
         $this->display ( 'login.tpl' );
+    }
+    
+    function refresh (){
+    	$_SESSION['last_access'] = time();
     }
     
     function start(){
