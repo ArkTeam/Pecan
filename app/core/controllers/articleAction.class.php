@@ -218,7 +218,8 @@ class ArticleAction extends Controller {
 	 * @param
 	 *        	: integer $o
 	 */
-	function listArticles($s_type = 0) {
+	function listArticles($pages=1,$s_type = 0) {
+		$this->setPage ($pages);
 		if (! isset ( $s ) || ! isset ( $o )) {
 			$s = $_SESSION ['s'];
 			$o = $_SESSION ['o'];
@@ -270,12 +271,12 @@ class ArticleAction extends Controller {
 	 * @param
 	 *        	$pages
 	 */
-	function page($pages = 1) {
-		$this->setPage ($pages,6);
-		$this->listArticles ( $s_type = 0 );
-	}
+// 	function page($pages = 1) {
+// 		$this->setPage ($pages,6);
+// 		$this->listArticles ( $s_type = 0 );
+// 	}
 	
-	function setPage ( $pages = 1 ,$rows =6){
+	function setPage ( $pages = 1 ,$rows=ROWS){
 		if (!$this->article)
 			$this->article = new ArkArticle ();
 		$start = $rows * $pages - $rows;
@@ -297,13 +298,13 @@ class ArticleAction extends Controller {
 	 * @param
 	 *        	$pages
 	 */
-	function nextPage($pages ,$rows=6) {
+	function nextPage($pages ,$rows=ROWS) {
 		$this->article = new ArkArticle ();
 		$arr = $this->article->getCounts ();
 		if($pages > $arr/$rows){
-			$this->page ( $pages);
+			$this->listArticles ( $pages);
 		}else{
-			$this->page ( $pages + 1 );
+			$this->listArticles ( $pages + 1 );
 		}
 		
 	}
@@ -315,9 +316,9 @@ class ArticleAction extends Controller {
 	 */
 	function prePage($pages) {
 		if ($pages - 1 == 0) {
-			$this->page ( 1 );
+			$this->listArticles ( 1 );
 		}else{
-			$this->page ( $pages - 1 );
+			$this->listArticles ( $pages - 1 );
 		}
 		
 	}
@@ -328,6 +329,8 @@ class ArticleAction extends Controller {
  		echo '$artcounts:'.$artcounts;
 		return $artcounts;
 	}
+	
+
 }
 
 ?>

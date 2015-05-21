@@ -4,7 +4,8 @@ require_once ('articleAction.class.php');
 class CategoryAction extends Controller {
 	protected $category;
 	protected $artilce;
-	function showCategory(){
+	function showCategory($pages=1){
+		$this->setPage($pages);
 		if (! isset ( $s ) || ! isset ( $o )) {
 			$s = $_SESSION ['s'];
 			$o = $_SESSION ['o'];
@@ -78,12 +79,12 @@ class CategoryAction extends Controller {
 		$this->display('addcategory.tpl');
 	}
 	
-	function page($pages = 1) {
-		$this->setPage ($pages,6);
-		$this-> showCategory ( );
-	}
+// 	function page($pages = 1) {
+// 		$this->setPage ($pages,6);
+// 		$this-> showCategory ( );
+// 	}
 	
-	function setPage ( $pages = 1 ,$rows=6){
+	function setPage ( $pages = 1 ,$rows=ROWS){
 		if (!$this->category)
 			$this->category = new ArkCategory ();
 		$start = $rows * $pages - $rows;
@@ -105,13 +106,13 @@ class CategoryAction extends Controller {
 	 * @param
 	 *        	$pages
 	 */
-	function nextPage($pages,$rows=6) {
+	function nextPage($pages,$rows=ROWS) {
 		$this->category = new ArkCategory ();
 		$arr = $this->category->getCounts ();
 		if($pages > $arr/$rows){
-			$this->page ( $pages);
+			$this->showCategory ( $pages);
 		}else{
-			$this->page ( $pages + 1 );
+			$this->showCategory ( $pages + 1 );
 		}
 	
 	}
@@ -123,9 +124,9 @@ class CategoryAction extends Controller {
 	 */
 	function prePage($pages) {
 		if ($pages - 1 == 0) {
-			$this->page ( 1 );
+			$this->showCategory ( 1 );
 		}else{
-			$this->page ( $pages - 1 );
+			$this->showCategory ( $pages - 1 );
 		}
 	
 	}

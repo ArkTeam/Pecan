@@ -12,7 +12,7 @@ class Index extends Controller {
 	 * @return: null
 	 */
 	function run($pages=1) {
-		$this->setPage ($pages,5);
+		$this->setPage ($pages);
 		if (! isset ( $s ) || ! isset ( $o )) {
 			$s = $_SESSION ['s'];
 			$o = $_SESSION ['o'];
@@ -36,7 +36,7 @@ class Index extends Controller {
 	
 	}
 	//set rows of every page,default 6
-	function setPage ( $pages = 1 ,$row = 6){
+	function setPage ( $pages = 1 ,$row =ROWS){
 		if (!$this->article)
 			$this->article = new ArkArticle ();
 		$start = $row * $pages - $row;
@@ -58,7 +58,7 @@ class Index extends Controller {
 	 * @param
 	 *        	$pages
 	 */
-	function nextPage($pages,$row=6) {
+	function nextPage($pages,$row=ROWS) {
 		$this->article = new ArkArticle ();
 		$arr = $this->article->getCounts ();
 		if($pages > $arr/$row){

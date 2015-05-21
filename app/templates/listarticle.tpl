@@ -107,7 +107,7 @@
 							</li>
 							{foreach $counts(key,value)}
 							<li class="active">
-								<a href="<!--{ACTION_URL}-->/articleAction/page?pages={@value}">{@value}</a>
+								<a href="<!--{ACTION_URL}-->/articleAction/listArticles?pages={@value}">{@value}</a>
 							</li>
 							{/foreach}
 							<li>

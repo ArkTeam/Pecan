@@ -90,6 +90,9 @@ define("ACTION_PATH","http://".$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"]);
 
 define ( 'MODULE_DIR', APP_PATH . 'core/controllers/' );
 
+//每页行数
+define ( 'ROWS' , 8);
+
 //载入ARK框架的主文件
 
 require_once FRAMEWORK_PATH . 'core/ArkCore.php';

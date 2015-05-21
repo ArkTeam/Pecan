@@ -56,7 +56,7 @@
                                 </td>
                                 <form action="<!--{ACTION_URL}-->/categoryAction/getArticleCountsByCate?id_ark_category={@value['id_ark_category']}" method="post">
 	                                <td>
-	                                    <a href="<!--{ACTION_URL}-->/categoryAction/getArticleCountsByCate?id_ark_category={@value['id_ark_category']}">{@value['artcounts']}</a>
+	                                    {@value['artcounts']}
 	                                </td>
                                 <form>
                                 <td>
@@ -82,7 +82,7 @@
                             </li>
                             {foreach $counts(key,value)}
                             <li class="active">
-                                <a href="<!--{ACTION_URL}-->/categoryAction/page?pages={@value}">{@value}</a>
+                                <a href="<!--{ACTION_URL}-->/categoryAction/showCategory?pages={@value}">{@value}</a>
                             </li>
                            {/foreach}
                             <li>
