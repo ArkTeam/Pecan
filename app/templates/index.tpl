@@ -25,7 +25,7 @@
 					<h2>
 						发表文章
 					</h2>
-						
+					
 				    <form class="form-signin" action="<!--{ACTION_URL}-->/articleAction/postarticle" method="post" >
 				    	 <input type="text" class="input-block-level" placeholder="标题"  name='title'>
 				    	  <input type="text" class="input-block-level" placeholder="标签" name='tags'>

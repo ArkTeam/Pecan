@@ -54,11 +54,9 @@
                                 <td>
                                     {@value['category_name']}
                                 </td>
-                                <form action="<!--{ACTION_URL}-->/categoryAction/getArticleCountsByCate?id_ark_category={@value['id_ark_category']}" method="post">
 	                                <td>
 	                                    {@value['artcounts']}
 	                                </td>
-                                <form>
                                 <td>
                                     Yes
                                 </td>

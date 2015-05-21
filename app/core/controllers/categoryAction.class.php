@@ -20,8 +20,6 @@ class CategoryAction extends Controller {
 			// echo 'S:'.$s.'<br/>O:'.$o.'<br/>';
 		}
 		$this->category=new ArkCategory();
-		//$this->getArticleCountsByCate($id_ark_category);
-// 		echo '   $id_ark_category:'.$id_ark_category;
 		$categories=$this->category->getCategory($s, $o);
 		//先放这儿，之后改成函数！
 		foreach ( $categories as $key => $category ){
@@ -31,19 +29,13 @@ class CategoryAction extends Controller {
 			$artcounts =  $this->article->getCounts();
 			$categories[$key] = array_merge ( $category, array("artcounts" => $artcounts) );
 		}
-		//print_r($categories);
+		print_r($categories);
 		$this->tpl_x->assign( 'categories' , $categories );
 		$this->tpl_x->assign( 'porpath', $_SESSION['porpath']);
 		$this->tpl_x->assign ( 'username', $_SESSION ['username'] );
 		$this->display("listCategory.tpl");
 	}
-	function getArticleCountsByCate($id_ark_category){
-		$this->artilce=new ArticleAction();
-		//echo '   $id_ark_category:'.$id_ark_category;
-		$artcounts=$this->artilce->getArticleCountBycate($id_ark_category);
-		$this->tpl_x->assign( 'artcounts',  $artcounts);
-		
-	}
+
 	function showCategoryArticle(){
 		$this->category=new ArkCategory();
 // 		print_r($categories);
