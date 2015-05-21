@@ -82,7 +82,11 @@
  
 
 <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/2/">« Prev</a><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">…</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next »</a>
+    <a class="extend prev" rel="prev" href="<!--{ACTION_URL}-->/index/prePage?pages={$pages}">« Prev</a>
+    {foreach $counts(key,value)}
+    <a class="page-number" href="<!--{ACTION_URL}-->/index/run?pages={@value}">{@value}</a>
+    {/foreach}
+    <a class="extend next" rel="next" href="<!--{ACTION_URL}-->/index/nextPage?pages={$pages}">Next »</a>
 </nav>
 </div>
 

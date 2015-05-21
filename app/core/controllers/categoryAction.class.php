@@ -79,21 +79,21 @@ class CategoryAction extends Controller {
 	}
 	
 	function page($pages = 1) {
-		$this->setPage ($pages);
+		$this->setPage ($pages,6);
 		$this-> showCategory ( );
 	}
 	
-	function setPage ( $pages = 1 ){
+	function setPage ( $pages = 1 ,$rows=6){
 		if (!$this->category)
 			$this->category = new ArkCategory ();
-		$start = 6 * $pages - 6;
+		$start = $rows * $pages - $rows;
 		$_SESSION ['s'] = $start;
-		$end = 6;
+		$end = $rows;
 		$_SESSION ['o'] = $end;
 		$this->tpl_x->assign ( 'pages', $pages );
 		$arr = $this->category->getCounts ();
 		$counts = array ();
-		for($i = 1; $i < ($arr) / 6 + 1; $i ++) {
+		for($i = 1; $i < ($arr) / $rows + 1; $i ++) {
 			array_push ( $counts, $i );
 		}
 		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
@@ -105,10 +105,10 @@ class CategoryAction extends Controller {
 	 * @param
 	 *        	$pages
 	 */
-	function nextPage($pages) {
+	function nextPage($pages,$rows=6) {
 		$this->category = new ArkCategory ();
 		$arr = $this->category->getCounts ();
-		if($pages > $arr/6){
+		if($pages > $arr/$rows){
 			$this->page ( $pages);
 		}else{
 			$this->page ( $pages + 1 );

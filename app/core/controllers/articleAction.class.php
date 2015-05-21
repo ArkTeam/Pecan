@@ -253,7 +253,7 @@ class ArticleAction extends Controller {
 			$this->article->where ( 'd_tag', '=', '1' );
 		}
 		
-		$this->setPage (1);
+// 		$this->setPage (1);
 		
 		$articles = $this->article->getArticles ( $s, $o );
 		$this->tpl_x->assign ( 'articles', $articles );
@@ -271,21 +271,21 @@ class ArticleAction extends Controller {
 	 *        	$pages
 	 */
 	function page($pages = 1) {
-		$this->setPage ($pages);
+		$this->setPage ($pages,6);
 		$this->listArticles ( $s_type = 0 );
 	}
 	
-	function setPage ( $pages = 1 ){
+	function setPage ( $pages = 1 ,$rows =6){
 		if (!$this->article)
 			$this->article = new ArkArticle ();
-		$start = 6 * $pages - 6;
+		$start = $rows * $pages - $rows;
 		$_SESSION ['s'] = $start;
-		$end = 6;
+		$end = $rows;
 		$_SESSION ['o'] = $end;
 		$this->tpl_x->assign ( 'pages', $pages );
 		$arr = $this->article->getCounts ();
 		$counts = array ();
-		for($i = 1; $i < ($arr) / 6 + 1; $i ++) {
+		for($i = 1; $i < ($arr) / $rows + 1; $i ++) {
 			array_push ( $counts, $i );
 		}
 		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
@@ -297,10 +297,10 @@ class ArticleAction extends Controller {
 	 * @param
 	 *        	$pages
 	 */
-	function nextPage($pages) {
+	function nextPage($pages ,$rows=6) {
 		$this->article = new ArkArticle ();
 		$arr = $this->article->getCounts ();
-		if($pages > $arr/6){
+		if($pages > $arr/$rows){
 			$this->page ( $pages);
 		}else{
 			$this->page ( $pages + 1 );
