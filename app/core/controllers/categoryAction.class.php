@@ -29,7 +29,7 @@ class CategoryAction extends Controller {
 			$artcounts =  $this->article->getCounts();
 			$categories[$key] = array_merge ( $category, array("artcounts" => $artcounts) );
 		}
-		print_r($categories);
+// 		print_r($categories);
 		$this->tpl_x->assign( 'categories' , $categories );
 		$this->tpl_x->assign( 'porpath', $_SESSION['porpath']);
 		$this->tpl_x->assign ( 'username', $_SESSION ['username'] );
@@ -40,7 +40,9 @@ class CategoryAction extends Controller {
 		$this->category=new ArkCategory();
 // 		print_r($categories);
 		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
-		return 	$this->category->getCategory();
+		$s=0;
+		$o=$this->category->getCounts();
+		return 	$this->category->getCategory($s, $o);
 	}
 	
 	function addCategory($category_name){
@@ -70,11 +72,6 @@ class CategoryAction extends Controller {
 	function add(){
 		$this->display('addcategory.tpl');
 	}
-	
-// 	function page($pages = 1) {
-// 		$this->setPage ($pages,6);
-// 		$this-> showCategory ( );
-// 	}
 	
 	function setPage ( $pages = 1 ,$rows=ROWS){
 		if (!$this->category)
