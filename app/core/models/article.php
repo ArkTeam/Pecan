@@ -71,7 +71,9 @@ class ArkArticle extends Model {
 				 	$var[$row]=$article->$row;
 
 			}
-			$var['blog_content']=substr(trim($var['blog_content']),0,200);
+			
+			$var['blog_content'] = $this->trimContent($var['blog_content']);
+			
 			$var['posttime']=date('Y-m-d H:i:s', $article->posttime);
 			$var['updatetime']=date('Y-m-d H:i:s', $article->updatetime);
 			array_push ( $vars, $var);
@@ -100,6 +102,20 @@ class ArkArticle extends Model {
 		$this->where('category_id','=',$id_ark_category);
 		return $this->rowCount();
 // 		where('category_id','=',$id_ark_category)
+	}
+	
+	/**
+	 * trim content
+	 * @param $blog_content
+	 */
+	function trimContent($content){
+		$encoding = 'utf-8';
+		$content = strip_tags ( $content );
+		$content = preg_replace ( '/\s+|&nbsp;/', '', trim($content) );
+		$strwidth = mb_strwidth ( $content, $encoding );
+		$width = $strwidth < 200 ? $strwidth : 200;
+		$content = mb_strimwidth($content, 0, $width, '....', $encoding);
+		return $content;
 	}
 	
 
