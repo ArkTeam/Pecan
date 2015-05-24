@@ -72,24 +72,23 @@ window.onload=function(){
       <form name="register-form" enctype="multipart/form-data" class="form-signin" action="<!--{ACTION_URL}-->/userAction/register" method="post" >
         <h3 class="form-signin-heading" align="center">用户注册</h3>
         <input type="text" class="input-block-level" placeholder="用户名" name='username'>
-         <input type="password" class="input-block-level" placeholder="邮箱" name='email'>
+        <input type="password" class="input-block-level" placeholder="邮箱" name='email'>
         <input type="password" class="input-block-level" placeholder="密码" name='password'>
         <input type="password" class="input-block-level" placeholder="重复密码" name='repassword'>
-        <input type="password"  placeholder="验证码" name='captcha'><img style='margin-left:10px;margin-top:-20px' src='<!--{ACTION_URL}-->/utilAction/getcaptcha'>
+        <input type="text" class="input-small" placeholder="验证码" name='captcha'><img id='captchaimage' onclick='changecode()' style='margin-left:10px;margin-top:-20px' src='<!--{ACTION_URL}-->/utilAction/getcaptcha'><a href="javascript:changecode();"><span style='margin-left:10px'>换一张</span></a>
       
-       
-    <center>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<table width="100%" border="0" cellspacing="20" cellpadding="0">
-  <tr>
-  	<form action="<!--{ACTION_URL}-->/userAction/start" method="post">
-	    <td width="50%" align="right"><iframe src="<!--{ACTION_URL}-->/userAction/start" width="322" height="277" frameborder="0" scrolling="no"></iframe></td>
-	    <td width="50%" align="left"><div id=""></div>
-  	</form >
-  </tr>
-</table>
-</center>
+	    <center>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<table width="100%" border="0" cellspacing="20" cellpadding="0">
+			  <tr>
+			  	<form action="<!--{ACTION_URL}-->/userAction/start" method="post">
+				    <td width="50%" align="right"><iframe src="<!--{ACTION_URL}-->/userAction/start" width="322" height="277" frameborder="0" scrolling="no"></iframe></td>
+				    <td width="50%" align="left"><div id=""></div>
+			  	</form >
+			  </tr>
+			</table>
+		</center>
         
         
         <button class="btn  btn-primary" type="submit">注册</button>
@@ -99,7 +98,13 @@ window.onload=function(){
       </form>
     
 
-      </div>
-      
+	</div>
+    <script type="text/javascript">
+ 	function changecode(){
+		var img = document.getElementById("captchaimage");
+		img.src = "<!--{ACTION_URL}-->/utilAction/getcaptcha";
+		return ;
+ 	}
+	</script>    
   </body>
 </html>

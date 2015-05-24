@@ -48,7 +48,14 @@ class UserAction extends Controller {
         
         
     }
-     function Register($username, $password, $repassword ) {
+     function Register($username, $email, $password, $repassword, $captcha) {
+     	//echo 'AUTHNUM_SESSION:' . $_SESSION['authnum_session'] . '<br/>';
+     	$captcha = strtolower($captcha);
+     	//echo 'CAPTCHA:' . $captcha . '<br/>';
+     	if ($captcha != $_SESSION['authnum_session']){
+     		$this->tpl_x->assign ('tips', '验证码错误');
+     		return false;
+     	}
         if ($password != $repassword) {
             return false;
         }
@@ -61,7 +68,7 @@ class UserAction extends Controller {
          }else {
              if($portraitpath == null){
                  return false;
-                 }
+             }
 
               if ($this->user->createArtkUser ( $username, $password, $portraitpath )) {
                 $tips = "Register Successfullly";
