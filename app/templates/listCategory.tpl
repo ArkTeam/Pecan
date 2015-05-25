@@ -64,7 +64,7 @@
                                     <a href="#" class="view-link">修改</a>
                                 </td>
                                 <td>
-                                    <a href="" class="view-link">删除</a>
+                                    <a href="<!--{ACTION_URL}-->/categoryAction/del?category_id={@value['id_ark_category']}" class="view-link">删除</a>
                                 </td>
                             </tr>
                             {/foreach}

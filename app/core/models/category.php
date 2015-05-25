@@ -46,6 +46,11 @@ class ArkCategory extends Model {
 	function getCounts(){
 		return $this->rowCount();
 	}
+	
+	function deleteCategory($category_id){
+		$this->setId($category_id);
+		$this->delete();
+	}
 
 }
 

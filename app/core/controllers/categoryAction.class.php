@@ -72,6 +72,11 @@ class CategoryAction extends Controller {
 	function add(){
 		$this->display('addcategory.tpl');
 	}
+	function del($category_id){
+		$this->category=new ArkCategory();
+		$this->category->deleteCategory($category_id);
+		$this->showCategory($pages=1);
+	}
 	
 	function setPage ( $pages = 1 ,$rows=ROWS){
 		if (!$this->category)
