@@ -51,7 +51,13 @@ class ArkCategory extends Model {
 		$this->setId($category_id);
 		$this->delete();
 	}
-
+	
+	function modifyCategory($category_id,$categoryname){
+		$category=$this->findOne($category_id);
+		echo $category;
+		$this->_set( $category->category_name , $categoryname);
+		
+	}
 }
 
 ?>

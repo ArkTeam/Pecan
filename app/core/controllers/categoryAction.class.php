@@ -77,7 +77,14 @@ class CategoryAction extends Controller {
 		$this->category->deleteCategory($category_id);
 		$this->showCategory($pages=1);
 	}
-	
+	function update(){
+		$this->display('updatecategory.tpl');
+	}
+	function updateCategory($category_id,$categoryname){
+		$this->category=new ArkCategory();
+		$this->category->modifyCategory($category_id,$categoryname);
+		$this->showCategory($pages=1);
+	}
 	function setPage ( $pages = 1 ,$rows=ROWS){
 		if (!$this->category)
 			$this->category = new ArkCategory ();
