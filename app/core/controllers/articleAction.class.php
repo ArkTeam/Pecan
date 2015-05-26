@@ -35,7 +35,7 @@ class ArticleAction extends Controller {
 		$this->article->blog_content = $blog_content;
 		$this->article->updatetime = strval(time());
 		$this->article->save ();
-		$this->listArticles ( 0, 0, 10 );
+		$this->listArticles ( 1, 0 );
 	}
 	function showModifyArticle($article_id) {
 		$this->article = new ArkArticle ();
