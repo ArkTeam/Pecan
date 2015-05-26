@@ -50,23 +50,22 @@ class CategoryAction extends Controller {
 		
 		if($category_name == null){
 			echo '必须输入分类名称！';
-			//$this->display('listCategory.tpl');
-			$this->showCategory();
+			$this->showCategory($pages=1);
 			return ;
 		}
 		$nameArray=$this->category->getCategoryName();
 		foreach( $nameArray as $name){
 			if($name == $category_name){
 				echo '此分类已经存在！';
-				$this->display("addcategory.tpl");
-				
+				$this->showCategory($pages=1);
+				return ;
 			}
 		}
 
 
 		$this->category->createCategory($category_name);
 		
-		$this->showCategory();
+		$this->showCategory($pages=1);
 	}
 	
 	function add(){
@@ -78,7 +77,6 @@ class CategoryAction extends Controller {
 		$this->showCategory($pages=1);
 	}
 	function update($category_id){
-// 		$this->tpl_x->assign($category_id );
 		$_SESSION['category_id']=$category_id;
 		$this->display('updatecategory.tpl');
 	}

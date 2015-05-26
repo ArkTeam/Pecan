@@ -27,10 +27,7 @@ class ArkCategory extends Model {
 			}
 			array_push($arr , $vars);
 		}
-// 		if (! $categories) {
-// 			echo 'category is not exits!';
-// 		}
-// 		print_r ($arr);
+
 		return $arr;
 	}
 	
@@ -54,10 +51,7 @@ class ArkCategory extends Model {
 	
 	function modifyCategory($category_name,$category_id){
 		$categoryrow=$this->findOne($category_id);
-// 		echo 'category_id:'.$category_id;
-// 		echo $categoryrow->category_name;
 		$this->__set( 'category_name', $category_name);
-// 		echo $categoryrow->category_name;
 		$this->save();
 	}
 }
