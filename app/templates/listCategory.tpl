@@ -27,9 +27,7 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                    			<th>
-                      id
-                                </th>
+ 
                                 <th>
                                     类别
                                 </th>
@@ -48,9 +46,7 @@
                           
                              {foreach $categories(key,value)} 
                          	 <tr>
-  								 <td>
-                                    {@value['id_ark_category']}
-                                </td>
+
                                 <td>
                                     {@value['category_name']}
                                 </td>
@@ -61,7 +57,7 @@
                                     Yes
                                 </td>
                                 <td>
-                                    <a href="<!--{ACTION_URL}-->/categoryAction/update" class="view-link">修改</a>
+                                    <a href="<!--{ACTION_URL}-->/categoryAction/update?category_id={@value['id_ark_category']}" >修改</a>
                                 </td>
                                 <td>
                                     <a href="<!--{ACTION_URL}-->/categoryAction/del?category_id={@value['id_ark_category']}" class="view-link">删除</a>

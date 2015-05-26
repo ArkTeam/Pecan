@@ -49,8 +49,8 @@
                     </h1>
               		<div class="container">
               		<form class="form-add" action="<!--{ACTION_URL}-->/categoryAction/updateCategory">
-	       				<input class="input-block-level" type="text"  placeholder="类名" name='categoryname'>
-	              		<input class="btn  btn-primary" type="submit" value="确定">
+	       				<input class="input-block-level" type="text"  placeholder="类名" name='categoryname'/>
+	              		<input class="btn  btn-primary" type="submit" value="确定"/>
               		</form>
                     </div>
                 </div>

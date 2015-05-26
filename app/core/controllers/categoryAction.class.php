@@ -77,12 +77,18 @@ class CategoryAction extends Controller {
 		$this->category->deleteCategory($category_id);
 		$this->showCategory($pages=1);
 	}
-	function update(){
+	function update($category_id){
+// 		$this->tpl_x->assign($category_id );
+		$_SESSION['category_id']=$category_id;
 		$this->display('updatecategory.tpl');
 	}
-	function updateCategory($category_id,$categoryname){
+	function updateCategory($category_name){
 		$this->category=new ArkCategory();
-		$this->category->modifyCategory($category_id,$categoryname);
+		if($category_name == null){
+			echo '必须输入分类名称';
+			$this->showCategory($pages=1);
+		}
+		$this->category->modifyCategory($category_name,$_SESSION['category_id']);
 		$this->showCategory($pages=1);
 	}
 	function setPage ( $pages = 1 ,$rows=ROWS){
