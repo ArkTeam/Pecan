@@ -47,7 +47,7 @@ class CategoryAction extends Controller {
 	
 	function addCategory($category_name){
 		$this->category=new ArkCategory();
-		
+		$category_name=urldecode($category_name);
 		if($category_name == null){
 			echo '必须输入分类名称！';
 			$this->showCategory($pages=1);
@@ -82,6 +82,7 @@ class CategoryAction extends Controller {
 	}
 	function updateCategory($category_name){
 		$this->category=new ArkCategory();
+		$category_name=urldecode($category_name);
 		if($category_name == null){
 			echo '必须输入分类名称';
 			$this->showCategory($pages=1);
