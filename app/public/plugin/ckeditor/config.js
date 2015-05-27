@@ -9,6 +9,7 @@ CKEDITOR.editorConfig = function( config )
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
     config.extraPlugins = "syntaxhighlight";
+	CKEDITOR.config.allowedContent = true;
 	config.toolbar = 'Index';
 	config.toolbar_Index =
 	[
@@ -22,7 +23,7 @@ CKEDITOR.editorConfig = function( config )
         ['Font', 'FontSize', 'TextColor', 'BGColor', 'syntaxhighlight']
     ];
     config.toolbar_User =
-[
+	[
        ['Preview', 'Maximize', 'Cut', 'Copy', 'Paste', 'PasteText', '-', 'Bold', 'Italic', 'Underline', 'Strike', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'Link', 'Unlink', 'Image', '-', 'FontSize', 'TextColor', 'BGColor', 'syntaxhighlight']
     ];
 };

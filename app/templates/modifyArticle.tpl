@@ -4,9 +4,14 @@
 	<head>
 		<title>Pecan</title>
 		{include file="header.tpl"}
-		<script src="<!--{PUBLIC_PATH}-->/plugin/ckeditor/ckeditor.js"></script>
+		<script type="text/javascript" src="<!--{PUBLIC_PATH}-->/plugin/ueditor/ueditor.config.js"></script> 
+		<script type="text/javascript" src="<!--{PUBLIC_PATH}-->/plugin/ueditor/ueditor.all.js"></script> 
+		<script type="text/javascript" src="<!--{PUBLIC_PATH}-->/plugin/myckeditor/ckeditor.js"></script> 
 		<script src="<!--{PUBLIC_PATH}-->/plugin/ckeditor/adapters/jquery.js"></script>
-		
+	    <link type="text/css" rel="stylesheet" href="<!--{PUBLIC_PATH}-->/plugin/shCoreDefault.css"/>
+	    <script src="<!--{PUBLIC_PATH}-->/plugin/shCore.js"></script>
+	    <script src="<!--{PUBLIC_PATH}-->/plugin/syntaxhighlighter.js"></script>
+			
 		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	</head>
 	<body>
@@ -51,6 +56,7 @@
 						  </div>
 					  </div>
 				<textarea rows="50" cols="30" name="blog_content" id='blog_content'>{#article['blog_content']}</textarea>
+				
 				</br>
 				<button class="btn  btn-primary" type="submit">更改</button>
 				<button class="btn" type="button">取消</button>
@@ -59,13 +65,21 @@
 			</div>
 		</div>
 	</div>
+	
+<script type="text/javascript"> 
+//    var editor = new UE.ui.Editor({initialFrameHeight:200,initialFrameWidth:860 }); 
+//    editor.render("blog_content");
+    //1.2.4以后可以使用一下代码实例化编辑器
+    //UE.getEditor('blog_content')
+</script> 
 <script type="text/javascript">
 CKEDITOR.replace( 'blog_content', {
 //uiColor: '#14B8C4',
-width:900, 
+width:860, 
 height:200 
 
 });
+SyntaxHighlighter.all();
 </script>
 	</body>
 </html>
