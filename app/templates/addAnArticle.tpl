@@ -5,7 +5,7 @@
 		<title>Pecan</title>
 		{include file="header.tpl"}
 		<script src="<!--{PUBLIC_PATH}-->/plugin/myckeditor/ckeditor.js"></script>
-		<script src="<!--{PUBLIC_PATH}-->/plugin/ckeditor/adapters/jquery.js"></script>
+		<script src="<!--{PUBLIC_PATH}-->/plugin/myckeditor/adapters/jquery.js"></script>
 		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	</head>
 	<body>

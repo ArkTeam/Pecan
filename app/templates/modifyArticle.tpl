@@ -6,8 +6,8 @@
 		{include file="header.tpl"}
 		<script type="text/javascript" src="<!--{PUBLIC_PATH}-->/plugin/ueditor/ueditor.config.js"></script> 
 		<script type="text/javascript" src="<!--{PUBLIC_PATH}-->/plugin/ueditor/ueditor.all.js"></script> 
-		<script type="text/javascript" src="<!--{PUBLIC_PATH}-->/plugin/myckeditor/ckeditor.js"></script> 
-		<script src="<!--{PUBLIC_PATH}-->/plugin/ckeditor/adapters/jquery.js"></script>
+		<script type="text/javascript" src="<!--{PUBLIC_PATH}-->/plugin/myckeditor/ckeditor.js"></script>
+		<script src="<!--{PUBLIC_PATH}-->/plugin/myckeditor/adapters/jquery.js"></script>
 	    <link type="text/css" rel="stylesheet" href="<!--{PUBLIC_PATH}-->/plugin/shCoreDefault.css"/>
 	    <script src="<!--{PUBLIC_PATH}-->/plugin/shCore.js"></script>
 	    <script src="<!--{PUBLIC_PATH}-->/plugin/syntaxhighlighter.js"></script>
