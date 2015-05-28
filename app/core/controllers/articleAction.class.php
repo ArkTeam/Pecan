@@ -176,7 +176,9 @@ class ArticleAction extends Controller {
 			$this->tpl_x->assign ( 'next_article', false );
 			$this->tpl_x->assign ( 'is_next', false );
 		}
-		
+		$this->category = new CategoryAction ();
+		$categories = $this->category->showCategoryArticle ();
+		$this->tpl_x->assign ( 'categories', $categories );
 		$this->display ( "viewblog.html" );
 	}
 	
