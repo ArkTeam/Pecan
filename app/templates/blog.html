@@ -58,6 +58,7 @@
     </header>
     <div id="container" class="clearfix">
       <div id="main">
+      
     {foreach $articles(key,value)} 
   <section class="post" itemscope itemprop="blogPost">
     
@@ -126,11 +127,14 @@
   
 <div class="tagslist">
 	<p class="asidetitle">Tags</p>
+			{foreach $categories(key,value)}
 		<ul class="clearfix">
-		
-			<li><a href="tags/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
-		
+
+			<li><a href="tags/Hadoop/" title="{@value['category_name']}">{@value['category_name']}<sup> {@value['artcounts']}</sup></a></li>
+	
 		</ul>
+			{/foreach}
+
 </div>
 
 
