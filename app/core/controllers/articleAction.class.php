@@ -178,7 +178,9 @@ class ArticleAction extends Controller {
 			$this->tpl_x->assign ( 'next_article', false );
 			$this->tpl_x->assign ( 'is_next', false );
 		}
-		
+		$this->category = new CategoryAction ();
+		$categories = $this->category->showCategoryArticle ();
+		$this->tpl_x->assign ( 'categories', $categories );
 		$this->display ( "viewblog.html" );
 	}
 	
@@ -205,7 +207,37 @@ class ArticleAction extends Controller {
 		// print_r($articles);
 		$this->display ( "blog.html" );
 	}
-	
+	/**
+	 * get articles list by category_id 
+	 * @param  $category_id in table article
+	 * @param  $pages
+	 */
+	function showArticlesByCategory($category_id,$pages=1){
+		$this->setPage ($pages);
+		if (! isset ( $s ) || ! isset ( $o )) {
+			$s = $_SESSION ['s'];
+			$o = $_SESSION ['o'];
+			if (! $s) {
+				$s = 0;
+				$_SESSION ['s'] = $s;
+			}
+			if (! $o) {
+				$o = 10;
+				$_SESSION ['o'] = $o;
+			}
+			// echo 'S:'.$s.'<br/>O:'.$o.'<br/>';
+		}
+		$this->article=new ArkArticle();
+		$this->article->where ( 'category_id', '=' ,$category_id);
+		$this->article->andwhere('is_private', '=', '0');
+		$this->article->andWhere('d_tag', '=', '0');
+		$articles=$this->article->getArticles ( $s, $o );
+		$this->category=new CategoryAction();
+		$categories=$this->category->showCategoryArticle();
+		$this->tpl_x->assign('categories',$categories);
+		$this->tpl_x->assign('articles',$articles);
+		$this->display("blog.html");
+	}
 	/**
 	 * s_type:
 	 * 0 for not deleted
@@ -288,17 +320,14 @@ class ArticleAction extends Controller {
 		
 		$this->display ( "listarticle.tpl" );
 	}
+	
+	
 	/**
 	 * page for article
 	 * 
 	 * @param
 	 *        	$pages
-	 */
-// 	function page($pages = 1) {
-// 		$this->setPage ($pages,6);
-// 		$this->listArticles ( $s_type = 0 );
-// 	}
-	
+	 */	
 	function setPage ( $pages = 1 ,$rows=ROWS){
 		if (!$this->article)
 			$this->article = new ArkArticle ();
