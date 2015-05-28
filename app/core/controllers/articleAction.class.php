@@ -55,6 +55,7 @@ class ArticleAction extends Controller {
 		}
 		//$article->blog_content = htmlspecialchars_decode ($article->blog_content);
 		echo 'ARTICLE:' . $article->blog_content . '<br>';
+		$article->blog_content=htmlentities($article->blog_content);
 		$this->category = new CategoryAction ();
 		$categories = $this->category->showCategoryArticle ();
 		$this->tpl_x->assign ( 'categories', $categories );
