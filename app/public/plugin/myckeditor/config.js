@@ -6,7 +6,7 @@
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
-	// config.uiColor = '#AADC6E';
-	config.enterMode = CKEDITOR.ENTER_P;  
-	config.shiftEnterMode = CKEDITOR.ENTER_BP;
+	config.uiColor = '#AADC6E';
+	//config.entities = false;
+	CKEDITOR.config.protectedSource.push('/<pre class=[\s\S]*<\/pre>/g')
 };

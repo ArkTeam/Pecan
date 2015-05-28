@@ -35,7 +35,7 @@ class ArticleAction extends Controller {
 		$this->article->blog_content = $blog_content;
 		$this->article->updatetime = strval(time());
 		$this->article->save ();
-		$this->listArticles ( 1, 0 );
+		$this->listArticles ();
 	}
 	function showModifyArticle($article_id) {
 		$this->article = new ArkArticle ();
@@ -53,6 +53,8 @@ class ArticleAction extends Controller {
 			$this->display ( 'Info.tpl' );
 			return;
 		}
+		//$article->blog_content = htmlspecialchars_decode ($article->blog_content);
+		echo 'ARTICLE:' . $article->blog_content . '<br>';
 		$this->category = new CategoryAction ();
 		$categories = $this->category->showCategoryArticle ();
 		$this->tpl_x->assign ( 'categories', $categories );
@@ -102,7 +104,7 @@ class ArticleAction extends Controller {
 			$this->display ( 'Info.tpl' );
 			return;
 		}
-		$this->listArticles ( 3, 0, 10 );
+		$this->listArticles ();
 	}
 	
 	/**
@@ -218,7 +220,30 @@ class ArticleAction extends Controller {
 	 * @param
 	 *        	: integer $o
 	 */
-	function listArticles($pages=1,$s_type = 0) {
+
+	function listArticles() {
+		if (! isset ( $_GET['pages'] ) ){
+			$pages = 1;
+		}
+		else {
+			$pages = $_GET['pages'];
+		}
+		
+		if (! isset ( $_GET['s_type'] ) ){
+			if (! isset( $_SESSION['s_type'] )){
+				$s_type = 0;
+			}
+			else if ( isset( $_GET['pages'] )){
+				$s_type = $_SESSION['s_type'];
+			}else {
+				$s_type = 0;
+			}
+		}
+		else {
+			$s_type = $_GET['s_type'];
+		}
+		
+		echo 'PAGES:' . $pages . '<br>S_TYPE:' . $s_type . '<br>'; 
 		$this->setPage ($pages);
 		if (! isset ( $s ) || ! isset ( $o )) {
 			$s = $_SESSION ['s'];
@@ -232,9 +257,6 @@ class ArticleAction extends Controller {
 				$_SESSION ['o'] = $o;
 			}
 			// echo 'S:'.$s.'<br/>O:'.$o.'<br/>';
-		}
-		if (! isset ( $s_type )) {
-			$s_type = 0;
 		}
 		$delMode = false;
 		$this->article = new ArkArticle ();
@@ -255,6 +277,7 @@ class ArticleAction extends Controller {
 		}
 		
 // 		$this->setPage (1);
+		$_SESSION['s_type'] = $s_type;
 		
 		$articles = $this->article->getArticles ( $s, $o );
 		$this->tpl_x->assign ( 'articles', $articles );

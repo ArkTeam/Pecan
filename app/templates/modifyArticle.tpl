@@ -4,13 +4,14 @@
 	<head>
 		<title>Pecan</title>
 		{include file="header.tpl"}
+		<link type="text/css" rel="stylesheet" href="<!--{PUBLIC_PATH}-->/plugin/shCoreDefault.css"/>
+	    <script src="<!--{PUBLIC_PATH}-->/plugin/shCore.js"></script>
+	    <script src="<!--{PUBLIC_PATH}-->/plugin/syntaxhighlighter.js"></script>
 		<script type="text/javascript" src="<!--{PUBLIC_PATH}-->/plugin/ueditor/ueditor.config.js"></script> 
 		<script type="text/javascript" src="<!--{PUBLIC_PATH}-->/plugin/ueditor/ueditor.all.js"></script> 
 		<script type="text/javascript" src="<!--{PUBLIC_PATH}-->/plugin/myckeditor/ckeditor.js"></script>
 		<script src="<!--{PUBLIC_PATH}-->/plugin/myckeditor/adapters/jquery.js"></script>
-	    <link type="text/css" rel="stylesheet" href="<!--{PUBLIC_PATH}-->/plugin/shCoreDefault.css"/>
-	    <script src="<!--{PUBLIC_PATH}-->/plugin/shCore.js"></script>
-	    <script src="<!--{PUBLIC_PATH}-->/plugin/syntaxhighlighter.js"></script>
+	    
 			
 		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	</head>
@@ -76,10 +77,8 @@
 CKEDITOR.replace( 'blog_content', {
 //uiColor: '#14B8C4',
 width:860, 
-height:200 
-
+height:200
 });
-SyntaxHighlighter.all();
 </script>
 	</body>
 </html>
