@@ -42,7 +42,16 @@ class CategoryAction extends Controller {
 		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
 		$s=0;
 		$o=$this->category->getCounts();
-		return 	$this->category->getCategory($s, $o);
+		$categories=$this->category->getCategory($s, $o);
+		//add article counts to category list
+		foreach ( $categories as $key => $category ){
+			$this->article = new ArkArticle();
+			$this->article->where('category_id', '=', $category['id_ark_category']);
+			//echo 'CATEGORY_ARTICLE_NO:' . $this->article->getCounts() . '<br/>';
+			$artcounts =  $this->article->getCounts();
+			$categories[$key] = array_merge ( $category, array("artcounts" => $artcounts) );
+		}
+		return $categories;
 	}
 	
 	function addCategory($category_name){

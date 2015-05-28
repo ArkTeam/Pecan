@@ -129,9 +129,7 @@
 	<p class="asidetitle">Tags</p>
 			{foreach $categories(key,value)}
 		<ul class="clearfix">
-
-			<li><a href="tags/Hadoop/" title="{@value['category_name']}">{@value['category_name']}<sup> {@value['artcounts']}</sup></a></li>
-	
+			<li><a href="<!--{ACTION_URL}-->/articleAction/showArticlesByCategory?category_id={@value['id_ark_category']}" >{@value['category_name']}  ({@value['artcounts']})</a></li>
 		</ul>
 			{/foreach}
 

@@ -2,7 +2,7 @@
 
 //require_once ('app/core/models/user.php');
 
-
+require_once ('categoryAction.class.php');
 class Index extends Controller {
 	protected $article;
 	protected $category;
@@ -27,18 +27,17 @@ class Index extends Controller {
 			}
 			// echo 'S:'.$s.'<br/>O:'.$o.'<br/>';
 		}
+		//show article list
 		$this->article = new ArkArticle();
-		$this->category = new ArkCategory();
-		$maxrows=$this->category->getCounts();
-		$categories=$this->category->getCategory(0,$maxrows);
-
 		$this->article->where('is_private', '=', '0');
 		$this->article->andWhere('d_tag', '=', '0');
 		$articles =$this->article->getArticles($s, $o);
 		$this->tpl_x->assign ( 'articles', $articles );
-// 		print_r($categories);
-// 		print_r($articles);
+		//show category list
+		$this->category = new CategoryAction ();
+		$categories = $this->category->showCategoryArticle ();
 		$this->tpl_x->assign ( 'categories', $categories );
+		
 		$this->display("blog.html");
 		
 	
