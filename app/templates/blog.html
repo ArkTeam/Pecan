@@ -96,11 +96,15 @@
  
 
 <nav id="page-nav" class="clearfix">
+ 	{if $is_prev}
     <a class="extend prev" rel="prev" href="<!--{ACTION_URL}-->/index/prePage?pages={$pages}">« Prev</a>
+    {/if}
     {foreach $counts(key,value)}
     <a class="page-number" href="<!--{ACTION_URL}-->/index/run?pages={@value}">{@value}</a>
     {/foreach}
+    {if $is_next}
     <a class="extend next" rel="next" href="<!--{ACTION_URL}-->/index/nextPage?pages={$pages}">Next »</a>
+    {/if}
 </nav>
 </div>
 

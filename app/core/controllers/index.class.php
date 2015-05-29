@@ -38,6 +38,12 @@ class Index extends Controller {
 		$categories = $this->category->showCategoryArticle ();
 		$this->tpl_x->assign ( 'categories', $categories );
 		
+		if($pages!=1){
+		$this->tpl_x->assign( 'is_prev', true );
+		}
+		if($pages<=$this->article->getCounts ()/ROWS){
+		$this->tpl_x->assign( 'is_next',  true);
+		}
 		$this->display("blog.html");
 		
 	
