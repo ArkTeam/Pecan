@@ -31,17 +31,28 @@ class Index extends Controller {
 		$this->article = new ArkArticle();
 		$this->article->where('is_private', '=', '0');
 		$this->article->andWhere('d_tag', '=', '0');
-		$articles =$this->article->getArticles($s, $o);
+		
+		$articles =$this->article->getArticles($s, ROWS);
 		$this->tpl_x->assign ( 'articles', $articles );
+		
 		//show category list
+		
 		$this->category = new CategoryAction ();
 		$categories = $this->category->showCategoryArticle ();
 		$this->tpl_x->assign ( 'categories', $categories );
 		
+		
+		$this->article = new ArkArticle();
+		$this->article->where('is_private', '=', '0');
+		$this->article->andWhere('d_tag', '=', '0');
+		$total_articles =  $this->article->getCounts ();
 		if($pages!=1){
 		$this->tpl_x->assign( 'is_prev', true );
 		}
-		if($pages<=$this->article->getCounts ()/ROWS){
+		
+		
+	
+		if($pages<(int)(($total_articles+ROWS-1)/ROWS)){
 		$this->tpl_x->assign( 'is_next',  true);
 		}
 		$this->display("blog.html");
@@ -50,8 +61,8 @@ class Index extends Controller {
 	}
 	//set rows of every page,default 6
 	function setPage ( $pages = 1 ,$row =ROWS){
-		if (!$this->article)
-			$this->article = new ArkArticle ();
+		
+		$this->article = new ArkArticle ();
 		$start = $row * $pages - $row;
 		$_SESSION ['s'] = $start;
 		$end = $row;
@@ -59,7 +70,7 @@ class Index extends Controller {
 		$this->tpl_x->assign ( 'pages', $pages );
 		$arr = $this->article->getCounts ();
 		$counts = array ();
-		for($i = 1; $i < ($arr) / $row + 1; $i ++) {
+		for($i = 1; $i < (($arr)+1) / $row ; $i ++) {
 			array_push ( $counts, $i );
 		}
 		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
