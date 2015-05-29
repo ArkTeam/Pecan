@@ -59,9 +59,13 @@
 
     </header>
      <div id='s_content'>
-     <textarea style='width:95%;height:100px;margin:20px 20px 20px 20px' > 去年买了个两个表</textarea>
+     <textarea style='width:95%;height:100px;margin:20px 20px 20px 20px' id='insp_content' > 去年买了个两个表</textarea>
      </br>
-     <center><button type='button'  class="btn  btn-primary" id='pushover' >发布</button></center>
+     
+     <button type='button'  class="btn  btn-primary" id='pushover'style='margin-left:20px' >发布</button> 
+     <button type='button'  class="btn  btn-primary" id='cancel_pushover'style='margin-left:20px' >取消</button> 
+     
+     
     </div>
     <div id="container" class="clearfix">
       <div id="main">
@@ -157,28 +161,44 @@
 $(document).ready(function(){ 
 	 $('#s_content').hide();
 	 $('#fastpush').click(function(){
+		 
+	
+		 
 		 $('#s_content').fadeIn();
+		 
 	});
-	 $('#pushover').click(function(){
+ 	$('#cancel_pushover').click(function(){
+		 
 		 $('#s_content').fadeOut();
+		 
+	}); 
+
+	 $('#pushover').click(function(){
+		 
+		 $.post(
+				 '<!--{ACTION_URL}-->/inspirationAction/addaninspiration',
+				 {
+					 category:0,
+					 inspiration_content:$('#insp_content').html()
+				 },
+				 function (data){
+					 if(data.indexOf('success')>=0){
+						 alert('发布成功');
+						 $('#s_content').fadeOut();
+					 }
+					 else{
+						 alert('未发布成功');
+					 }
+				 }
+				 
+				 
+				 );
+	
+		
 	});
 		
 		 
-		 
-	
- 
-   var settings = {
-			trigger:'click',
-			title:'快速发表',
-			content:$('#fastpush_content').html(),
-			width:340,						
-			multi:true,						
-			closeable:true,
-			style:'',
-			padding:true
-  };
 
-  $('a.show-pop').webuiPopover('destroy').webuiPopover(settings);	
   //back to top
   function backToTop(){
     var buttonHTML = $("<a href=\"#top\" id=\"back-top\">" + "<span>Back to Top</span></a>");
