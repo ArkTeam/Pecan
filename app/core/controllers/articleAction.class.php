@@ -228,6 +228,12 @@ class ArticleAction extends Controller {
 			}
 			// echo 'S:'.$s.'<br/>O:'.$o.'<br/>';
 		}
+		//第一次tags访问 将id存入，分页时重走函数id=session,第二次tags访问，存入其他id
+		if(!$category_id){
+			$category_id=$_SESSION ['category_id'];
+		}
+		$_SESSION ['category_id']=$category_id;
+		
 		$this->article=new ArkArticle();
 		$this->article->where ( 'category_id', '=' ,$category_id);
 		$this->article->andwhere('is_private', '=', '0');
@@ -237,7 +243,7 @@ class ArticleAction extends Controller {
 		$categories=$this->category->showCategoryArticle();
 		$this->tpl_x->assign('categories',$categories);
 		$this->tpl_x->assign('articles',$articles);
-		$this->display("blog.html");
+		$this->display("articlesByCategory.tpl");
 	}
 	/**
 	 * s_type:
@@ -308,8 +314,6 @@ class ArticleAction extends Controller {
 			$delMode = true;
 			$this->article->where ( 'd_tag', '=', '1' );
 		}
-		
-// 		$this->setPage (1);
 		$_SESSION['s_type'] = $s_type;
 		
 		$articles = $this->article->getArticles ( $s, $o );
