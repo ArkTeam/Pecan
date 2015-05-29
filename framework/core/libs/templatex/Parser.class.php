@@ -28,6 +28,18 @@ class Parser {
 	}
 	
 	/**
+	 * 解析表达式
+	 * @date: 2015-5-29
+	 * @author: Ark <lfzlfz@126.com>
+	 * @return: void
+	 */
+	private function parSimpleExpression() {
+		$_patten = '/\{\$([\w]+)\s+(\+|-|\*|%|\/)\s+([\w]+)\}/';
+		if (preg_match ( $_patten, $this->_tpl )) {
+			$this->_tpl = preg_replace ( $_patten, "<?php echo \$this->_vars['$1'] $2 $3;?>", $this->_tpl );
+		}
+	}
+	/**
 	 * 解析普通对象
 	 * @date: 2015-3-20
 	 * @author: Ark <lfzlfz@126.com>
@@ -166,6 +178,7 @@ class Parser {
 
 
 		$this->parVar ();
+		$this->parSimpleExpression();
 		$this->parObject();
 		
 		$this->parIf ();
