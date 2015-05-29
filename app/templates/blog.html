@@ -1,4 +1,3 @@
-
  <!DOCTYPE HTML>
 <html >
 <head>
@@ -12,13 +11,14 @@
     <meta name="description" content="Enjoy it.">
 
     <link rel="icon" href="<!--{PUBLIC_PATH}-->/img/favicon.ico">
-    
-    
+    <script src="<!--{PUBLIC_PATH}-->/js/jquery-2.1.0.min.js"></script>
+    <script src="<!--{PUBLIC_PATH}-->/webui/js/jquery.webui-popover.js"></script>
     <link rel="apple-touch-icon" href="img/Tinny.jpg">
     <link rel="apple-touch-icon-precomposed" href="img/Tinny.jpg">
     
     <link rel="stylesheet" href="<!--{PUBLIC_PATH}-->/css/style.css" type="text/css">
-
+	<link rel="stylesheet" href="<!--{PUBLIC_PATH}-->/webui/css/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="<!--{PUBLIC_PATH}-->/webui/css/jquery.webui-popover.css" type="text/css">
 </head>
 
   <body>
@@ -34,7 +34,8 @@
 			<nav class="animated">
 				<ul>
                     <ul>
-					
+						<li> <a href="#" class="show-pop btn btn-danger" data-placement="bottom">快速发表</a></li>
+						
 						<li><a href="<!--{ACTION_URL}-->">首页</a></li>
 					
 						<li><a href="/archives">归档</a></li>
@@ -143,9 +144,27 @@
 
 </div>
 </footer>
-    <script src="<!--{PUBLIC_PATH}-->/js/jquery-2.1.0.min.js"></script>
+    <div id='fastpush_content'>
+     <textarea style='width:300px;height:100px'> 去年买了个两个表</textarea>
+     </br>
+     <button type='button'  class="btn  btn-primary" >发布</button>
+    </div>
 <script type="text/javascript">
+
+
 $(document).ready(function(){ 
+   var settings = {
+			trigger:'click',
+			title:'快速发表',
+			content:$('#fastpush_content').html(),
+			width:340,						
+			multi:true,						
+			closeable:true,
+			style:'',
+			padding:true
+  };
+
+  $('a.show-pop').webuiPopover('destroy').webuiPopover(settings);	
   //back to top
   function backToTop(){
     var buttonHTML = $("<a href=\"#top\" id=\"back-top\">" + "<span>Back to Top</span></a>");
