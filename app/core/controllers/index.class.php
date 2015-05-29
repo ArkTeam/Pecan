@@ -48,12 +48,16 @@ class Index extends Controller {
 		$total_articles =  $this->article->getCounts ();
 		if($pages!=1){
 		$this->tpl_x->assign( 'is_prev', true );
+		}else{
+		$this->tpl_x->assign( 'is_prev', false );		
 		}
 		
 		
 	
 		if($pages<(int)(($total_articles+ROWS-1)/ROWS)){
 		$this->tpl_x->assign( 'is_next',  true);
+		}else{
+			$this->tpl_x->assign( 'is_next',  false);
 		}
 		$this->display("blog.html");
 		
