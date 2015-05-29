@@ -72,24 +72,17 @@
     <div id="container" class="clearfix">
       <div id="main">
       
-    {foreach $articles(key,value)} 
+    {foreach $inspirations(key,value)} 
   <section class="post" itemscope itemprop="blogPost">
     
   <article>
-    <h1 itemprop="name">
-      
-        <a href="<!--{ACTION_URL}-->/articleAction/showanarticle?article_id={@value['id_ark_article']}" title="Hadoop 入门" itemprop="url">
-      
-       {@value['title']}
-      </a>
-    </h1>
+
 <p itemprop="description" >
-{@value['blog_content']}
+{@value['inspiration_content']}
  </p>
     <p class="article-more-link">
       <time datetime="{@value['posttime']}" itemprop="datePublished">{@value['posttime']}</time>
-          <a href="<!--{ACTION_URL}-->/articleAction/showanarticle?article_id={@value['id_ark_article']}">阅读更多&raquo;</a>
- </p>
+ 	</p>
   </article>
 </section>
 {/foreach}
@@ -138,15 +131,6 @@
 
 
   
-<div class="tagslist">
-	<p class="asidetitle">Tags</p>
-			{foreach $categories(key,value)}
-		<ul class="clearfix">
-			<li><a href="<!--{ACTION_URL}-->/articleAction/showArticlesByCategory?category_id={@value['id_ark_category']}" >{@value['category_name']}  ({@value['artcounts']})</a></li>
-		</ul>
-			{/foreach}
-
-</div>
 
 
 </aside>
