@@ -5,8 +5,8 @@ class ArkConfigVars extends Model {
 	}
 	function addConfigVar($var_name, $var_value) {
 		$this->create ( array (
-				'var_name' => 'test1',
-				'var_value' => 'test_value1',
+				'var_name' => $var_name,
+				'var_value' => $var_value,
 				'd_tag' => 1 
 		) );
 		$this->save ();
