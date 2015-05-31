@@ -61,7 +61,7 @@
 
     </header>
      <div id='s_content'>
-     <textarea style='width:95%;height:100px;margin:20px 20px 20px 20px' id='insp_content' > 去年买了个两个表</textarea>
+     <textarea style='width:95%;height:100px;margin:20px 20px 20px 20px' id='insp_content' > </textarea>
      </br>
      
      <button type='button'  class="btn  btn-primary" id='pushover'style='margin-left:20px' >发布</button> 
@@ -160,12 +160,12 @@ $(document).ready(function(){
 	}); 
 
 	 $('#pushover').click(function(){
-		 
+		
 		 $.post(
 				 '<!--{ACTION_URL}-->/inspirationAction/addaninspiration',
 				 {
 					 category:0,
-					 inspiration_content:$('#insp_content').html()
+					 inspiration_content:$('#insp_content').val()
 				 },
 				 function (data){
 					 if(data.indexOf('success')>=0){
@@ -180,7 +180,7 @@ $(document).ready(function(){
 				 
 				 );
 	
-		
+		 $('#insp_content').val('');
 	});
 		
 		 
