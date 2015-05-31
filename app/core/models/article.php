@@ -49,7 +49,7 @@ class ArkArticle extends Model {
 	function getArticles($start,$offset){
 		$vars = array ();
 		$this->limit($start,$offset);
-		
+		$this->order(posttime,'DESC');
 		if($this->rowCount()==0){
 			return null;
 		}
