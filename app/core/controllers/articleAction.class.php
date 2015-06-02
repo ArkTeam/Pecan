@@ -213,7 +213,10 @@ class ArticleAction extends Controller {
 	 * @param  $category_id in table article
 	 * @param  $pages
 	 */
-	function showArticlesByCategory($category_id,$pages=1){
+	function showArticlesByCategory($category_id,$pages){
+		if($pages==null){
+			$pages=1;
+		}
 		$this->setPage ($pages);
 		if (! isset ( $s ) || ! isset ( $o )) {
 			$s = $_SESSION ['s'];
@@ -228,6 +231,7 @@ class ArticleAction extends Controller {
 			}
 			// echo 'S:'.$s.'<br/>O:'.$o.'<br/>';
 		}
+		echo $category_id;
 		//第一次tags访问 将id存入，分页时重走函数id=session,第二次tags访问，存入其他id
 		if(!$category_id){
 			$category_id=$_SESSION ['category_id'];
@@ -243,7 +247,7 @@ class ArticleAction extends Controller {
 		$categories=$this->category->showCategoryArticle();
 		$this->tpl_x->assign('categories',$categories);
 		$this->tpl_x->assign('articles',$articles);
-		
+		$this->tpl_x->assign('pages',$pages);
 		$this->display("articlesByCategory.tpl");
 	}
 	/**
@@ -283,7 +287,7 @@ class ArticleAction extends Controller {
 			$s_type = $_GET['s_type'];
 		}
 		
-		echo 'PAGES:' . $pages . '<br>S_TYPE:' . $s_type . '<br>'; 
+// 		echo 'PAGES:' . $pages . '<br>S_TYPE:' . $s_type . '<br>'; 
 		$this->setPage ($pages);
 		if (! isset ( $s ) || ! isset ( $o )) {
 			$s = $_SESSION ['s'];
@@ -352,39 +356,53 @@ class ArticleAction extends Controller {
 		for($i = 1; $i < $eachpage; $i ++) {
 			array_push ( $counts, $i );
 		}
+		
+		//next page & pre page
+		$total_articles =  $this->article->getCounts ();
+		if($pages!=1){
+			$this->tpl_x->assign( 'is_prev', true );
+		}else{
+			$this->tpl_x->assign( 'is_prev', false );
+		}
+
+		if($pages<(int)(($total_articles+ROWS-1)/ROWS)){
+			$this->tpl_x->assign( 'is_next',  true);
+		}else{
+			$this->tpl_x->assign( 'is_next',  false);
+		}
 		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
 		$this->tpl_x->assign ( 'counts', $counts );
 	}
-	/**
-	 * before current page
-	 * 
-	 * @param
-	 *        	$pages
-	 */
-	function nextPage($pages ,$rows=ROWS) {
-		$this->article = new ArkArticle ();
-		$arr = $this->article->getCounts ();
-		if($pages > $arr/$rows){
-			$this->listArticles ( $pages);
-		}else{
-			$this->listArticles ( $pages + 1 );
-		}
+// 	/**
+// 	 * before current page
+// 	 * 
+// 	 * @param
+// 	 *        	$pages
+// 	 */
+// 	function nextPage($pages ,$rows=ROWS) {
+// 		$this->article = new ArkArticle ();
+// 		$arr = $this->article->getCounts ();
+// 		if($pages > $arr/$rows){
+// 			$this->listArticles ( $pages);
+// 		}else{
+// 			$this->listArticles ( $pages + 1 );
+// 		}
 		
-	}
-	/**
-	 * the next page
-	 * 
-	 * @param
-	 *        	$pages
-	 */
-	function prePage($pages) {
-		if ($pages - 1 == 0) {
-			$this->listArticles ( 1 );
-		}else{
-			$this->listArticles ( $pages - 1 );
-		}
+// 	}
+// 	/**
+// 	 * the next page
+// 	 * 
+// 	 * @param
+// 	 *        	$pages
+// 	 */
+// 	function prePage($pages) {
+// 		if ($pages - 1 == 0) {
+// 			$this->listArticles ( 1 );
+// 		}else{
+// 			$this->listArticles ( $pages - 1 );
+// 		}
 		
-	}
+// 	}
 
 	
 

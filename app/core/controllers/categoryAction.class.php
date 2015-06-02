@@ -80,15 +80,18 @@ class CategoryAction extends Controller {
 	function add(){
 		$this->display('addcategory.tpl');
 	}
+	
 	function del($category_id){
 		$this->category=new ArkCategory();
 		$this->category->deleteCategory($category_id);
 		$this->showCategory($pages=1);
 	}
+	
 	function update($category_id){
 		$_SESSION['category_id']=$category_id;
 		$this->display('updatecategory.tpl');
 	}
+	
 	function updateCategory($category_name){
 		$this->category=new ArkCategory();
 		$category_name=urldecode($category_name);
@@ -99,6 +102,7 @@ class CategoryAction extends Controller {
 		$this->category->modifyCategory($category_name,$_SESSION['category_id']);
 		$this->showCategory($pages=1);
 	}
+	
 	function setPage ( $pages = 1 ,$rows=ROWS){
 		if (!$this->category)
 			$this->category = new ArkCategory ();
@@ -109,42 +113,31 @@ class CategoryAction extends Controller {
 		$this->tpl_x->assign ( 'pages', $pages );
 		$arr = $this->category->getCounts ();
 		$counts = array ();
-		for($i = 1; $i < ($arr) / $rows + 1; $i ++) {
+		if($arr % $rows == 0){
+			$eachpage=$arr / $rows;
+		}else{
+			$eachpage=$arr / $rows + 1;
+		}
+		for($i = 1; $i < $eachpage; $i ++) {
 			array_push ( $counts, $i );
+		}
+		//next page & pre page
+		$total_categories =  $this->category->getCounts ();
+		if($pages!=1){
+			$this->tpl_x->assign( 'is_prev', true );
+		}else{
+			$this->tpl_x->assign( 'is_prev', false );
+		}
+		
+		if($pages<(int)(($total_categories+ROWS-1)/ROWS)){
+			$this->tpl_x->assign( 'is_next',  true);
+		}else{
+			$this->tpl_x->assign( 'is_next',  false);
 		}
 		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
 		$this->tpl_x->assign ( 'counts', $counts );
 	}
-	/**
-	 * before current page
-	 *
-	 * @param
-	 *        	$pages
-	 */
-	function nextPage($pages,$rows=ROWS) {
-		$this->category = new ArkCategory ();
-		$arr = $this->category->getCounts ();
-		if($pages > $arr/$rows){
-			$this->showCategory ( $pages);
-		}else{
-			$this->showCategory ( $pages + 1 );
-		}
-	
-	}
-	/**
-	 * the next page
-	 *
-	 * @param
-	 *        	$pages
-	 */
-	function prePage($pages) {
-		if ($pages - 1 == 0) {
-			$this->showCategory ( 1 );
-		}else{
-			$this->showCategory ( $pages - 1 );
-		}
-	
-	}
+
 	
 
 }

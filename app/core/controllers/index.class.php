@@ -45,20 +45,7 @@ class Index extends Controller {
 		$this->article = new ArkArticle();
 		$this->article->where('is_private', '=', '0');
 		$this->article->andWhere('d_tag', '=', '0');
-		$total_articles =  $this->article->getCounts ();
-		if($pages!=1){
-		$this->tpl_x->assign( 'is_prev', true );
-		}else{
-		$this->tpl_x->assign( 'is_prev', false );		
-		}
 		
-		
-	
-		if($pages<(int)(($total_articles+ROWS-1)/ROWS)){
-		$this->tpl_x->assign( 'is_next',  true);
-		}else{
-			$this->tpl_x->assign( 'is_next',  false);
-		}
 		$this->display("blog.html");
 		
 	
@@ -82,39 +69,23 @@ class Index extends Controller {
 		for($i = 1; $i < $eachpage; $i ++) {
 			array_push ( $counts, $i );
 		}
+		//next page & pre page
+		$total_articles =  $this->article->getCounts ();
+		if($pages!=1){
+			$this->tpl_x->assign( 'is_prev', true );
+		}else{
+			$this->tpl_x->assign( 'is_prev', false );
+		}
+		
+		if($pages<(int)(($total_articles+ROWS-1)/ROWS)){
+			$this->tpl_x->assign( 'is_next',  true);
+		}else{
+			$this->tpl_x->assign( 'is_next',  false);
+		}
 		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
 		$this->tpl_x->assign ( 'counts', $counts );
 	}
-	/**
-	 * before current page
-	 *
-	 * @param
-	 *        	$pages
-	 */
-	function nextPage($pages,$row=ROWS) {
-		$this->article = new ArkArticle ();
-		$arr = $this->article->getCounts ();
-		if($pages > $arr/$row){
-			$this->run ( $pages);
-		}else{
-			$this->run ( $pages + 1 );
-		}
-	
-	}
-	/**
-	 * the next page
-	 *
-	 * @param
-	 *        	$pages
-	 */
-	function prePage($pages) {
-		if ($pages - 1 == 0) {
-			$this->run ( 1 );
-		}else{
-			$this->run ( $pages - 1 );
-		}
-	
-	}
+
 	
 	function register() {
 		

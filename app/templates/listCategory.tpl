@@ -71,17 +71,21 @@
                     </table>                
                     <div class="pagination">
                         <ul>
+                        {if $is_prev}
                             <li class="disabled">
-                                <a href="<!--{ACTION_URL}-->/categoryAction/prePage?pages={$pages}">&laquo;</a>
+                                <a href="<!--{ACTION_URL}-->/categoryAction/showCategory?pages={$pages - 1}">&laquo;</a>
                             </li>
+                         {/if}
                             {foreach $counts(key,value)}
                             <li class="active">
                                 <a href="<!--{ACTION_URL}-->/categoryAction/showCategory?pages={@value}">{@value}</a>
                             </li>
                            {/foreach}
+                          {if $is_next}
                             <li>
-                                <a href="<!--{ACTION_URL}-->/categoryAction/nextPage?pages={$pages}">&raquo;</a>
+                                <a href="<!--{ACTION_URL}-->/categoryAction/showCategory?pages={$pages + 1}">&raquo;</a>
                             </li>
+                           {/if}
                         </ul>
                     </div>
                 </div>
