@@ -74,7 +74,12 @@ class Index extends Controller {
 		$this->tpl_x->assign ( 'pages', $pages );
 		$arr = $this->article->getCounts ();
 		$counts = array ();
-		for($i = 1; $i < (($arr)+1) / $row ; $i ++) {
+		if($arr % $row == 0){
+			$eachpage=$arr / $row;
+		}else{
+			$eachpage=$arr / $row + 1;
+		}
+		for($i = 1; $i < $eachpage; $i ++) {
 			array_push ( $counts, $i );
 		}
 		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);

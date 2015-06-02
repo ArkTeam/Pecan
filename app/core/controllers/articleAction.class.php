@@ -243,6 +243,7 @@ class ArticleAction extends Controller {
 		$categories=$this->category->showCategoryArticle();
 		$this->tpl_x->assign('categories',$categories);
 		$this->tpl_x->assign('articles',$articles);
+		
 		$this->display("articlesByCategory.tpl");
 	}
 	/**
@@ -343,7 +344,12 @@ class ArticleAction extends Controller {
 		$this->tpl_x->assign ( 'pages', $pages );
 		$arr = $this->article->getCounts ();
 		$counts = array ();
-		for($i = 1; $i < ($arr) / $rows + 1; $i ++) {
+		if($arr % $rows == 0){
+			$eachpage=$arr / $rows;
+		}else{
+			$eachpage=$arr / $rows + 1;
+		}
+		for($i = 1; $i < $eachpage; $i ++) {
 			array_push ( $counts, $i );
 		}
 		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);

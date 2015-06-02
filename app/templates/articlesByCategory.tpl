@@ -83,11 +83,11 @@
  
 
 <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="<!--{ACTION_URL}-->/articleAction/prePage?pages={$pages}">« Prev</a>
+    <a class="extend prev" rel="prev" href="<!--{ACTION_URL}-->/articleAction/showArticlesByCategory?pages={$pages - 1}">« Prev</a>
     {foreach $counts(key,value)}
     <a class="page-number" href="<!--{ACTION_URL}-->/articleAction/showArticlesByCategory?&pages={@value}">{@value}</a>
     {/foreach}
-    <a class="extend next" rel="next" href="<!--{ACTION_URL}-->/articleAction/showArticlesByCategory?pages={$pages+1}">Next »</a>
+    <a class="extend next" rel="next" href="<!--{ACTION_URL}-->/articleAction/showArticlesByCategory?pages={$pages + 1}">Next »</a>
 </nav>
 </div>
 
