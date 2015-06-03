@@ -59,6 +59,7 @@ class Index extends Controller {
 		$end = $row;
 		$_SESSION ['o'] = $end;
 		$this->tpl_x->assign ( 'pages', $pages );
+		$this->article->Where('d_tag', '=', '0');
 		$arr = $this->article->getCounts ();
 		$counts = array ();
 		if($arr % $row == 0){
