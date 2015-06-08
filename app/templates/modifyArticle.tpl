@@ -11,8 +11,7 @@
 		<script type="text/javascript" src="<!--{PUBLIC_PATH}-->/plugin/ueditor/ueditor.all.js"></script> 
 		<script type="text/javascript" src="<!--{PUBLIC_PATH}-->/plugin/myckeditor/ckeditor.js"></script>
 		<script src="<!--{PUBLIC_PATH}-->/plugin/myckeditor/adapters/jquery.js"></script>
-	    
-			
+		
 		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	</head>
 	<body>
@@ -68,8 +67,8 @@
 	</div>
 	
 <script type="text/javascript"> 
-//    var editor = new UE.ui.Editor({initialFrameHeight:200,initialFrameWidth:860 }); 
-//    editor.render("blog_content");
+    //var editor = new UE.ui.Editor({initialFrameHeight:200,initialFrameWidth:860 }); 
+    //editor.render("blog_content");
     //1.2.4以后可以使用一下代码实例化编辑器
     //UE.getEditor('blog_content')
 </script> 
