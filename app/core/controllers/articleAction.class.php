@@ -231,7 +231,6 @@ class ArticleAction extends Controller {
 			}
 			// echo 'S:'.$s.'<br/>O:'.$o.'<br/>';
 		}
-		echo $category_id;
 		//第一次tags访问 将id存入，分页时重走函数id=session,第二次tags访问，存入其他id
 		if(!$category_id){
 			$category_id=$_SESSION ['category_id'];
@@ -242,6 +241,7 @@ class ArticleAction extends Controller {
 		$this->article->where ( 'category_id', '=' ,$category_id);
 		$this->article->andwhere('is_private', '=', '0');
 		$this->article->andWhere('d_tag', '=', '0');
+		
 		$articles=$this->article->getArticles ( $s, $o );
 		$this->category=new CategoryAction();
 		$categories=$this->category->showCategoryArticle();
@@ -346,6 +346,7 @@ class ArticleAction extends Controller {
 		$end = $rows;
 		$_SESSION ['o'] = $end;
 		$this->tpl_x->assign ( 'pages', $pages );
+		$this->article->where('d_tag','=','0');
 		$arr = $this->article->getCounts ();
 		$counts = array ();
 		if($arr % $rows == 0){
@@ -373,36 +374,6 @@ class ArticleAction extends Controller {
 		$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
 		$this->tpl_x->assign ( 'counts', $counts );
 	}
-// 	/**
-// 	 * before current page
-// 	 * 
-// 	 * @param
-// 	 *        	$pages
-// 	 */
-// 	function nextPage($pages ,$rows=ROWS) {
-// 		$this->article = new ArkArticle ();
-// 		$arr = $this->article->getCounts ();
-// 		if($pages > $arr/$rows){
-// 			$this->listArticles ( $pages);
-// 		}else{
-// 			$this->listArticles ( $pages + 1 );
-// 		}
-		
-// 	}
-// 	/**
-// 	 * the next page
-// 	 * 
-// 	 * @param
-// 	 *        	$pages
-// 	 */
-// 	function prePage($pages) {
-// 		if ($pages - 1 == 0) {
-// 			$this->listArticles ( 1 );
-// 		}else{
-// 			$this->listArticles ( $pages - 1 );
-// 		}
-		
-// 	}
 
 	
 

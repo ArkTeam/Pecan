@@ -3,7 +3,7 @@
 require_once ('articleAction.class.php');
 class CategoryAction extends Controller {
 	protected $category;
-	protected $artilce;
+	protected $article;
 	function showCategory($pages=1){
 		$this->setPage($pages);
 		if (! isset ( $s ) || ! isset ( $o )) {
@@ -26,6 +26,7 @@ class CategoryAction extends Controller {
 			$this->article = new ArkArticle();
 			$this->article->where('category_id', '=', $category['id_ark_category']);
 			//echo 'CATEGORY_ARTICLE_NO:' . $this->article->getCounts() . '<br/>';
+			$this->article->andWhere('d_tag', '=', '0');
 			$artcounts =  $this->article->getCounts();
 			$categories[$key] = array_merge ( $category, array("artcounts" => $artcounts) );
 		}
@@ -48,6 +49,7 @@ class CategoryAction extends Controller {
 			$this->article = new ArkArticle();
 			$this->article->where('category_id', '=', $category['id_ark_category']);
 			//echo 'CATEGORY_ARTICLE_NO:' . $this->article->getCounts() . '<br/>';
+			$this->article->andWhere('d_tag', '=', '0');
 			$artcounts =  $this->article->getCounts();
 			$categories[$key] = array_merge ( $category, array("artcounts" => $artcounts) );
 		}
