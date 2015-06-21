@@ -1,0 +1,14 @@
+site_var
+
+title
+authoer
+description
+icon
+sitename
+author-logo
+author-info
+socialaccount url,name{
+github
+weibo
+
+}
