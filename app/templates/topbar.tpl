@@ -4,7 +4,7 @@
 						<div class="nav-collapse">
 							<ul class="nav">
 								<li class="active">
-									<a href="index.html">首页</a>
+									<a href="<!--{ACTION_URL}-->/utilAction/logout">首页</a>
 								</li>
 							
 								
@@ -14,19 +14,14 @@
 							</form>
 							<ul class="nav pull-right">
 								<li>
-									<a href="<!--{ACTION_URL}-->/articleAction/showarticles?s=0&o=<!--{pagesize}-->">博客主页</a>
-								</li>
+									<a href="<!--{ACTION_URL}-->/articleAction/showarticles?s=0&o=<!--{pagesize}-->">博客主页</a>								</li>
 								<li>
-									<a href="<!--{ACTION_URL}-->/userAction/profile">{$username}</a>
-								</li>
+									<a href="<!--{ACTION_URL}-->/userAction/profile">{$username}</a></li>
+								
+								<li><img height="37"  src="{$porpath}"  style="border-radius: 50px;margin-top:5px" width="40" /></li>
 								
 								<li>
-									<img height="30"  src="{$porpath}"  style="border-radius: 50px;margin-top:5px" width="30" />
-								</li>
-								
-								<li>
-									<a href="<!--{ACTION_URL}-->/utilAction/logout">退出后台</a>
-								</li>
+									<a href="<!--{ACTION_URL}-->/utilAction/logout">退出后台</a>								</li>
 							</ul>
 						</div>
 					</div>

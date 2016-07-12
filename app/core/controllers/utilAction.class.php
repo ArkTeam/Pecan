@@ -7,7 +7,7 @@ class UtilAction extends Controller {
 	}
 	function logout() {
 		session_destroy ();
-		die ( '<div class="alert"></div>閫�鍑�<script> location.href=\'' . ACTION_URL . '\';</script></div></div>' );
+		die ( '<div class="alert"></div>清除session,跳转首页<script> location.href=\'' . ACTION_URL . '\';</script></div></div>' );
 	}
 	function wordsplit($content, $num) {
 		$content = mb_convert_encoding ( $content, 'GBK', 'auto' );

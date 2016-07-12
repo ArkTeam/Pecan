@@ -16,7 +16,7 @@ class ArticleAction extends Controller {
 		$category_id=$_POST['category_id'];
 // 		echo $category_id;
 		$result = $this->article->createArticle ( $title, $tags, $source, $category_id, $blog_content );
-		print_r($result);
+//		print_r($result);
 		if ($result) {
 			$this->tpl_x->assign ( 'tips', "发表文章成功" );
 		} else {
@@ -35,6 +35,7 @@ class ArticleAction extends Controller {
 		$this->article->blog_content = $blog_content;
 		$this->article->updatetime = strval(time());
 		$this->article->save ();
+        $this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
 		$this->listArticles ();
 	}
 	function showModifyArticle($article_id) {
@@ -321,7 +322,8 @@ class ArticleAction extends Controller {
 		}
 		$_SESSION['s_type'] = $s_type;
 		
-		$articles = $this->article->getArticles ( $s, $o );
+		$articles = $this->article->getlistArticles( $s, $o,$_SESSION ['username']
+        );
 		$this->tpl_x->assign ( 'articles', $articles );
 		//print_r ($articles);
 		$this->tpl_x->assign ( 'delmode', $delMode );

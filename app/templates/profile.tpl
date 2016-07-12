@@ -26,43 +26,53 @@
 						<fieldset>
 							<legend>我的信息</legend>
 							<div class="control-group">
-								<label class="control-label" for="input01">昵称</label>
+								<label class="control-label" for="input01">用户名</label>
 								<div class="controls">
-									<input type="text" class="input-xlarge" id="input01" value="John Smith">
+									<input type="text" onfocus=this.blur(); class="input-xlarge" id="username" name="username" value="{$username}">
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="input01">Phone</label>
+								<label class="control-label" for="input01">手机</label>
 								<div class="controls">
-									<input type="text" class="input-xlarge" id="input01" value="555 555 555">
+									<input type="text" class="input-xlarge" id="phone" name="phone"  value="{$phone}"/>
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="input01">Email</label>
+								<label class="control-label" for="input01">电子邮箱</label>
 								<div class="controls">
-									<input type="text" class="input-xlarge" id="input01" value="john.smith@example.org">
+									<input type="text" class="input-xlarge" id="email" name="email" value="{$email}"/>
 								</div>
 							</div>
-							<div class="control-group">
-								<label class="control-label" for="fileInput">Photo</label>
-								<div class="controls">
-									<input class="input-file" id="fileInput" type="file">
-								</div>
+							<div class="control-group" style="display: none">
+								<label class="control-label" for="fileInput">头像</label>
+								<div class="controls"><center>
+                                        <table width="100%" border="0" cellspacing="20" cellpadding="0" style="display: none">
+                                        <tr>
+
+                        <form action="<!--{ACTION_URL}-->/userAction/start" method="post" style="display: none">
+                                                    <td width="50%" align="left">
+                                                        <iframe src="<!--{ACTION_URL}-->/userAction/start" width="322" height="277" frameborder="0" scrolling="no"></iframe></td>
+                                                    <td width="50%" align="left"><div id=""></div>
+                        </form >-->
+                                            </tr>
+                                        </table>
+                                    </center>
+			  </div>
 							</div>						
 							<div class="control-group">
-								<label class="control-label" for="textarea">Biography</label>
+								<label class="control-label" for="textarea">简介</label>
 								<div class="controls">
-									<textarea class="input-xlarge" id="textarea" rows="4">Web technology junkie who writes innovative and bestselling technical books. Also enjoys Sunday bicycle rides and all "good" comedy.</textarea>
+									<textarea class="input-xlarge" id="textarea" rows="4" name="Biography"  ">{$Biography}</textarea>
 								</div>
 							</div>
-							<div class="control-group">
+							<!--<div class="control-group">
 								<label class="control-label" for="optionsCheckbox">Public Profile</label>
 								<div class="controls">
 									<input type="checkbox" id="optionsCheckbox" value="option1" checked="checked">
 								</div>
-							</div>						
+							</div>-->
 							<div class="form-actions">
-								<button type="submit" class="btn btn-primary">Save</button> <button class="btn">Cancel</button>
+								<button type="submit" class="btn btn-primary" formaction="<!--{ACTION_URL}-->/userAction/update_profile">保存</button> <button class="btn">Cancel</button>
 							</div>
 						</fieldset>
 					</form>

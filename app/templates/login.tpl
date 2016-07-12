@@ -44,15 +44,25 @@
         <h3 class="form-signin-heading" align="center">Pecan</h3>
         <input type="text" class="input-block-level" placeholder="用户名" name='username'>
         <input type="password" class="input-block-level" placeholder="密码" name='password'>
+          <input type="text" class="input-small" placeholder="验证码" name='captcha'>
+          <img id='captchaimage' onclick='changecode()' style='margin-left:10px;margin-top:-20px' src='<!--{ACTION_URL}-->/utilAction/getcaptcha'>
+          <a href="javascript:changecode();"><span style='margin-left:10px'>换一张</span></a>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> 记住我
         </label>
- 
         <button class="btn  btn-primary" type="submit">登录</button>
         <a href='<!--{ACTION_URL}-->/Index/register'><button class="btn  btn-primary" type="button">注册</button></A>
+          <a href='<!--{ACTION_URL}-->'><button class="btn  btn-primary" type="button">取消</button></A>
       </form>
 
 
       </div>
-  </body>
+        <script type="text/javascript">
+            function changecode(){
+                var img = document.getElementById("captchaimage");
+                img.src = "<!--{ACTION_URL}-->/utilAction/getcaptcha";
+                return ;
+            }
+        </script>
+    </body>
 </html>

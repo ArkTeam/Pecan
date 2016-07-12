@@ -29,6 +29,7 @@ class ArkArticle extends Model {
 		$artk_article = $this->create (
 		array ('title' => $title,
  		'author'=> $_SESSION['username'],
+        'author_id' => $_SESSION['user_id'],
 	 	'blog_content' => $blog_content,
 	 	'tags'=> $tags,
 	 	'source'=>$source,
@@ -80,6 +81,42 @@ class ArkArticle extends Model {
 		}
 		return $vars;
 	}
+
+    function getlistArticles($start,$offset,$username){
+        $vars = array ();
+        $this->where('author','=',$username);
+        $this->limit($start,$offset);
+        $this->order(posttime,'DESC');
+        if($this->rowCount()==0){
+            return null;
+        }
+
+        $articles = $this->findMany ();
+
+        //print_r($articles);
+        if(!$articles){
+            //echo 'Error: Find Many Error';
+        }
+        $rowNames = $this->getRows();
+
+        foreach ( $articles as $article ) {
+            $var = array ();
+            //print_r ( $article );
+            foreach ( $rowNames as $row ) {
+                //array_push ( $var, $row=>($article->$row));
+                //print_r ( $row );
+                $var[$row]=$article->$row;
+
+            }
+
+            $var['blog_content'] = $this->trimContent($var['blog_content']);
+
+            $var['posttime']=date('Y-m-d H:i:s', $article->posttime);
+            $var['updatetime']=date('Y-m-d H:i:s', $article->updatetime);
+            array_push ( $vars, $var);
+        }
+        return $vars;
+    }
 
 	function modifyArticle($id,$user_id,$title ,$tags,$source,$category_id,$blog_content) {
 			

@@ -12,30 +12,30 @@
 								<a href="<!--{ACTION_URL}-->/articleAction/listArticles"><i class="icon-check"></i> 我的文章</a>
 							</li>
 							<li>
-								<a href="messages.htm"><i class="icon-envelope"></i> Ideas</a>
+								<a href="<!--{ACTION_URL}-->/inspirationAction/viewInspirations"><i class="icon-envelope"></i> 灵感</a>
 							</li>
 							<li>
 								<a href="<!--{ACTION_URL}-->/categoryAction/showCategory"><i class="icon-envelope"></i> 分类管理</a>
 							</li>
-							<li>
+							<!--<li>
 								<a href="files.htm"><i class="icon-file"></i> 文件管理</a>
 							</li>
 							<li>
 								<a href="activity.htm"><i class="icon-list-alt"></i> 其他</a>
-							</li>
+							</li>-->
 							<li class="nav-header">
 								我的账号
 							</li>
 							<li>
 								<a href="<!--{ACTION_URL}-->/userAction/profile"><i class="icon-user"></i> 个人资料</a>
 							</li>
-							<li>
+							<!--<li>
 								<a href="settings.htm"><i class="icon-cog"></i> 系统设置</a>
 							</li>
 							<li class="divider">
 							</li>
 							<li>
 								<a href="help.htm"><i class="icon-info-sign"></i> 帮助</a>
-							</li>
+							</li>-->
 						
 						</ul>

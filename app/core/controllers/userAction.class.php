@@ -6,18 +6,29 @@ require_once ('categoryAction.class.php');
 class UserAction extends Controller {
     protected $user;
 	protected $category;
-    function Login($username, $password) {
+    function Login($username, $password,$captcha) {
         $this->user = new ArkUser ();
         $_name = 'Ark';
         
         $this->tpl_x->assign ( 'name', $_name );
-        $_password = $this->user->getArtkUser ( $username );
-        
+        $_password = $this->user->getArtkPwd ( $username );
+
+        $captcha = strtolower($captcha);
+//        echo 'CAPTCHA:' . $captcha . '<br/>';
+
         if ($_password == $password && strlen ( $username ) > 0 && strlen ( $password ) > 0) {
-            
+
+            if ($captcha != $_SESSION['authnum_session']){
+                $this->tpl_x->assign ('tips', '验证码错误');
+                echo " <script>alert('".'验证码错误'."');</script>";
+                $this->display ( 'login.tpl' );
+                return false;
+            }
+
             $_SESSION ['username'] = $username;
             $_SESSION {'online_id'} = md5 ( $username . $_password );
-            
+
+            $_SESSION ['user_id'] = $this->user->getArtkUserId ( $username );
             $tips = 'successfully to login!';
             //username 找到头像
             $porpath = $this->user->getPortraitPath($_SESSION ['username']);
@@ -38,7 +49,9 @@ class UserAction extends Controller {
             
             $tips = '用户名或密码错误! ';
             $this->tpl_x->assign( 'tips' , $tips );
-            $this->display ( 'Info.tpl' );
+//            echo " <script>alert('".$tips."');</script>";
+            $this->display('login.tpl');
+//            $this->display ( 'Info.tpl' );
         }
 		$this->refresh ();
         $this->tpl_x->assign ( 'tips', $tips );
@@ -52,6 +65,13 @@ class UserAction extends Controller {
      	//echo 'AUTHNUM_SESSION:' . $_SESSION['authnum_session'] . '<br/>';
      	$captcha = strtolower($captcha);
      	//echo 'CAPTCHA:' . $captcha . '<br/>';
+         echo $username;
+         echo "############";
+         echo $password;
+         echo "############";
+         echo $repassword;
+         echo "############";
+         echo $captcha;
      	if ($captcha != $_SESSION['authnum_session']){
      		$this->tpl_x->assign ('tips', '验证码错误');
      		return false;
@@ -59,10 +79,10 @@ class UserAction extends Controller {
         if ($password != $repassword) {
             return false;
         }
+
         $this->user = new ArkUser ();
         $userID = $this->user->getArtkUserId($username);
         $portraitpath = $_SESSION['porpath'];
-  
         if ($userID){
             $tips = 'User '.$username.' has already exist!';
          }else {
@@ -70,13 +90,12 @@ class UserAction extends Controller {
                  return false;
              }
 
-              if ($this->user->createArtkUser ( $username, $password, $portraitpath )) {
+              if ($this->user->createArtkUser ( $username, $password, $portraitpath  )) {
                 $tips = "Register Successfullly";
               } else {
                 $tips = "Register Fail";
               }
         }
-
         $this->tpl_x->assign ( 'tips', $tips );
         $this->display ( 'Info.tpl' );
     }
@@ -84,6 +103,8 @@ class UserAction extends Controller {
     	if ( isset($_SESSION['last_access']) && time()-$_SESSION['last_access'] <= 1800){
     		
     		$_SESSION['last_access'] = time();
+            $this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
+            $this->tpl_x->assign ( 'username', $_SESSION ['username'] );
     		$this->display ( 'index.tpl' );
     		return;
     	}
@@ -359,9 +380,26 @@ class UserAction extends Controller {
     }
     
     function profile(){
-    	$this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
-    	$this->tpl_x->assign ( 'username', $_SESSION ['username'] );
+        $this->tpl_x->assign( 'porpath',  $_SESSION['porpath']);
+        $user_id = $_SESSION ['user_id'] ;
+        $this->tpl_x->assign ( 'username', $_SESSION ['username'] );
+        $this->user = new ArkUser();
+        $this->user->getArtkUser($user_id);
+        $email = $this->user->email;
+        $this->tpl_x->assign ( 'email', $email);
+        $this->tpl_x->assign ( 'phone', $this->user->phone );
+        $this->tpl_x->assign ( 'Biography ', $this->user->Biography );
     	$this->display ( 'profile.tpl' );
+    }
+
+    function update_profile($username, $phone,$email, $biography){
+        $user_id = $_SESSION ['user_id'];
+        $this->user = new ArkUser();
+        $email=  urldecode($email);
+//        echo $biography;
+        $portraitpath = $_SESSION['porpath'];
+        $this->user->updateArkUser($user_id,$email, $phone,$portraitpath);
+        $this->profile();
     }
 }
 
